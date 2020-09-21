@@ -1,0 +1,25 @@
+{
+  "name": "ik-base",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Igor Koptev",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby clean && gatsby build && gatsby serve",
+    "clean": "gatsby clean",
+    "x": "gatsby clean && gatsby develop"
+  },
+  "dependencies": {
+    "gatsby": "^2.24.63",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "prettier": "^2.1.2"
+  }
+}
