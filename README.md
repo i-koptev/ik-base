@@ -4,17 +4,17 @@
 
 ### 1. [Development environment setup](#envsetup)
 
-- NVM and Node. Source: https://github.com/coreybutler/nvm-windows
-- Yarn and project initialization. Source: https://classic.yarnpkg.com/en/docs/install/#windows-stable
-- GIT. Source: https://git-scm.com/download/win
-- Prettier, ESLint.
-- VSCode.
+-   NVM and Node. Source: https://github.com/coreybutler/nvm-windows
+-   Yarn and project initialization. Source: https://classic.yarnpkg.com/en/docs/install/#windows-stable
+-   GIT. Source: https://git-scm.com/download/win
+-   Prettier, ESLint.
+-   VSCode.
 
 ### 2. [Gatsby installation](#gatsbyinstall)
 
 ### 3. [Github - make repo](#githubsetup) --> Branch "Base" created
 
-### 4. [Adding Material UI](#materialuisetup)
+### 4. [Adding Material UI](#materialuisetup) --> Branch "Material-UI" created
 
 ## <span id="envsetup">1. Development environment setup</span>
 
@@ -79,8 +79,8 @@ $ yarn add -D prettier
 
 For autoformatting in VSCode:
 
-- add extension "Prettier (Esben Petersen)"
-- in VSCode settings ('ctrl + ,) check "Format on save" and "Prettier: Require Config"
+-   add extension "Prettier (Esben Petersen)"
+-   in VSCode settings ('ctrl + ,) check "Format on save" and "Prettier: Require Config"
 
 Add .prettierrc, .prettierignore, .eslintrc.json to the root of the project
 
@@ -129,3 +129,62 @@ git remote add origin https://github.com/i-koptev/ik-base.git
 git push -u origin master
 
 ```
+
+## <span id="materialuisetup">4. Add Material UI</span>
+
+---
+
+Material-UI installation tutorial: https://material-ui.com/getting-started/installation/
+
+Material-UI installation on Gatsby example: https://github.com/mui-org/material-ui/tree/c99bd0dbbfdc72e2e5e1805367cc9a42ff393e3c/examples/gatsby
+
+Add packages:
+
+```
+
+$ yarn add @material-ui/core @material-ui/icons gatsby-plugin-material-ui react-helmet gatsby-plugin-react-helmet prop-types
+
+```
+
+Copy folder _/plugins/gatsby-plugin-top-layout/_ with all its contents to the root of the project.
+
+Change contents of _/plugins/gatsby-plugin-top-layout/package.json_:
+
+```
+{
+    "name": "gatsby-plugin-top-layout"
+}
+```
+
+to
+
+```
+{
+    "name": "gatsby-plugin-top-layout",
+    "main": "TopLayout.js"
+}
+```
+
+Add to _/gatsby-config.js_ support for material-ui:
+
+```
+module.exports = {
+    plugins: [
+        "gatsby-plugin-top-layout",
+        {
+            resolve: "gatsby-plugin-material-ui",
+            // If you want to use styled components you should change the injection order.
+            options: {
+                // stylesProvider: {
+                //   injectFirst: true,
+                // },
+            },
+        },
+        // If you want to use styled components you should add the plugin here.
+        // 'gatsby-plugin-styled-components',
+        "gatsby-plugin-react-helmet",
+    ],
+}
+```
+
+Make theme file _theme.js_ in location defined in _Project_Root_Folder/plugins/TopLayout.js_ "import theme" section.
