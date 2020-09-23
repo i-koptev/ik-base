@@ -94,7 +94,7 @@ Prettier is more "mechanical" - it makes tabs, whitespaces, new lines.
 So install:
 
 ```
-yarn add -D eslint eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-jsx-a11y eslint-plugin-react-hooks
+yarn add -D eslint eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-jsx-a11y eslint-plugin-react-hooks dumper.js
 ```
 
 ## <span id="gatsbyinstall">2. Gatsby installation</span>
@@ -195,4 +195,86 @@ $ yarn add gatsby-source-filesystem gatsby-image gatsby-transformer-remark gatsb
 $ yarn add -D eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-jsx-a11y eslint-plugin-react-hooks
 ```
 
-// prismjs gatsby-remark-prismjs
+// prismjs gatsby-remark-prismjs -not yet
+
+Edit gatsby-config.js:
+
+```
+module.exports = {
+    plugins: [
+        "gatsby-plugin-top-layout",
+        {
+            // keep as first gatsby-source-filesystem plugin for gatsby image support
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `${__dirname}/static/img`,
+                name: "uploads",
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `${__dirname}/src/pages`,
+                name: "pages",
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `${__dirname}/settings/site-metadata.md`,
+                name: "meta",
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `${__dirname}/src/img`,
+                name: "images",
+            },
+        },
+        "gatsby-transformer-sharp",
+        "gatsby-plugin-sharp",
+        {
+            resolve: "gatsby-transformer-remark",
+            options: {
+                plugins: [
+                    {
+                        resolve: "gatsby-remark-relative-images",
+                        options: {
+                            name: "uploads",
+                        },
+                    },
+                    {
+                        resolve: "gatsby-remark-images",
+                        options: {
+                            // It's important to specify the maxWidth (in pixels) of
+                            // the content container as this plugin uses this as the
+                            // base for generating different widths of each image.
+                            maxWidth: 2048,
+                        },
+                    },
+                    {
+                        resolve: "gatsby-remark-copy-linked-files",
+                        options: {
+                            destinationDir: "static",
+                        },
+                    },
+                ],
+            },
+        },
+        {
+            resolve: "gatsby-plugin-material-ui",
+            // If you want to use styled components you should change the injection order.
+            options: {
+                // stylesProvider: {
+                //   injectFirst: true,
+                // },
+            },
+        },
+        // If you want to use styled components you should add the plugin here.
+        // 'gatsby-plugin-styled-components',
+        "gatsby-plugin-react-helmet",
+    ],
+}
+
+```
