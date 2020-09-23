@@ -94,7 +94,7 @@ Prettier is more "mechanical" - it makes tabs, whitespaces, new lines.
 So install:
 
 ```
-yarn add -D eslint eslint-config-prettier
+yarn add -D eslint eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-jsx-a11y eslint-plugin-react-hooks
 ```
 
 ## <span id="gatsbyinstall">2. Gatsby installation</span>
@@ -188,3 +188,11 @@ module.exports = {
 ```
 
 Make theme file _theme.js_ in location defined in _Project_Root_Folder/plugins/TopLayout.js_ "import theme" section.
+
+```
+$ yarn add gatsby-source-filesystem gatsby-image gatsby-transformer-remark gatsby-remark-images gatsby-transformer-sharp gatsby-plugin-sharp gatsby-remark-copy-linked-files gatsby-remark-relative-images clsx lodash lodash-webpack-plugin
+
+$ yarn add -D eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-jsx-a11y eslint-plugin-react-hooks
+```
+
+// prismjs gatsby-remark-prismjs
