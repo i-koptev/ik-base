@@ -1,0 +1,96 @@
+backend:
+  name: ik-base
+  repo: i-koptev/ik-base
+  branch: master
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
+
+local_backend: true
+
+media_folder: static/img
+public_folder: /img
+display_url: https://matlify.netlify.com
+
+collections:
+  - name: blog
+    label: Blog
+    folder: /src/blog
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Date, widget: datetime }
+      - { name: title, label: Title }
+      - { name: body, label: Body, widget: markdown }
+  # - name: blog_transalations
+  #   label: Blog Translations
+  #   folder: /src/blog/translatons
+  #   create: true
+  #   fields:
+  #     - {
+  #         label: "Translation",
+  #         name: "translation",
+  #         collection: "blog",
+  #         widget: "relation",
+  #         search_fields: ["title", "body"],
+  #         value_field: "title",
+  #         display_fields: ["title", "body"],
+  #       }
+  #     - {
+  #         label: "Language",
+  #         name: "language",
+  #         widget: "select",
+  #         options: ["en", "ru"],
+  #       }
+  #     - { name: path, label: Path }
+  #     - { name: date, label: Date, widget: datetime }
+  #     - { name: title, label: Title }
+  #     - { name: body, label: Body, widget: markdown }
+
+  - name: "english_toasts"
+    label: "Toasts in English"
+    folder: "src/pages/toasts"
+    extension: "en.md"
+    format: "frontmatter"
+    create: true
+    filter: { field: "language", value: "en" }
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "dumb",
+        }
+      - {
+          label: "Language",
+          name: "language",
+          widget: "select",
+          options: ["en", "ru"],
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Content", name: "body", widget: "markdown" }
+  - name: "russian_toasts"
+    label: "Тосты по-русски"
+    folder: "src/pages/toasts"
+    extension: "ru.md"
+    format: "frontmatter"
+    create: true
+    filter: { field: "language", value: "ru" }
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "dumb",
+        }
+      - {
+          label: "Язык",
+          name: "language",
+          widget: "select",
+          options: ["en", "ru"],
+        }
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Содержимое", name: "body", widget: "markdown" }

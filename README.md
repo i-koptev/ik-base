@@ -189,6 +189,8 @@ module.exports = {
 
 Make theme file _theme.js_ in location defined in _Project_Root_Folder/plugins/TopLayout.js_ "import theme" section.
 
+## <span id="markdownsetup">5. Add Support for Markdown</span>
+
 ```
 $ yarn add gatsby-source-filesystem gatsby-image gatsby-transformer-remark gatsby-remark-images gatsby-transformer-sharp gatsby-plugin-sharp gatsby-remark-copy-linked-files gatsby-remark-relative-images clsx lodash lodash-webpack-plugin
 
@@ -278,3 +280,31 @@ module.exports = {
 }
 
 ```
+
+## <span id="netlifycmssetup">6. Add Netlify CMS</span>
+
+gatsby-plugin-netlify - not needed for Netlify CNS, but for Netlify - adds some? headers
+
+```
+$ yarn add gatsby-plugin-netlify netlify-cms-app gatsby-plugin-netlify-cms
+```
+
+Create file /scr/cms/cms.js
+
+Copy preview-templates folder with content from starter
+
+Edit gatsby-config.js:
+
+```
+ {
+            resolve: "gatsby-plugin-netlify-cms",
+            options: {
+                modulePath: `${__dirname}/src/cms/cms.js`,
+            },
+        },
+        "gatsby-plugin-netlify", // make sure to keep it last in the array
+```
+
+Create /static/admin/config.yml
+
+npx netlify-cms-proxy-server
