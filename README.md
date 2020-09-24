@@ -297,20 +297,38 @@ Edit gatsby-config.js:
 
 ```
  {
-            resolve: "gatsby-plugin-netlify-cms",
-            options: {
-                modulePath: `${__dirname}/src/cms/cms.js`,
-            },
+        resolve: "gatsby-plugin-netlify-cms",
+        options: {
+            modulePath: `${__dirname}/src/cms/cms.js`,
         },
-        "gatsby-plugin-netlify", // make sure to keep it last in the array
+    },
+    "gatsby-plugin-netlify", // make sure to keep it last in the array
 ```
 
 Create /static/admin/config.yml
 
 npx netlify-cms-proxy-server
 
-## <span id="intl">. Add Internationalization</span>
+## <span id="intl">7. Add Internationalization</span>
 
 ```
 $ yarn add gatsby-plugin-intl
+```
+
+gatsby-config.js:
+
+```
+ {
+    resolve: `gatsby-plugin-intl`,
+    options: {
+        // language JSON resource path
+        path: `${__dirname}/src/intl`,
+        // supported language
+        languages: [`ru`, `en`],
+        // language file path
+        defaultLanguage: `ru`,
+        // option to redirect to `/ko` when connecting `/`
+        redirect: false,
+    },
+},
 ```
