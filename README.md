@@ -308,3 +308,9 @@ Edit gatsby-config.js:
 Create /static/admin/config.yml
 
 npx netlify-cms-proxy-server
+
+## <span id="intl">. Add Internationalization</span>
+
+```
+$ yarn add gatsby-plugin-intl
+```
