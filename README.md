@@ -192,7 +192,7 @@ Make theme file _theme.js_ in location defined in _Project_Root_Folder/plugins/T
 ## <span id="markdownsetup">5. Add Support for Markdown</span>
 
 ```
-$ yarn add gatsby-source-filesystem gatsby-image gatsby-transformer-remark gatsby-remark-images gatsby-transformer-sharp gatsby-plugin-sharp gatsby-remark-copy-linked-files gatsby-remark-relative-images clsx lodash lodash-webpack-plugin
+$ yarn add gatsby-source-filesystem gatsby-image gatsby-background-image gatsby-transformer-remark gatsby-remark-images gatsby-transformer-sharp gatsby-plugin-sharp gatsby-remark-copy-linked-files gatsby-remark-relative-images clsx lodash lodash-webpack-plugin
 
 $ yarn add -D eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-jsx-a11y eslint-plugin-react-hooks
 ```
