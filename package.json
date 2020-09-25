@@ -10,13 +10,15 @@
         "build": "gatsby build",
         "serve": "gatsby clean && gatsby build && gatsby serve",
         "clean": "gatsby clean",
-        "x": "gatsby clean && gatsby develop"
+        "x": "gatsby clean && node ./static/admin/config/makeYaml && gatsby develop",
+        "yaml": "node ./static/admin/config/makeYaml"
     },
     "dependencies": {
         "@material-ui/core": "^4.11.0",
         "@material-ui/icons": "^4.9.1",
         "clsx": "^1.1.1",
         "gatsby": "^2.24.63",
+        "gatsby-background-image": "^1.1.2",
         "gatsby-image": "^2.4.19",
         "gatsby-plugin-intl": "^0.3.3",
         "gatsby-plugin-material-ui": "^2.1.10",
@@ -26,7 +28,7 @@
         "gatsby-plugin-sharp": "^2.6.36",
         "gatsby-remark-copy-linked-files": "^2.3.16",
         "gatsby-remark-images": "^3.3.30",
-        "gatsby-remark-relative-images": "^2.0.2",
+        "gatsby-remark-relative-images": "0.2.3",
         "gatsby-source-filesystem": "^2.3.30",
         "gatsby-transformer-remark": "^2.8.35",
         "gatsby-transformer-sharp": "^2.5.15",
@@ -45,6 +47,7 @@
         "eslint-plugin-import": "^2.22.0",
         "eslint-plugin-jsx-a11y": "^6.3.1",
         "eslint-plugin-react-hooks": "^4.1.2",
+        "js-yaml": "^3.14.0",
         "prettier": "^2.1.2"
     }
 }
