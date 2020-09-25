@@ -51,8 +51,8 @@ module.exports = {
                 name: "blog",
             },
         },
-        "gatsby-transformer-sharp",
         "gatsby-plugin-sharp",
+        "gatsby-transformer-sharp",
         {
             resolve: "gatsby-transformer-remark",
             options: {
@@ -60,6 +60,7 @@ module.exports = {
                     {
                         resolve: "gatsby-remark-relative-images",
                         options: {
+                            // staticFolderName: "static",
                             name: "uploads",
                         },
                     },
