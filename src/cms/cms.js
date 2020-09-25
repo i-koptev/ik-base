@@ -14,3 +14,10 @@ import CMS from "netlify-cms-app"
 // CMS.registerPreviewTemplate('about', AboutPagePreview)
 // CMS.registerPreviewTemplate('products', ProductPagePreview)
 // CMS.registerPreviewTemplate('blog', BlogPostPreview)
+
+// CMS.registerEventListener({
+//     name: "preSave",
+//     handler: ({ entry }) => {
+//         return entry.get("data").set("templateKey", entry.get("slug"))
+//     },
+// })
