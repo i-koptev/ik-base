@@ -8,6 +8,6 @@ aboutSubheading:
   ru: wer
   en: wer
 aboutText:
-  ru: "# wer"
+  ru: "# werer"
   en: "# wer"
 ---
