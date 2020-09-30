@@ -1,12 +1,28 @@
 import React from "react"
+import { graphql } from "gatsby"
 
-const defaultPage = (props) => {
+import MainLayout from "../layouts/Main"
+import PageView from "../views/PageView"
+
+const DefaultPage = (props) => {
+    const { pageContext } = props
+
     return (
-        <div>
-            Page default template
-            <pre>{JSON.stringify(props, null, 4)}</pre>
-        </div>
+        <MainLayout>
+            <PageView {...props} />
+        </MainLayout>
     )
 }
 
-export default defaultPage
+export default DefaultPage
+
+export const pageQuery = graphql`
+    query pageBySlug($slug: String!) {
+        markdownRemark(fields: { slug: { eq: $slug } }) {
+            id
+            fields {
+                slug
+            }
+        }
+    }
+`

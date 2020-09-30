@@ -1,12 +1,60 @@
 const _ = require("lodash")
 const fs = require("fs")
+const path = require("path")
 const { resolve } = require("path")
 const url = require("url")
 const { createFilePath } = require("gatsby-source-filesystem")
 const { fmImagesToRelative } = require("gatsby-remark-relative-images")
 const { dd, dump } = require("dumper.js")
 
-exports.createPages = async ({ actions, graphql, reporter }) => {
+const createTopbarMenuTranslations = require(`./create/createTopbarMenuTranslations`)
+const createSidebarMenuTranslations = require(`./create/createSidebarMenuTranslations`)
+const createFrontPageTranslations = require(`./create/createFrontPageTranslations`)
+
+const siteLanguages = [`en`, `ru`]
+
+const intlTranslations = {}
+
+siteLanguages.forEach((item) => {
+    intlTranslations[item] = {}
+})
+
+exports.createPages = async (props) => {
+    const { actions, graphql, reporter } = props
+
+    await createTopbarMenuTranslations(props, {
+        intlTranslations,
+        siteLanguages,
+    })
+    await createSidebarMenuTranslations(props, {
+        intlTranslations,
+        siteLanguages,
+    })
+    await createFrontPageTranslations(props, {
+        intlTranslations,
+        siteLanguages,
+    })
+
+    siteLanguages.forEach((item) => {
+        intlTranslations[item] = {
+            ...intlTranslations[item],
+            ...JSON.parse(
+                fs.readFileSync(
+                    path.join(__dirname, `./src/intl/${item}-static.json`),
+                    {
+                        encoding: "utf8",
+                    }
+                )
+            ),
+        }
+        fs.writeFileSync(
+            path.join(__dirname, `./src/intl/${item}.json`),
+            JSON.stringify(intlTranslations[item], null, 4)
+        )
+    })
+
+    // dd(intlTranslations)
+
     const {
         data: {
             allMarkdownRemark: { nodes: allPages },
@@ -15,7 +63,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         {
             allMarkdownRemark(
                 limit: 1000
-                filter: { fields: { slug: { ne: "/meta-page/" } } }
+                filter: {
+                    fields: {
+                        slug: {
+                            nin: [
+                                "/sidebar-menu-settings/"
+                                "/topbar-menu-settings/"
+                                "/site-settings/"
+                            ]
+                        }
+                    }
+                }
             ) {
                 nodes {
                     id
@@ -34,7 +92,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const pagesWithoutFrontPage = allPages.filter(
         (page) => page.fields.slug !== "/front-page/"
     )
-    pagesWithoutFrontPage.map(async (page, i) => {
+    allPages.map(async (page, i) => {
         const id = page.id
 
         // ---------------- Just for fun -----------------
@@ -44,7 +102,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             .slice(-1)[0] // last element of array
         // ---------------- Just for fun -----------------
 
-        const isFrontPage = page.fields.slug === "/"
+        const isFrontPage = page.fields.slug === "/front-page/"
 
         const frontPageTemplate = resolve(`src/templates/front-page.js`)
         const existsFrontPageTemplate = fs.existsSync(frontPageTemplate)
@@ -72,7 +130,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
 
         actions.createPage({
-            path: page.fields.slug,
+            path: isFrontPage ? "/" : page.fields.slug,
             component: actualTemplate,
             // additional data can be passed via context
             context: {
