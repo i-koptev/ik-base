@@ -332,3 +332,168 @@ gatsby-config.js:
     },
 },
 ```
+
+## <span id="pagecreationflow">34. Add New Page Workflow</span>
+
+Создание отдельной страницы на примере страницы "Контакты"
+
+1. Определить необходимые для ввода из админки данные с учётом перевода (номер телефона, например, перевода не требует):
+
+-   заголовок страницы (перевод)
+-   метка для номера телефона (перевод)
+-   номер телефона
+-   метка для эл.почты (перевод)
+-   эл. почта
+-   метка для адреса (перевод)
+-   адрес
+
+2. Создать файл /static/admin/config/contacts-page.js для включения в систему сборки файла конфигурации /static/admin/config.yml
+
+/static/admin/config/contacts-page.js:
+
+```
+module.exports = {
+    file: "src/pages/contacts.md",
+    label: "Страница 'Контактная информация' / Contact info",
+    name: "contacts",
+    fields: [
+        {
+            label: "Заголовок / Heading",
+            name: "contactsHeading",
+            widget: "object",
+            fields: [
+                {
+                    label: "ru",
+                    name: "ru",
+                    widget: "string",
+                },
+                {
+                    label: "en",
+                    name: "en",
+                    widget: "string",
+                },
+            ],
+        },
+        {
+            label: "Метка поля номера телефона / Phone number field label",
+            name: "contactsPhoneNumber",
+            widget: "object",
+            fields: [
+                {
+                    label: "ru",
+                    name: "ru",
+                    widget: "string",
+                },
+                {
+                    label: "en",
+                    name: "en",
+                    widget: "string",
+                },
+            ],
+        },
+        {
+            label: "Номер телефона / Phone number",
+            name: "phoneNumber",
+            widget: "string",
+        },
+        {
+            label: "Метка поля эл. почты / EMail field label",
+            name: "contactsEmail",
+            widget: "object",
+            fields: [
+                {
+                    label: "ru",
+                    name: "ru",
+                    widget: "string",
+                },
+                {
+                    label: "en",
+                    name: "en",
+                    widget: "string",
+                },
+            ],
+        },
+        {
+            label: "Адрес эл. почты / EMail",
+            name: "contactsEmail",
+            widget: "string",
+        },
+        {
+            label: "Метка поля адреса / Address field label",
+            name: "contactsAddress",
+            widget: "object",
+            fields: [
+                {
+                    label: "ru",
+                    name: "ru",
+                    widget: "string",
+                },
+                {
+                    label: "en",
+                    name: "en",
+                    widget: "string",
+                },
+            ],
+        },
+        {
+            label: "Адрес / Address",
+            name: "contactsAddress",
+            widget: "string",
+        },
+    ],
+}
+
+```
+
+3. Включить файл в систему сборки файла конфигурации /static/admin/config.yml:
+   makeYaml.js:
+
+```
+const contactsPage = require("./contacts-page")
+pages.files.push(contactsPage)
+```
+
+После сборки конфига и запуска дев сервера поля страницы контактов появляются в админке NetlifyCMS. После заполнкния полей и сохраненмя файла (Publish) в файловой системе создаётся файл, указанный в
+
+```
+/static/admin/config/contacts-page.js
+```
+
+-   поле
+
+```
+file: "src/pages/contacts.md",
+```
+
+После перезапуска сборки сайта программно создаётся страница в корне сайта со слагом /{имя файла}/ - /contacts/ и данные из contacts.md становятся доступны по слагу
+
+```
+query MyQuery {
+  markdownRemark(fields: {slug: {eq: "/contacts/"}}) {
+    frontmatter {
+      contactsHeading {
+        ru
+        en
+      }
+      contactsPhoneNumberLabel {
+        ru
+        en
+      }
+      contactsPhoneNumber
+    }
+    ...
+  }
+}
+```
+
+4. Добавление переводов из contacts.md в /src/intl/(ru|en).json
+
+Создать /create/createContactsPageTranslations.js и добавить его в gatsby-node.js
+
+5. Добавление шаблона
+
+В /src/templates создаём файл совпадающий по названию с файлом в /src/pages - в нашем случае /src/pages/contacts.md <--> /src/templates/contacts.js
+
+-   он и будет шаблоном страницы, иначе - default-page.js
+
+6. Добавляем страницу в нужное меню через интерфейс ЦМС - и вуаля!
