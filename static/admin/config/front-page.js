@@ -4,17 +4,6 @@ module.exports = {
     name: "front-page",
     fields: [
         {
-            label: "Идентификатор страницы / Page identifier",
-            name: "title",
-            widget: "string",
-            hint: "Главная страница / Front Page",
-        },
-        {
-            label: "Template Key",
-            name: "templateKey",
-            widget: "string",
-        },
-        {
             label: "Раздел Hero / Hero Section",
             name: "indexSectionHero",
             widget: "object",
