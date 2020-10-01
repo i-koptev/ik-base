@@ -2,7 +2,12 @@ import React from "react"
 import clsx from "clsx"
 import PropTypes from "prop-types"
 
-import { useStaticQuery, graphql } from "gatsby"
+import {
+    changeLocale,
+    injectIntl,
+    Link,
+    FormattedMessage,
+} from "gatsby-plugin-intl"
 
 import { makeStyles, useTheme } from "@material-ui/styles"
 import { Grid } from "@material-ui/core"
@@ -59,16 +64,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const PageView = (props) => {
-    const { pageContext, className, ...rest } = props
+const ContactsPageView = (props) => {
+    const { className, intl, email, phone, address } = props
 
     const classes = useStyles()
-
-    // const {
-    //     data: {
-    //         markdownRemark: { id, { fields: slug }  },
-    //     },
-    // } = props.data ? props : null
 
     return (
         <Grid
@@ -84,59 +83,35 @@ const PageView = (props) => {
                     component="h1"
                     align="center"
                 >
-                    {pageContext.slug}
+                    {intl.formatMessage({
+                        id: `contacts.contactsHeading`,
+                    })}
                 </Typography>
-                {/* <Typography
-                    className={classes.htmlContent}
-                    component="div"
-                    dangerouslySetInnerHTML={{
-                        __html: content,
-                    }}
-                /> */}
-            </Grid>
-            <Grid item xs={12}>
-                <DebugDataContext {...props} />
+                <h4>
+                    {intl.formatMessage({
+                        id: `contacts.contactsEmailLabel`,
+                    })}
+                    : {email}
+                </h4>
+                <h4>
+                    {intl.formatMessage({
+                        id: `contacts.contactsAddressLabel`,
+                    })}
+                    : {address}
+                </h4>
+                <h4>
+                    {intl.formatMessage({
+                        id: `contacts.contactsPhoneNumberLabel`,
+                    })}
+                    : {phone}
+                </h4>
             </Grid>
         </Grid>
     )
 }
 
-PageView.propTypes = {
+ContactsPageView.propTypes = {
     className: PropTypes.string,
 }
 
-export default PageView
-
-export const DebugDataContext = (props) => {
-    const { pageContext = null, data = null } = props
-
-    return (
-        <div
-            style={{
-                fontSize: "16px",
-                backgroundColor: "#345",
-                color: "#eee",
-                padding: "1rem",
-                display: "block",
-            }}
-        >
-            <pre>
-                <b>Template:</b> {__filename}
-            </pre>
-            <pre>
-                <b>Page context:</b>
-                <br />
-                {JSON.stringify(pageContext, null, 2)}
-            </pre>
-            <pre>
-                <b>Page data:</b>
-                <br />
-                {JSON.stringify(data, null, 2)}
-            </pre>
-            <pre>
-                <b>All Props:</b>
-                {JSON.stringify(props, null, 2)}
-            </pre>
-        </div>
-    )
-}
+export default injectIntl(ContactsPageView)

@@ -8,6 +8,7 @@ const topbarMenuSettings = require("./topbar-menu-settings")
 const sidebarMenuSettings = require("./sidebar-menu-settings")
 const frontPage = require("./front-page")
 const aboutPage = require("./about-page")
+const contactsPage = require("./contacts-page")
 
 const russianToasts = require("./russian-toasts")
 const englishToasts = require("./english-toasts")
@@ -27,6 +28,7 @@ siteSettings.files.push(sidebarMenuSettings)
 
 pages.files.push(frontPage)
 pages.files.push(aboutPage)
+pages.files.push(contactsPage)
 
 meta.collections.push(siteSettings)
 meta.collections.push(pages)
