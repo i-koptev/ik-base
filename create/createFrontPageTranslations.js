@@ -89,10 +89,13 @@ module.exports = async ({ actions, graphql }, options) => {
         if (frontPageItemsFrontmatter.indexSectionHero) {
             siteLanguages.map((language) => {
                 intlTranslations[language][`front-page.sectionHero.heading`] =
-                    frontPageItemsFrontmatter.indexSectionHero.heading.ru
+                    frontPageItemsFrontmatter.indexSectionHero.heading[language]
                 intlTranslations[language][
                     `front-page.sectionHero.subheading`
-                ] = frontPageItemsFrontmatter.indexSectionHero.subheading.ru
+                ] =
+                    frontPageItemsFrontmatter.indexSectionHero.subheading[
+                        language
+                    ]
 
                 featureNums.map((i) => {
                     intlTranslations[language][
