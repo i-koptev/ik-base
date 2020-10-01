@@ -2,14 +2,15 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import MainLayout from "../layouts/Main"
-import PageView from "../views/PageView"
+import { PageView, DefaultPageView } from "../views"
 
 const DefaultPage = (props) => {
     const { pageContext } = props
 
     return (
         <MainLayout>
-            <PageView {...props} />
+            {/* <PageView {...props} /> */}
+            <DefaultPageView {...props} />
         </MainLayout>
     )
 }

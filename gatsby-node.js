@@ -10,6 +10,7 @@ const { dd, dump } = require("dumper.js")
 const createTopbarMenuTranslations = require(`./create/createTopbarMenuTranslations`)
 const createSidebarMenuTranslations = require(`./create/createSidebarMenuTranslations`)
 const createFrontPageTranslations = require(`./create/createFrontPageTranslations`)
+const createContactsPageTranslations = require(`./create/createContactsPageTranslations`)
 
 const siteLanguages = [`en`, `ru`]
 
@@ -31,6 +32,10 @@ exports.createPages = async (props) => {
         siteLanguages,
     })
     await createFrontPageTranslations(props, {
+        intlTranslations,
+        siteLanguages,
+    })
+    await createContactsPageTranslations(props, {
         intlTranslations,
         siteLanguages,
     })

@@ -69,7 +69,7 @@ const Topbar = (props) => {
                 </Link>
                 <div className={classes.flexGrow} />
                 <Hidden mdDown>
-                    {menuItems.slice(0, 3).map((menuItem) => (
+                    {menuItems.slice(0, 4).map((menuItem) => (
                         <Link
                             key={`key-${menuItem.slug}`}
                             className={classes.mainNavigationLink}
