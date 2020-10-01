@@ -2,22 +2,22 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import MainLayout from "../layouts/Main"
-import PageView from "../views/PageView"
+import { ContactsPageView, DefaultPageView } from "../views"
 
-const AboutPage = (props) => {
+const About = (props) => {
     const { pageContext } = props
 
     return (
         <MainLayout>
-            <PageView {...props} />
+            <DefaultPageView {...props} />
         </MainLayout>
     )
 }
 
-export default AboutPage
+export default About
 
 export const pageQuery = graphql`
-    query aboutPage($slug: String!) {
+    query aboutPageBySlug($slug: String!) {
         markdownRemark(fields: { slug: { eq: $slug } }) {
             id
             fields {

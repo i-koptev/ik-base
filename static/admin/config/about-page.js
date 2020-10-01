@@ -1,21 +1,8 @@
 module.exports = {
-    file: "src/pages/about-page.md",
+    file: "src/pages/about.md",
     label: "Страница 'О нас' / About Page",
     name: "about-page",
     fields: [
-        {
-            label: "Template Key",
-            name: "templateKey",
-            widget: "hidden",
-            default: "about-page",
-        },
-        {
-            label: "Идентификатор страницы / Page identifier",
-            name: "title",
-            widget: "hidden",
-            default: "string",
-            hint: "Страница 'О нас' / 'About' Page",
-        },
         {
             label: "Язык выводимых данных / Output language",
             name: "adminlang",
