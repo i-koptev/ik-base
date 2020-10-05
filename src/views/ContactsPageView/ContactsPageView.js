@@ -64,9 +64,16 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const ContactsPageView = (props) => {
-    const { className, intl, email, phone, address } = props
-
+export const ContactsPageViewTemplate = ({
+    className,
+    header,
+    emailLabel,
+    email,
+    addressLabel,
+    address,
+    phoneNumberLabel,
+    phone,
+}) => {
     const classes = useStyles()
 
     return (
@@ -79,39 +86,66 @@ const ContactsPageView = (props) => {
             <Grid item xs={12}>
                 <Typography
                     className={classes.header}
-                    variant="h3"
+                    variant="h1"
                     component="h1"
                     align="center"
                 >
-                    {intl.formatMessage({
-                        id: `contacts.contactsHeading`,
-                    })}
+                    {header}
                 </Typography>
                 <h4>
-                    {intl.formatMessage({
-                        id: `contacts.contactsEmailLabel`,
-                    })}
-                    : {email}
+                    {emailLabel}: {email}
                 </h4>
+                <h4>{addressLabel}:</h4>
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: address,
+                    }}
+                />
                 <h4>
-                    {intl.formatMessage({
-                        id: `contacts.contactsAddressLabel`,
-                    })}
-                    : {address}
-                </h4>
-                <h4>
-                    {intl.formatMessage({
-                        id: `contacts.contactsPhoneNumberLabel`,
-                    })}
-                    : {phone}
+                    {phoneNumberLabel}: {phone}
                 </h4>
             </Grid>
         </Grid>
     )
 }
 
+const ContactsPageView = (props) => {
+    const { className, intl, email, phone, address } = props
+
+    return (
+        <ContactsPageViewTemplate
+            {...testdata}
+            // className={className}
+            // header={intl.formatMessage({
+            //     id: `contacts-page.contactsHeading`,
+            // })}
+            // emailLabel={intl.formatMessage({
+            //     id: `contacts-page.contactsEmailLabel`,
+            // })}
+            // email={email}
+            // addressLabel={intl.formatMessage({
+            //     id: `contacts-page.contactsAddressLabel`,
+            // })}
+            // address={address}
+            // phoneNumberLabel={intl.formatMessage({
+            //     id: `contacts-page.contactsPhoneNumberLabel`,
+            // })}
+            // phone={phone}
+        />
+    )
+}
+export default injectIntl(ContactsPageView)
+
+const testdata = {
+    header: "Header",
+    emailLabel: "EMail",
+    email: "test@local.mail",
+    addressLabel: "Address",
+    address: "<h4>Moscow</h4><p>Bolshoi Konushennij 4</p>",
+    phoneNumberLabel: "Phone Number",
+    phone: "123456789",
+}
+
 ContactsPageView.propTypes = {
     className: PropTypes.string,
 }
-
-export default injectIntl(ContactsPageView)
