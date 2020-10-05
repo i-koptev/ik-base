@@ -170,7 +170,8 @@ exports.createPages = async (props) => {
             ? resolve(`src/templates/${page.frontmatter.templateKey}.js`)
             : null
 
-        const existsCustomTemplate = fs.existsSync(customTemplate)
+        // const existsCustomTemplate = fs.existsSync(customTemplate)
+        const existsCustomTemplate = !!customTemplate
 
         const defaultTemplate = resolve(`src/templates/default-page.js`)
 
