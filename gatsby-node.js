@@ -11,6 +11,7 @@ const createTopbarMenuTranslations = require(`./create/createTopbarMenuTranslati
 const createSidebarMenuTranslations = require(`./create/createSidebarMenuTranslations`)
 const createFrontPageTranslations = require(`./create/createFrontPageTranslations`)
 const createContactsPageTranslations = require(`./create/createContactsPageTranslations`)
+const createAboutPageTranslations = require(`./create/createAboutPageTranslations`)
 const createProductsPageTranslations = require(`./create/createProductsPageTranslations`)
 const createProductsTranslations = require(`./create/createProductsTranslations`)
 
@@ -38,6 +39,10 @@ exports.createPages = async (props) => {
         siteLanguages,
     })
     await createContactsPageTranslations(props, {
+        intlTranslations,
+        siteLanguages,
+    })
+    await createAboutPageTranslations(props, {
         intlTranslations,
         siteLanguages,
     })

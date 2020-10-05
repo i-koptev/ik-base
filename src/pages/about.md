@@ -1,12 +1,26 @@
 ---
 adminlang: ru
 aboutHeading:
-    ru: WEWERWER
-    en: WERWERWER
+  ru: О нас
+  en: About Us
 aboutSubheading:
-    ru: WERWER
-    en: WERWER
+  ru: О нас. Подробно.
+  en: More About Us.
 aboutText:
-    ru: ERWWER
-    en: ERWER
+  ru: >-
+    ### О нас.
+
+
+    О нас подробнее. О нас подробнее. О нас подробнее. О нас подробнее. О нас подробнее. О нас подробнее. О нас подробнее. О нас подробнее. О нас подробнее. О нас подробнее. 
+
+
+    О нас подробнее. О нас подробнее. О нас подробнее. О нас подробнее.
+  en: >-
+    ### About Us.
+
+
+    More about us. More about us. More about us. More about us. More about us. More about us. More about us. More about us. More about us. More about us. More about us. More about us. 
+
+
+    More about us. More about us. More about us. More about us. More about us.
 ---
