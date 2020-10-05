@@ -11,6 +11,8 @@ const createTopbarMenuTranslations = require(`./create/createTopbarMenuTranslati
 const createSidebarMenuTranslations = require(`./create/createSidebarMenuTranslations`)
 const createFrontPageTranslations = require(`./create/createFrontPageTranslations`)
 const createContactsPageTranslations = require(`./create/createContactsPageTranslations`)
+const createProductsPageTranslations = require(`./create/createProductsPageTranslations`)
+const createProductsTranslations = require(`./create/createProductsTranslations`)
 
 const siteLanguages = [`en`, `ru`]
 
@@ -36,6 +38,14 @@ exports.createPages = async (props) => {
         siteLanguages,
     })
     await createContactsPageTranslations(props, {
+        intlTranslations,
+        siteLanguages,
+    })
+    await createProductsPageTranslations(props, {
+        intlTranslations,
+        siteLanguages,
+    })
+    await createProductsTranslations(props, {
         intlTranslations,
         siteLanguages,
     })
@@ -85,6 +95,9 @@ exports.createPages = async (props) => {
                     fields {
                         slug
                     }
+                    frontmatter {
+                        templateKey
+                    }
                 }
             }
         }
@@ -101,6 +114,37 @@ exports.createPages = async (props) => {
         const id = page.id
 
         // ---------------- Just for fun -----------------
+
+        function removeSingleTrailingSlash(str) {
+            //Single trailing slash
+            return str.replace(/\/$/, "")
+        }
+
+        function removeAllTrailingSlashes(str) {
+            //Single or consecutive trailing slashes
+            return str.replace(/\/+$/g, "")
+        }
+
+        function removeSingleLeadingSlash(str) {
+            //Single leading slash
+            return str.replace(/^\//, "")
+        }
+
+        function removeAllLeadingSlashes(str) {
+            //Single or consecutive leading slashes
+            return str.replace(/^\/+/g, "")
+        }
+
+        function removeSingleLeadingAndTrailingSlashes(str) {
+            //Single leading and trailing slashes
+            return str.replace(/^\/|\/$/g, "")
+        }
+
+        function removeAllLeadingAndTrailingSlashes(str) {
+            //Single or consecutive leading and trailing slashes
+            return str.replace(/^\/+|\/+$/g, "")
+        }
+
         const someSlug = "/abc/def/"
             .split("/") // ["", "abc", "def", ""]
             .filter((el) => el) //  ["abc", "def"] - Because an empty string evaluates to boolean false. It works with all falsy values like 0, false, null, undefined, '', etc.
@@ -112,9 +156,20 @@ exports.createPages = async (props) => {
         const frontPageTemplate = resolve(`src/templates/front-page.js`)
         const existsFrontPageTemplate = fs.existsSync(frontPageTemplate)
 
-        const customTemplate = resolve(
-            `src/templates/${removeTrailingSlashes(page.fields.slug)}.js`
+        const customTemplate = fs.existsSync(
+            resolve(
+                `src/templates/${removeTrailingSlashes(page.fields.slug)}.js`
+            )
         )
+            ? resolve(
+                  `src/templates/${removeTrailingSlashes(page.fields.slug)}.js`
+              )
+            : fs.existsSync(
+                  resolve(`src/templates/${page.frontmatter.templateKey}.js`)
+              )
+            ? resolve(`src/templates/${page.frontmatter.templateKey}.js`)
+            : null
+
         const existsCustomTemplate = fs.existsSync(customTemplate)
 
         const defaultTemplate = resolve(`src/templates/default-page.js`)
@@ -145,12 +200,17 @@ exports.createPages = async (props) => {
         })
     })
 }
+
+const replacePath = (path) =>
+    path === `/` ? path : path.replace(`-REPLACEBYSLASH-`, `/`)
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions
     fmImagesToRelative(node) // convert image paths for gatsby images
 
     if (node.internal.type === `MarkdownRemark`) {
-        const value = createFilePath({ node, getNode })
+        // const value = createFilePath({ node, getNode })
+        const value = replacePath(createFilePath({ node, getNode }))
         createNodeField({
             name: `slug`,
             node,
@@ -158,3 +218,27 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         })
     }
 }
+
+// Replacing '/' would result in empty string which is invalid
+// const replacePath = (path) => (path === `/` ? path : path.replace(/\/$/, ``))
+
+// Implement the Gatsby API “onCreatePage”. This is
+// called after every page is created.
+
+/* 
+exports.onCreatePage = ({ page, actions }) => {
+    const { createPage, deletePage } = actions
+
+    // dump(page.path)
+
+    const oldPage = Object.assign({}, page)
+    // Remove trailing slash unless page is /
+
+    page.path = replacePath(page.path)
+    if (page.path !== oldPage.path) {
+        //   // Replace old page with new page
+        deletePage(oldPage)
+        createPage(page)
+    }
+}
+ */

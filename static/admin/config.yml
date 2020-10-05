@@ -120,13 +120,6 @@ collections:
         label: Главная страница / Front Page
         name: front-page
         fields:
-          - label: Идентификатор страницы / Page identifier
-            name: title
-            widget: string
-            hint: Главная страница / Front Page
-          - label: Template Key
-            name: templateKey
-            widget: string
           - label: Раздел Hero / Hero Section
             name: indexSectionHero
             widget: object
@@ -316,19 +309,10 @@ collections:
           - label: Body
             name: body
             widget: hidden
-      - file: src/pages/about-page.md
+      - file: src/pages/about.md
         label: Страница 'О нас' / About Page
         name: about-page
         fields:
-          - label: Template Key
-            name: templateKey
-            widget: hidden
-            default: about-page
-          - label: Идентификатор страницы / Page identifier
-            name: title
-            widget: hidden
-            default: string
-            hint: Страница 'О нас' / 'About' Page
           - label: Язык выводимых данных / Output language
             name: adminlang
             widget: select
@@ -367,3 +351,179 @@ collections:
               - label: EN
                 name: en
                 widget: markdown
+      - file: src/pages/contacts.md
+        label: Страница 'Контактная информация' / Contact Info Page
+        name: contacts
+        fields:
+          - label: Заголовок / Heading
+            name: contactsHeading
+            widget: object
+            fields:
+              - label: ru
+                name: ru
+                widget: string
+              - label: en
+                name: en
+                widget: string
+          - label: Метка поля номера телефона / Phone number field label
+            name: contactsPhoneNumberLabel
+            widget: object
+            fields:
+              - label: ru
+                name: ru
+                widget: string
+              - label: en
+                name: en
+                widget: string
+          - label: Номер телефона / Phone number
+            name: contactsPhoneNumber
+            widget: string
+          - label: Метка поля эл. почты / EMail field label
+            name: contactsEmailLabel
+            widget: object
+            fields:
+              - label: ru
+                name: ru
+                widget: string
+              - label: en
+                name: en
+                widget: string
+          - label: Адрес эл. почты / EMail
+            name: contactsEmail
+            widget: string
+          - label: Метка поля адреса / Address field label
+            name: contactsAddressLabel
+            widget: object
+            fields:
+              - label: ru
+                name: ru
+                widget: string
+              - label: en
+                name: en
+                widget: string
+          - label: Адрес / Address
+            name: contactsAddress
+            widget: string
+      - file: src/pages/products.md
+        label: Страница 'Товары' / Products Page
+        name: products-page
+        fields:
+          - label: Заголовок / Heading
+            name: productsHeading
+            widget: object
+            fields:
+              - label: ru
+                name: ru
+                widget: string
+              - label: en
+                name: en
+                widget: string
+          - label: Подзаголовок / Subheading
+            name: productsSubheading
+            widget: object
+            fields:
+              - label: ru
+                name: ru
+                widget: string
+              - label: en
+                name: en
+                widget: string
+  - name: products
+    label: Товары / Products
+    folder: src/pages/products
+    create: true
+    slug: '{{fields.productCategory}}-REPLACEBYSLASH-{{slug}}'
+    fields:
+      - label: Template Key
+        name: templateKey
+        widget: hidden
+        default: product-item
+      - label: Модель товара (Слаг) / Product model (Slug)
+        name: title
+        widget: string
+      - label: Категория товара / Product Category
+        name: productCategory
+        widget: relation
+        collection: categories
+        displayFields:
+          - categoryName.en
+          - categoryName.ru
+        searchFields:
+          - categoryName.en
+          - categoryName.ru
+        valueField: categoryId
+      - label: Краткое описание товара / SEO / Short Product Description
+        name: productShortDescription
+        widget: object
+        fields:
+          - label: ru
+            name: ru
+            widget: string
+          - label: en
+            name: en
+            widget: string
+      - label: Описание товара / Product Description
+        name: productDescription
+        widget: object
+        fields:
+          - label: ru
+            name: ru
+            widget: markdown
+          - label: en
+            name: en
+            widget: markdown
+      - label: Цена / Price
+        name: price
+        widget: number
+        value_type: float
+        min: 0
+        max: 10000
+      - label: Featured Product
+        name: featuredproduct
+        widget: boolean
+        default: 'false'
+      - label: Презентационное изображение / Featured Image
+        name: featuredimage
+        widget: image
+      - label: ' Изображения для карточки товара/ Product card images'
+        name: productCardImages
+        widget: object
+        fields:
+          - label: 'Изображение #1 / Image #1'
+            name: image1
+            widget: image
+          - label: 'Изображение #2 / Image #2'
+            name: image2
+            widget: image
+          - label: 'Изображение #3 / Image #3'
+            name: image3
+            widget: image
+      - label: Body
+        name: body
+        widget: hidden
+  - name: categories
+    label: Категории товаров / Product Categories
+    folder: src/pages/products/categories
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - name: templateKey
+        widget: hidden
+        default: category-page
+      - label: Имя в файловой системе
+        name: title
+        widget: string
+        hint: Лучше присвоить такое же как у Идентификатора категории
+      - label: Идентификатор категории / Category identifier
+        name: categoryId
+        widget: string
+      - label: Наименование категории / Category name
+        name: categoryName
+        widget: object
+        fields:
+          - label: RU
+            name: ru
+            widget: string
+          - label: EN
+            name: en
+            widget: string
