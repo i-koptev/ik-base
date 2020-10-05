@@ -106,11 +106,12 @@ const SidebarNav = (props) => {
                     disableGutters
                     key={`key-${menuItem.slug}`}
                 >
-                    {/^\/(?!\/)/.test(menuItem.slug) ? (
+                    {/* {/^\/(?!\/)/.test(menuItem.slug) ? ( */}
+                    {/^https?:\/\/(.*)/.test(menuItem.slug) ? (
                         <Button
                             activeClassName={classes.active}
                             className={classes.button}
-                            component={CustomLink}
+                            component={OuterLink}
                             to={menuItem.slug}
                         >
                             <div className={classes.icon}>
@@ -127,8 +128,12 @@ const SidebarNav = (props) => {
                         <Button
                             activeClassName={classes.active}
                             className={classes.button}
-                            component={OuterLink}
-                            to={menuItem.slug}
+                            component={CustomLink}
+                            to={
+                                menuItem.slug === "/"
+                                    ? menuItem.slug
+                                    : `/${menuItem.slug.replace(/\//g, "")}/`
+                            }
                         >
                             <div className={classes.icon}>
                                 {iconObj[menuItem.icon]}
