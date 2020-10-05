@@ -2,13 +2,6 @@ import React from "react"
 import clsx from "clsx"
 import PropTypes from "prop-types"
 
-import {
-    changeLocale,
-    injectIntl,
-    Link,
-    FormattedMessage,
-} from "gatsby-plugin-intl"
-
 import { makeStyles, useTheme } from "@material-ui/styles"
 import { Grid } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
@@ -64,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export const ContactsPageViewTemplate = ({
+const ContactsPageView = ({
     className,
     header,
     emailLabel,
@@ -109,43 +102,15 @@ export const ContactsPageViewTemplate = ({
     )
 }
 
-const ContactsPageView = (props) => {
-    const { className, intl, email, phone, address } = props
-
-    return (
-        <ContactsPageViewTemplate
-            {...testdata}
-            // className={className}
-            // header={intl.formatMessage({
-            //     id: `contacts-page.contactsHeading`,
-            // })}
-            // emailLabel={intl.formatMessage({
-            //     id: `contacts-page.contactsEmailLabel`,
-            // })}
-            // email={email}
-            // addressLabel={intl.formatMessage({
-            //     id: `contacts-page.contactsAddressLabel`,
-            // })}
-            // address={address}
-            // phoneNumberLabel={intl.formatMessage({
-            //     id: `contacts-page.contactsPhoneNumberLabel`,
-            // })}
-            // phone={phone}
-        />
-    )
-}
-export default injectIntl(ContactsPageView)
-
-const testdata = {
-    header: "Header",
-    emailLabel: "EMail",
-    email: "test@local.mail",
-    addressLabel: "Address",
-    address: "<h4>Moscow</h4><p>Bolshoi Konushennij 4</p>",
-    phoneNumberLabel: "Phone Number",
-    phone: "123456789",
-}
+export default ContactsPageView
 
 ContactsPageView.propTypes = {
     className: PropTypes.string,
+    header: PropTypes.string,
+    emailLabel: PropTypes.string,
+    email: PropTypes.string,
+    addressLabel: PropTypes.string,
+    address: PropTypes.string,
+    phoneNumberLabel: PropTypes.string,
+    phone: PropTypes.string,
 }

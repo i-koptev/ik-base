@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { ContactsPageViewTemplate } from "../../views/ContactsPageView/ContactsPageView"
+import { ContactsPageView } from "../../views/ContactsPageView/ContactsPageView"
 import TopLayout from "../../../plugins/gatsby-plugin-top-layout/TopLayout"
 
 const ProductPagePreview = ({ entry, getAsset }) => {

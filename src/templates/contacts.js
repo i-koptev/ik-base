@@ -1,11 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 
+import { injectIntl } from "gatsby-plugin-intl"
+
 import MainLayout from "../layouts/Main"
 import { ContactsPageView, DefaultPageView } from "../views"
 
 const Contacts = (props) => {
-    const { pageContext, data } = props
+    const { data, intl } = props
 
     const {
         markdownRemark: {
@@ -17,18 +19,35 @@ const Contacts = (props) => {
         },
     } = data
 
-    const emailAddress = props.data.markdownRemark.frontmatter.contactsEmail
+    const viewData = {
+        email: email,
+        phone: phone,
+        address: address,
+        header: intl.formatMessage({
+            id: `contacts-page.contactsHeading`,
+        }),
+        emailLabel: intl.formatMessage({
+            id: `contacts-page.contactsEmailLabel`,
+        }),
+        addressLabel: intl.formatMessage({
+            id: `contacts-page.contactsAddressLabel`,
+        }),
+        phoneNumberLabel: intl.formatMessage({
+            id: `contacts-page.contactsPhoneNumberLabel`,
+        }),
+    }
+
     return (
         <MainLayout>
             <h3 style={{ paddingLeft: "2rem" }}>{__filename}</h3>
 
             {/* <DefaultPageView {...props} /> */}
-            <ContactsPageView email={email} phone={phone} address={address} />
+            <ContactsPageView {...viewData} />
         </MainLayout>
     )
 }
 
-export default Contacts
+export default injectIntl(Contacts)
 
 export const pageQuery = graphql`
     query contactsPageBySlug($slug: String!) {
