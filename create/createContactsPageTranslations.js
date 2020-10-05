@@ -55,21 +55,22 @@ module.exports = async ({ actions, graphql }, options) => {
     if (contactsPageItems) {
         siteLanguages.map((language) => {
             if (contactsPageItems.contactsHeading) {
-                intlTranslations[language][`contacts.contactsHeading`] =
+                intlTranslations[language][`contacts-page.contactsHeading`] =
                     contactsPageItems.contactsHeading[language]
             }
             if (contactsPageItems.contactsPhoneNumberLabel) {
                 intlTranslations[language][
-                    `contacts.contactsPhoneNumberLabel`
+                    `contacts-page.contactsPhoneNumberLabel`
                 ] = contactsPageItems.contactsPhoneNumberLabel[language]
             }
             if (contactsPageItems.contactsEmailLabel) {
-                intlTranslations[language][`contacts.contactsEmailLabel`] =
+                intlTranslations[language][`contacts-page.contactsEmailLabel`] =
                     contactsPageItems.contactsEmailLabel[language]
             }
             if (contactsPageItems.contactsAddressLabel) {
-                intlTranslations[language][`contacts.contactsAddressLabel`] =
-                    contactsPageItems.contactsAddressLabel[language]
+                intlTranslations[language][
+                    `contacts-page.contactsAddressLabel`
+                ] = contactsPageItems.contactsAddressLabel[language]
             }
         })
     }
