@@ -6,6 +6,7 @@ import CMS from "netlify-cms-app"
 // import BlogPostPreview from './preview-templates/BlogPostPreview'
 // import ProductPagePreview from './preview-templates/ProductPagePreview'
 // import IndexPagePreview from "./preview-templates/IndexPagePreview"
+import ContactPagePreview from "./preview-templates/ContactPagePreview"
 
 // CMS.registerMediaLibrary(uploadcare)
 // CMS.registerMediaLibrary(cloudinary)
@@ -14,6 +15,7 @@ import CMS from "netlify-cms-app"
 // CMS.registerPreviewTemplate('about', AboutPagePreview)
 // CMS.registerPreviewTemplate('products', ProductPagePreview)
 // CMS.registerPreviewTemplate('blog', BlogPostPreview)
+CMS.registerPreviewTemplate("contacts", ContactPagePreview)
 
 // CMS.registerEventListener({
 //     name: "preSave",
