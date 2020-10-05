@@ -74,7 +74,11 @@ const Topbar = (props) => {
                             key={`key-${menuItem.slug}`}
                             className={classes.mainNavigationLink}
                             activeClassName={classes.active}
-                            to={menuItem.slug}
+                            to={
+                                menuItem.slug === "/"
+                                    ? menuItem.slug
+                                    : `/${menuItem.slug.replace(/\//g, "")}/`
+                            }
                         >
                             {intl.formatMessage({
                                 id: `topbarMenu.${menuItem.slug.replace(
