@@ -20,6 +20,8 @@ const Contacts = (props) => {
     const emailAddress = props.data.markdownRemark.frontmatter.contactsEmail
     return (
         <MainLayout>
+            <h3 style={{ paddingLeft: "2rem" }}>{__filename}</h3>
+
             {/* <DefaultPageView {...props} /> */}
             <ContactsPageView email={email} phone={phone} address={address} />
         </MainLayout>

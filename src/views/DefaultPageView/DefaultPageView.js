@@ -128,7 +128,7 @@ export const DebugDataContext = (props) => {
             }}
         >
             <pre>
-                <b>Template:</b> {__filename}
+                <b>View:</b> {__filename}
             </pre>
             <pre>
                 <b>Page context:</b>

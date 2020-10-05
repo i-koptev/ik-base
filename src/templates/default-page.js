@@ -2,13 +2,15 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import MainLayout from "../layouts/Main"
-import { PageView, DefaultPageView } from "../views"
+import { DefaultPageView } from "../views"
 
 const DefaultPage = (props) => {
     const { pageContext } = props
 
     return (
         <MainLayout>
+            <h3 style={{ paddingLeft: "2rem" }}>{__filename}</h3>
+
             {/* <PageView {...props} /> */}
             <DefaultPageView {...props} />
         </MainLayout>
