@@ -92,6 +92,7 @@ const FrontPageView = ({
                 </Typography>
                 <h4>{subheader}</h4>
                 <p>{feature1short}</p>
+                <pre>{JSON.stringify(heroImage, null, 4)}</pre>
                 <div
                     dangerouslySetInnerHTML={{
                         __html: feature1detailed,
