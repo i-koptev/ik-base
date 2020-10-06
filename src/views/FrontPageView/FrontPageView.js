@@ -7,12 +7,48 @@ import { Grid } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
 import Typography from "@material-ui/core/Typography"
 
+import SvgCompatibleImage from "../../components/SvgCompatibleImage"
+import SvgCompatibleBackgroundImage from "../../components/SvgCompatibleBackgroundImage"
+
 const useStyles = makeStyles((theme) => ({
     root: {
         padding: theme.spacing(4),
         [theme.breakpoints.up("lg")]: {
             // backgroundColor: "tomato",
         },
+    },
+    hero: {
+        // [theme.breakpoints.up("md")]: {
+        //     minHeight: "calc(100vh - 64px)",
+        // },
+
+        position: "relative",
+        // minHeight: "calc(80vh - 64px)",
+        // height: "calc(100vh - 64px)",
+        // minHeight: "400px",
+        // [theme.breakpoints.up("md")]: {
+        //     paddingBottom: "3rem",
+        // },
+        height: "100%",
+        width: "100%",
+        // backgroundImage: `url(${wavybg})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        overflow: "hidden",
+    },
+    overlay: {
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        top: "0px",
+        left: "0px",
+        /* background: #0c0808; */
+        backgroundImage:
+            "linear-gradient(to top,rgba(0, 20, 30, 0),rgba(0, 20, 30, 0.9))",
+        /* opacity: 0.9; */
+        zIndex: "1",
+        overflow: "hidden",
     },
     header: {
         padding: "1rem",
@@ -93,6 +129,15 @@ const FrontPageView = ({
                 <h4>{subheader}</h4>
                 <p>{feature1short}</p>
                 <pre>{JSON.stringify(heroImage, null, 4)}</pre>
+
+                <div style={{ height: "300px", width: "100vw" }}>
+                    <SvgCompatibleBackgroundImage
+                        className={classes.hero}
+                        image={introBgImage}
+                    >
+                        <div className={classes.overlay}></div>
+                    </SvgCompatibleBackgroundImage>
+                </div>
                 <div
                     dangerouslySetInnerHTML={{
                         __html: feature1detailed,
