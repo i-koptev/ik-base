@@ -787,28 +787,124 @@
                 },
                 {
                     "label": "Презентационное изображение / Featured Image",
-                    "name": "featuredimage",
-                    "widget": "image"
+                    "name": "featuredImageObject",
+                    "widget": "object",
+                    "fields": [
+                        {
+                            "label": "Изображение / Image",
+                            "name": "featuredImage",
+                            "widget": "image"
+                        },
+                        {
+                            "label": "Alt - текст изображения / Image Alt Text",
+                            "name": "featuredImageAlt",
+                            "widget": "object",
+                            "fields": [
+                                {
+                                    "label": "ru",
+                                    "name": "ru",
+                                    "widget": "string"
+                                },
+                                {
+                                    "label": "en",
+                                    "name": "en",
+                                    "widget": "string"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                    "label": " Изображения для карточки товара/ Product card images",
+                    "label": " Изображения для карточки товара / Product card images",
                     "name": "productCardImages",
                     "widget": "object",
                     "fields": [
                         {
                             "label": "Изображение #1 / Image #1",
-                            "name": "image1",
-                            "widget": "image"
+                            "name": "image1Object",
+                            "widget": "object",
+                            "fields": [
+                                {
+                                    "label": "Изображение / Image",
+                                    "name": "image1",
+                                    "widget": "image"
+                                },
+                                {
+                                    "label": "Alt - текст изображения / Image Alt Text",
+                                    "name": "image1Alt",
+                                    "widget": "object",
+                                    "fields": [
+                                        {
+                                            "label": "ru",
+                                            "name": "ru",
+                                            "widget": "string"
+                                        },
+                                        {
+                                            "label": "en",
+                                            "name": "en",
+                                            "widget": "string"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "label": "Изображение #2 / Image #2",
-                            "name": "image2",
-                            "widget": "image"
+                            "name": "image2Object",
+                            "widget": "object",
+                            "fields": [
+                                {
+                                    "label": "Изображение / Image",
+                                    "name": "image2",
+                                    "widget": "image"
+                                },
+                                {
+                                    "label": "Alt - текст изображения / Image Alt Text",
+                                    "name": "image2Alt",
+                                    "widget": "object",
+                                    "fields": [
+                                        {
+                                            "label": "ru",
+                                            "name": "ru",
+                                            "widget": "string"
+                                        },
+                                        {
+                                            "label": "en",
+                                            "name": "en",
+                                            "widget": "string"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "label": "Изображение #3 / Image #3",
-                            "name": "image3",
-                            "widget": "image"
+                            "name": "image3Object",
+                            "widget": "object",
+                            "fields": [
+                                {
+                                    "label": "Изображение / Image",
+                                    "name": "image3",
+                                    "widget": "image"
+                                },
+                                {
+                                    "label": "Alt - текст изображения / Image Alt Text",
+                                    "name": "image3Alt",
+                                    "widget": "object",
+                                    "fields": [
+                                        {
+                                            "label": "ru",
+                                            "name": "ru",
+                                            "widget": "string"
+                                        },
+                                        {
+                                            "label": "en",
+                                            "name": "en",
+                                            "widget": "string"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },

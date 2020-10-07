@@ -22,6 +22,44 @@ module.exports = async ({ actions, graphql }, options) => {
                             en
                             ru
                         }
+                        featuredImageObject {
+                            featuredImage {
+                                id
+                            }
+                            featuredImageAlt {
+                                en
+                                ru
+                            }
+                        }
+                        productCardImages {
+                            image1Object {
+                                image1 {
+                                    id
+                                }
+                                image1Alt {
+                                    ru
+                                    en
+                                }
+                            }
+                            image2Object {
+                                image2 {
+                                    id
+                                }
+                                image2Alt {
+                                    ru
+                                    en
+                                }
+                            }
+                            image3Object {
+                                image3 {
+                                    id
+                                }
+                                image3Alt {
+                                    ru
+                                    en
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -47,11 +85,38 @@ module.exports = async ({ actions, graphql }, options) => {
                 intlTranslations[language][
                     `${productItem.id}.productShortDescription`
                 ] = productItem.frontmatter.productShortDescription[language]
-            })
-            allProductsItems.forEach((productItem) => {
+
                 intlTranslations[language][
                     `${productItem.id}.productDescription`
                 ] = productItem.frontmatter.productDescription[language]
+
+                intlTranslations[language][
+                    `${productItem.id}.featuredImageAlt`
+                ] =
+                    productItem.frontmatter.featuredImageObject.featuredImageAlt[
+                        language
+                    ]
+
+                intlTranslations[language][
+                    `${productItem.id}.productCardImage1Alt`
+                ] =
+                    productItem.frontmatter.productCardImages.image1Object.image1Alt[
+                        language
+                    ]
+
+                intlTranslations[language][
+                    `${productItem.id}.productCardImage2Alt`
+                ] =
+                    productItem.frontmatter.productCardImages.image2Object.image2Alt[
+                        language
+                    ]
+
+                intlTranslations[language][
+                    `${productItem.id}.productCardImage3Alt`
+                ] =
+                    productItem.frontmatter.productCardImages.image3Object.image3Alt[
+                        language
+                    ]
             })
         })
     }

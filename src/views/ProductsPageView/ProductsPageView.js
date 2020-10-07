@@ -1,14 +1,7 @@
 import React from "react"
 import clsx from "clsx"
 import PropTypes from "prop-types"
-import { ProductsRoll } from "./components"
-
-import {
-    changeLocale,
-    injectIntl,
-    Link,
-    FormattedMessage,
-} from "gatsby-plugin-intl"
+import { ProductList, CategoryList } from "./components"
 
 import { makeStyles, useTheme } from "@material-ui/styles"
 import { Grid } from "@material-ui/core"
@@ -65,10 +58,24 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const ProductsPageView = (props) => {
-    const { className, intl, email, phone, address } = props
-
+const ProductsPageView = ({
+    intl,
+    className,
+    pageHeader,
+    pageSubheader,
+    allProducts,
+    allCategoryList,
+}) => {
     const classes = useStyles()
+
+    const [categories, setCategories] = React.useState(allCategoryList)
+    const handleSetCategory = (cat) => setCategories(cat)
+
+    const filteredByCategoryProducts =
+        !!allProducts &&
+        allProducts.filter((product) =>
+            categories.includes(product.frontmatter.productCategory)
+        )
 
     return (
         <Grid
@@ -80,20 +87,19 @@ const ProductsPageView = (props) => {
             <Grid item xs={12}>
                 <Typography
                     className={classes.header}
-                    variant="h3"
+                    variant="h1"
                     component="h1"
                     align="center"
                 >
-                    {intl.formatMessage({
-                        id: `products-page.productsHeading`,
-                    })}
+                    {pageHeader}
                 </Typography>
-                <p>
-                    {intl.formatMessage({
-                        id: `products-page.productsSubheading`,
-                    })}
-                </p>
-                <ProductsRoll />
+
+                <p>{pageSubheader}</p>
+                <ProductList products={filteredByCategoryProducts} />
+                <CategoryList
+                    allCategoryList={allCategoryList}
+                    setCategory={handleSetCategory}
+                />
             </Grid>
         </Grid>
     )
@@ -103,4 +109,4 @@ ProductsPageView.propTypes = {
     className: PropTypes.string,
 }
 
-export default injectIntl(ProductsPageView)
+export default ProductsPageView
