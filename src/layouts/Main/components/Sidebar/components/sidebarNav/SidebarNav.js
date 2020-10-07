@@ -109,7 +109,7 @@ const SidebarNav = (props) => {
                     {/* {/^\/(?!\/)/.test(menuItem.slug) ? ( */}
                     {/^https?:\/\/(.*)/.test(menuItem.slug) ? (
                         <Button
-                            activeClassName={classes.active}
+                            // activeClassName={classes.active}
                             className={classes.button}
                             component={OuterLink}
                             to={menuItem.slug}
@@ -126,7 +126,7 @@ const SidebarNav = (props) => {
                         </Button>
                     ) : (
                         <Button
-                            activeClassName={classes.active}
+                            // activeClassName={classes.active}
                             className={classes.button}
                             component={CustomLink}
                             to={
@@ -154,7 +154,7 @@ const SidebarNav = (props) => {
 
 SidebarNav.propTypes = {
     className: PropTypes.string,
-    mainNavLinks: PropTypes.array.isRequired,
+    sidebarNavItems: PropTypes.array.isRequired,
 }
 
 export default injectIntl(SidebarNav)
