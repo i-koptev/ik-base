@@ -20,7 +20,16 @@ import InputIcon from "@material-ui/icons/Input"
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        boxShadow: "none",
+        backgroundColor: theme.layouts.Main.Topbar.backgroundColor,
+        boxShadow: theme.layouts.Main.Topbar.boxShadow,
+    },
+    logo: {
+        color: "white",
+        textDecoration: "none",
+        fontSize: "1rem",
+        fontWeight: 700,
+        textTransform: "uppercase",
+        letterSpacing: "0.1rem",
     },
     flexGrow: {
         flexGrow: 1,
@@ -34,9 +43,23 @@ const useStyles = makeStyles((theme) => ({
         marginRight: "1rem",
         color: "white",
         fontWeight: 500,
+        letterSpacing: "0.15rem",
+        "&:hover": {
+            color: "yellow",
+        },
     },
     active: {
         color: "#222",
+    },
+    langSwitherButton: {
+        "&:hover": {
+            // backgroundColor: "red",
+            outline: "2px solid #ffffff22",
+            color: "yellow",
+        },
+        "& .MuiButton-label": {
+            letterSpacing: "0.02rem",
+        },
     },
 }))
 
@@ -63,9 +86,9 @@ const Topbar = (props) => {
     return (
         <AppBar {...rest} className={clsx(classes.root, className)}>
             <Toolbar>
-                <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+                <Link to="/" className={classes.logo}>
                     {/* <img alt="Logo" src="/images/logos/logo--white.svg" /> */}
-                    <h3>IK-Base</h3>
+                    IK-Base
                 </Link>
                 <div className={classes.flexGrow} />
                 <Hidden mdDown>
@@ -91,14 +114,14 @@ const Topbar = (props) => {
                 </Hidden>
                 <Button
                     onClick={() => changeLocale("ru")}
-                    className={classes.mainNavigationMobileLink}
+                    className={classes.langSwitherButton}
                     color="inherit"
                 >
                     RU
                 </Button>
                 <Button
                     onClick={() => changeLocale("en")}
-                    className={classes.mainNavigationMobileLink}
+                    className={classes.langSwitherButton}
                     color="inherit"
                 >
                     EN
