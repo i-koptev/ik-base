@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.layouts.Main.Topbar.boxShadow,
     },
     logo: {
-        color: "white",
+        color: theme.layouts.Main.Topbar.logoColor,
         textDecoration: "none",
         fontSize: "1rem",
         fontWeight: 700,
@@ -41,21 +41,25 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: "none",
         textTransform: "uppercase",
         marginRight: "1rem",
-        color: "white",
+        color: theme.layouts.Main.Topbar.mainNavigationLinkColor,
         fontWeight: 500,
         letterSpacing: "0.15rem",
         "&:hover": {
-            color: "yellow",
+            color: theme.layouts.Main.Topbar.mainNavigationLinkHoverColor,
         },
     },
     active: {
-        color: "#222",
+        color: theme.layouts.Main.Topbar.mainNavigationLinkActiveColor,
+        "&:hover": {
+            color: theme.layouts.Main.Topbar.mainNavigationLinkActiveHoverColor,
+        },
     },
     langSwitherButton: {
+        color: theme.layouts.Main.Topbar.langSwitherButtonColor,
         "&:hover": {
             // backgroundColor: "red",
-            outline: "2px solid #ffffff22",
-            color: "yellow",
+            outline: `2px solid ${theme.layouts.Main.Topbar.langSwitherButtonHoverOutlineColor}`,
+            color: theme.layouts.Main.Topbar.langSwitherButtonHoverColor,
         },
         "& .MuiButton-label": {
             letterSpacing: "0.02rem",
@@ -115,19 +119,19 @@ const Topbar = (props) => {
                 <Button
                     onClick={() => changeLocale("ru")}
                     className={classes.langSwitherButton}
-                    color="inherit"
+                    // color="inherit"
                 >
                     RU
                 </Button>
                 <Button
                     onClick={() => changeLocale("en")}
                     className={classes.langSwitherButton}
-                    color="inherit"
+                    // color="inherit"
                 >
                     EN
                 </Button>
 
-                <Hidden mdDown>
+                {/* <Hidden mdDown>
                     <IconButton color="inherit">
                         <Badge
                             // badgeContent={notifications.length}
@@ -145,7 +149,7 @@ const Topbar = (props) => {
                     >
                         <InputIcon />
                     </IconButton>
-                </Hidden>
+                </Hidden> */}
                 <Hidden lgUp>
                     <IconButton color="inherit" onClick={onSidebarOpen}>
                         <MenuIcon />

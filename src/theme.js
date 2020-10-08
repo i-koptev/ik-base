@@ -212,9 +212,6 @@ let theme = createMuiTheme({
     siteContainer: {
         maxWidth: siteContainerMaxWidth,
     },
-    siteSpacing: {
-        aboutPage: 4,
-    },
     html: {
         paragraph: {
             color: siteTextColor,

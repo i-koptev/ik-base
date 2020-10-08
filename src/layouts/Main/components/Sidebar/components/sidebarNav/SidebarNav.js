@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
                 theme.layouts.Main.SidebarNav.MenuItem.hoverBackgroundColor,
             color: theme.layouts.Main.SidebarNav.MenuItem.hoverFontColor,
         },
+
         "& svg": {
             color: theme.layouts.Main.SidebarNav.MenuItem.iconColor,
             width: "18px",
@@ -50,9 +51,11 @@ const useStyles = makeStyles((theme) => ({
     },
     listItemText: {
         marginLeft: "-15px",
-        fontWeight: theme.layouts.Main.SidebarNav.MenuItem.fontWeight,
         // marginBottom: "-7px",
         // marginTop: "7px",
+        "& > span": {
+            fontWeight: theme.layouts.Main.SidebarNav.MenuItem.fontWeight,
+        },
     },
     active: {
         color: theme.layouts.Main.SidebarNav.MenuItem.activeFontColor,
@@ -87,13 +90,12 @@ const SidebarNav = (props) => {
             className={clsx(classes.root, className)}
         >
             {sidebarNavItems.map((menuItem) => (
-                <>
+                <div key={`key-${menuItem.slug}`}>
                     {/^https?:\/\/(.*)/.test(menuItem.slug) ? (
                         <a
                             className={classes.link}
                             href={menuItem.slug}
                             target="_blank"
-                            activeClassName={classes.active}
                             key={`key-${menuItem.slug}`}
                         >
                             <ListItem
@@ -156,7 +158,7 @@ const SidebarNav = (props) => {
                             </ListItem>
                         </Link>
                     )}
-                </>
+                </div>
             ))}
         </List>
     )

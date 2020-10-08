@@ -2,6 +2,10 @@ import { red } from "@material-ui/core/colors"
 import { colors } from "@material-ui/core"
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
 import { width } from "@material-ui/system"
+import palette from "./palette"
+
+import breakpoints from "./breakpoints"
+import typography from "./typography"
 
 // ----------- Theme Variables --------------
 
@@ -20,16 +24,6 @@ const sitePaletteMain = ""
 const sitePaletteAccent = ""
 
 // ------------- Typography ------------------
-
-const siteTextFontFamily = ""
-const siteTextFontWeight = ""
-const siteTextColor = "#333"
-
-const headingsFontFamily =
-    "'Open Sans', Roboto, 'Playfair Display', Times, serif" //h1, h2, h3, h4, h5, h6
-const headingsLetterSpacing = "0.01rem"
-const headingsWeight = 200
-const headingsColor = "#357"
 
 // ------------- Site Sections ---------------
 
@@ -69,6 +63,8 @@ const mainNavigationMobileLinkHoverColor = mainNavigationLinkHoverColor
 // A custom theme for this app
 
 const theme = createMuiTheme({
+    breakpoints,
+    typography,
     props: {
         // Name of the component ⚛️
         MuiButtonBase: {
@@ -77,15 +73,7 @@ const theme = createMuiTheme({
             disableRipple: false, // if true - No more ripple, on the whole application 💣!
         },
     },
-    breakpoints: {
-        values: {
-            xs: 0,
-            sm: 600,
-            md: 784,
-            lg: 1120,
-            xl: 1472,
-        },
-    },
+
     overrides: {
         MuiDrawer: {
             // for navigation Mobile Bar
@@ -115,7 +103,7 @@ const theme = createMuiTheme({
 
         MuiAppbar: {
             root: {
-                backgroundColor: "tomato",
+                // backgroundColor: "tomato",
                 /*  '@media(min-width: 0px) and (orientation: landscape)': {
                     minHeight: '48px',
                 },
@@ -131,70 +119,7 @@ const theme = createMuiTheme({
             },
         },
     },
-    typography: {
-        root: {
-            color: "tomato",
-        },
-        fontSize: 14,
-        // htmlFontSize: 16,
-        h1: {
-            fontFamily: headingsFontFamily,
-            fontWeight: headingsWeight,
-            color: headingsColor,
-            letterSpacing: headingsLetterSpacing,
-        },
-        h2: {
-            fontFamily: headingsFontFamily,
-            fontWeight: headingsWeight,
-            color: headingsColor,
-            letterSpacing: headingsLetterSpacing,
-        },
-        h3: {
-            fontFamily: headingsFontFamily,
-            fontWeight: headingsWeight,
-            color: headingsColor,
-            letterSpacing: headingsLetterSpacing,
-        },
-        h4: {
-            fontFamily: headingsFontFamily,
-            fontWeight: headingsWeight,
-            color: headingsColor,
-            letterSpacing: headingsLetterSpacing,
-        },
-        h5: {
-            fontFamily: headingsFontFamily,
-            fontWeight: headingsWeight,
-            color: headingsColor,
-            letterSpacing: headingsLetterSpacing,
-        },
-        h6: {
-            fontFamily: headingsFontFamily,
-            fontWeight: headingsWeight,
-            color: headingsColor,
-            letterSpacing: headingsLetterSpacing,
-        },
-        body1: {
-            // fontSize: "1rem",
-        },
-        body2: {
-            // fontSize: "1rem",
-        },
 
-        fontFamily: [
-            "Open Sans",
-            "Roboto",
-            '"Segoe UI"',
-            "PT Sans",
-            "Arial",
-            "sans-serif",
-            "-apple-system",
-            "BlinkMacSystemFont",
-            '"Helvetica Neue"',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(","),
-    },
     mainNavigationBrandColor: mainNavigationBrandColor,
     mainNavigationBrandHoverColor: mainNavigationBrandHoverColor,
     mainNavigationBackgroundColor: mainNavigationBackgroundColor,
@@ -226,29 +151,29 @@ const theme = createMuiTheme({
     },
     html: {
         paragraph: {
-            color: siteTextColor,
+            color: palette.siteTextColor,
             fontWeight: 400,
             textIndent: "2em",
             textIndent: "3%",
         },
     },
 
-    palette: {
-        primary: {
-            main: "#556cd6",
-            ikky: "#0f0",
-        },
-        secondary: {
-            main: "#19857b",
-        },
-        error: {
-            main: red.A400,
-        },
-        background: {
-            default: "transparent",
-            //   default: 'rgba(222, 228, 231, 0.9)',
-        },
-    },
+    // palette: {
+    //     primary: {
+    //         main: "#556cd6",
+    //         ikky: "#0f0",
+    //     },
+    //     secondary: {
+    //         main: "#19857b",
+    //     },
+    //     error: {
+    //         main: red.A400,
+    //     },
+    //     background: {
+    //         default: "transparent",
+    //         //   default: 'rgba(222, 228, 231, 0.9)',
+    //     },
+    // },
     sections: {
         blogRoll: {
             postCardBackground: "rgba(0, 41, 63, 0.7)",
@@ -257,9 +182,26 @@ const theme = createMuiTheme({
     },
     layouts: {
         Main: {
+            Topbar: {
+                backgroundColor: palette.topbarBackgroundColor,
+                boxShadow: "none",
+                logoColor: palette.topbarLogoColor,
+                mainNavigationLinkColor: palette.mainNavigationLinkColor,
+                mainNavigationLinkHoverColor:
+                    palette.mainNavigationLinkHoverColor,
+                mainNavigationLinkActiveColor:
+                    palette.mainNavigationLinkActiveColor,
+                mainNavigationLinkActiveHoverColor:
+                    palette.mainNavigationLinkActiveHoverColor,
+                langSwitherButtonColor: palette.langSwitherButtonColor,
+                langSwitherButtonHoverColor:
+                    palette.langSwitherButtonHoverColor,
+                langSwitherButtonHoverOutlineColor:
+                    palette.langSwitherButtonHoverOutlineColor,
+            },
             Sidebar: {
-                backgroundColor: "#fff",
-                dividerColor: "rgba(123,123,123, 0.3)",
+                backgroundColor: palette.sidebarBackgroundColor,
+                dividerColor: palette.sidebarDividerColor,
             },
             SidebarNav: {
                 MenuItem: {
@@ -267,23 +209,19 @@ const theme = createMuiTheme({
                     // iconColor: "#0f0", // font-active color will not match icon's color
 
                     // --- TEXT ---
-                    fontColor: "#333",
-                    fontWeight: "400 !important",
-                    hoverFontColor: "#f00",
+                    fontColor: palette.sidebarFontColor,
+                    fontWeight: "500",
+                    hoverFontColor: palette.sidebarHoverFontColor,
                     hoverFontWeight: 200,
 
-                    activeFontColor: "#FF5555",
-                    activeHoverFontColor: "#f00",
+                    activeFontColor: palette.sidebarActiveFontColor,
+                    activeHoverFontColor: palette.sidebarActiveHoverFontColor,
                     activeFontWeight: 500,
 
                     // --- TEXT BACKGROUND ---
-                    hoverBackgroundColor: "rgba(0,0,0,0.01)",
-                    clickRippleBackgroundColor: colors.blueGrey[200],
+                    hoverBackgroundColor: palette.sidebarHoverBackgroundColor,
+                    // clickRippleBackgroundColor: "#00ff00",
                 },
-            },
-            Topbar: {
-                backgroundColor: "tomato",
-                boxShadow: "none",
             },
         },
     },

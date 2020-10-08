@@ -18,15 +18,18 @@ const useStyles = makeStyles((theme) => ({
         padding: "1rem",
     },
     htmlContent: {
-        "& h1": {
-            ...theme.typography.h3,
-            // paddingBottom: `${theme.siteSpacing.aboutPage * 4}px`,
-            paddingLeft: `${theme.siteSpacing.aboutPage * 8}px`,
+        "& h1, h2, h3, h4, h5, h6": {
+            textAlign: "center",
+        },
+        "& h1": { ...theme.typography.h1 },
+        "& h2": { ...theme.typography.h2 },
+        "& h3": { ...theme.typography.h3 },
+        "& h4": { ...theme.typography.h4 },
+        "& h5": { ...theme.typography.h5 },
+        "& h6": {
+            ...theme.typography.h6,
             // fontFamily: "PT Sans Narrow",
             // fontWeight: 400,
-            // color: "#fffc",
-            // color: "#00f",
-            // textAlign: "center",
             // textShadow:
             //     "3px 3px 10px rgba(255,0,0,0.5), -3px -3px 10px rgba(0,0,255,0.5)",
         },
@@ -59,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AboutPageView = ({ className, header, subheader, text }) => {
     const classes = useStyles()
+    const prefix = "light"
 
     return (
         <Grid
@@ -76,9 +80,17 @@ const AboutPageView = ({ className, header, subheader, text }) => {
                 >
                     {header}
                 </Typography>
-                <h4>{subheader}</h4>
+                <Typography
+                    className={classes.header}
+                    variant="h4"
+                    component="h4"
+                    align="center"
+                >
+                    {subheader}
+                </Typography>
 
                 <div
+                    className={classes.htmlContent}
                     dangerouslySetInnerHTML={{
                         __html: text,
                     }}
