@@ -110,7 +110,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const FrontPageView = ({
-    className,
     heroImage,
     introBgImage,
     header,
@@ -131,7 +130,7 @@ const FrontPageView = ({
             container
             spacing={4}
             // {...rest}
-            className={clsx(classes.root, className)}
+            className={classes.root}
         >
             <Grid item xs={12}>
                 <Typography
@@ -142,10 +141,12 @@ const FrontPageView = ({
                 >
                     {header}
                 </Typography>
-                <h4>{subheader}</h4>
-                <p>{feature1short}</p>
-                <pre>{JSON.stringify(heroImage, null, 4)}</pre>
-
+                <p>subheader: {subheader}</p>
+                <p>feature1short: {feature1short}</p>
+                <p>feature1detailed: {feature1detailed}</p>
+                <div style={{ width: "25vw" }}>
+                    <SvgCompatibleImage image={heroImage} />
+                </div>
                 <div style={{ height: "300px", width: "100%" }}>
                     <SvgCompatibleBackgroundImage
                         className={classes.hero}
