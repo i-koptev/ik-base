@@ -5,8 +5,8 @@ const siteTextFontWeight = ""
 
 const headingsFontFamily =
     "'Playfair Display', 'Open Sans', Roboto, Times, serif" //h1, h2, h3, h4, h5, h6
-const headingsLetterSpacing = "0.01rem"
-const headingsWeight = 200
+const headingsLetterSpacing = "0.05em"
+const headingsWeight = 400
 
 export default {
     root: {

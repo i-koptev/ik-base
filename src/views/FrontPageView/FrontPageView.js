@@ -12,7 +12,7 @@ import SvgCompatibleBackgroundImage from "../../components/SvgCompatibleBackgrou
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        padding: theme.spacing(4),
+        // padding: theme.spacing(4),
         [theme.breakpoints.up("lg")]: {
             // backgroundColor: "tomato",
         },
@@ -49,6 +49,20 @@ const useStyles = makeStyles((theme) => ({
         /* opacity: 0.9; */
         zIndex: "1",
         overflow: "hidden",
+        display: "flex",
+        alignItems: "flex-center",
+        justifyContent: "center",
+    },
+    bang: {
+        color: "white",
+        fontSize: "8rem",
+        margin: 0,
+        marginTop: "0.35em",
+        padding: 0,
+        [theme.breakpoints.up("lg")]: {
+            fontSize: "10rem",
+            marginTop: "0.15em",
+        },
     },
     header: {
         padding: "1rem",
@@ -133,12 +147,14 @@ const FrontPageView = ({
                 <p>{feature1short}</p>
                 <pre>{JSON.stringify(heroImage, null, 4)}</pre>
 
-                <div style={{ height: "300px", width: "100vw" }}>
+                <div style={{ height: "300px", width: "100%" }}>
                     <SvgCompatibleBackgroundImage
                         className={classes.hero}
                         image={introBgImage}
                     >
-                        <div className={classes.overlay}></div>
+                        <div className={classes.overlay}>
+                            <h2 className={classes.bang}>BANG!</h2>
+                        </div>
                     </SvgCompatibleBackgroundImage>
                 </div>
                 <div

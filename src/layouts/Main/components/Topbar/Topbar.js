@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 // import AniLink from "gatsby-plugin-transition-link/AniLink"
-
 import {
     changeLocale,
     injectIntl,
@@ -11,8 +10,9 @@ import {
 
 import clsx from "clsx"
 import PropTypes from "prop-types"
-import { makeStyles } from "@material-ui/styles"
+import { makeStyles, useTheme } from "@material-ui/styles"
 import { AppBar, Toolbar, Badge, Hidden, IconButton } from "@material-ui/core"
+import Container from "@material-ui/core/Container"
 import Button from "@material-ui/core/Button"
 import MenuIcon from "@material-ui/icons/Menu"
 import NotificationsIcon from "@material-ui/icons/NotificationsOutlined"
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: "1rem",
         color: theme.layouts.Main.Topbar.mainNavigationLinkColor,
         fontWeight: 500,
-        letterSpacing: "0.15rem",
+        letterSpacing: "0.15em",
         "&:hover": {
             color: theme.layouts.Main.Topbar.mainNavigationLinkHoverColor,
         },
@@ -71,6 +71,7 @@ const Topbar = (props) => {
     const { intl, className, onSidebarOpen, ...rest } = props
 
     const classes = useStyles()
+    const theme = useTheme()
 
     const qdata = useStaticQuery(graphql`
         query TopbarMenuItemsQuery {
@@ -89,73 +90,85 @@ const Topbar = (props) => {
 
     return (
         <AppBar {...rest} className={clsx(classes.root, className)}>
-            <Toolbar>
-                <Link to="/" className={classes.logo}>
-                    {/* <img alt="Logo" src="/images/logos/logo--white.svg" /> */}
-                    IK-Base
-                </Link>
-                <div className={classes.flexGrow} />
-                <Hidden mdDown>
-                    {menuItems.slice(0, 4).map((menuItem) => (
-                        <Link
-                            key={`key-${menuItem.slug}`}
-                            className={classes.mainNavigationLink}
-                            activeClassName={classes.active}
-                            to={
-                                menuItem.slug === "/"
-                                    ? menuItem.slug
-                                    : `/${menuItem.slug.replace(/\//g, "")}/`
-                            }
+            <Container maxWidth={theme.siteContainer.maxWidth}>
+                <Toolbar component="nav" disableGutters>
+                    <Link to="/" className={classes.logo}>
+                        {/* <img alt="Logo" src="/images/logos/logo--white.svg" /> */}
+                        IK-Base
+                    </Link>
+                    {/* <pre>{JSON.stringify(props.intl.locale, null, 4)}</pre> */}
+                    <div className={classes.flexGrow} />
+                    <Hidden mdDown>
+                        {menuItems.slice(0, 4).map((menuItem) => (
+                            <Link
+                                key={`key-${menuItem.slug}`}
+                                className={classes.mainNavigationLink}
+                                activeClassName={classes.active}
+                                to={
+                                    menuItem.slug === "/"
+                                        ? menuItem.slug
+                                        : `/${menuItem.slug.replace(
+                                              /\//g,
+                                              ""
+                                          )}/`
+                                }
+                            >
+                                {intl.formatMessage({
+                                    id: `topbarMenu.${menuItem.slug.replace(
+                                        /\//g,
+                                        ""
+                                    )}.title`,
+                                })}
+                            </Link>
+                        ))}
+                    </Hidden>
+                    {props.intl.locale === "en" ? (
+                        <Button
+                            onClick={() => changeLocale("ru")}
+                            className={classes.langSwitherButton}
+                            // color="inherit"
                         >
-                            {intl.formatMessage({
-                                id: `topbarMenu.${menuItem.slug.replace(
-                                    /\//g,
-                                    ""
-                                )}.title`,
-                            })}
-                        </Link>
-                    ))}
-                </Hidden>
-                <Button
-                    onClick={() => changeLocale("ru")}
-                    className={classes.langSwitherButton}
-                    // color="inherit"
-                >
-                    RU
-                </Button>
-                <Button
-                    onClick={() => changeLocale("en")}
-                    className={classes.langSwitherButton}
-                    // color="inherit"
-                >
-                    EN
-                </Button>
-
-                {/* <Hidden mdDown>
+                            RU
+                        </Button>
+                    ) : (
+                        <Button
+                            onClick={() => changeLocale("en")}
+                            className={classes.langSwitherButton}
+                            // color="inherit"
+                        >
+                            EN
+                        </Button>
+                    )}
+                    {/* <Hidden mdDown>
                     <IconButton color="inherit">
-                        <Badge
-                            // badgeContent={notifications.length}
+                    <Badge
+                    // badgeContent={notifications.length}
                             badgeContent={7}
                             // color="primary"
                             color="error"
                             // variant="dot"
-                        >
+                            >
                             <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
-                    <IconButton
-                        className={classes.signOutButton}
-                        color="inherit"
-                    >
-                        <InputIcon />
-                    </IconButton>
-                </Hidden> */}
-                <Hidden lgUp>
-                    <IconButton color="inherit" onClick={onSidebarOpen}>
-                        <MenuIcon />
-                    </IconButton>
-                </Hidden>
-            </Toolbar>
+                            </Badge>
+                            </IconButton>
+                            <IconButton
+                            className={classes.signOutButton}
+                            color="inherit"
+                            >
+                            <InputIcon />
+                            </IconButton>
+                        </Hidden> */}
+                    <Hidden lgUp>
+                        <IconButton
+                            style={{ paddingRight: 0 }}
+                            color="inherit"
+                            onClick={onSidebarOpen}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    </Hidden>
+                </Toolbar>
+            </Container>
         </AppBar>
     )
 }
