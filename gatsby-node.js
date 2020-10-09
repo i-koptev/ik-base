@@ -14,6 +14,7 @@ const createContactsPageTranslations = require(`./create/createContactsPageTrans
 const createAboutPageTranslations = require(`./create/createAboutPageTranslations`)
 const createProductsPageTranslations = require(`./create/createProductsPageTranslations`)
 const createProductsTranslations = require(`./create/createProductsTranslations`)
+const createCategoryTranslations = require(`./create/createCategoryTranslations`)
 
 const siteLanguages = [`en`, `ru`]
 
@@ -51,6 +52,10 @@ exports.createPages = async (props) => {
         siteLanguages,
     })
     await createProductsTranslations(props, {
+        intlTranslations,
+        siteLanguages,
+    })
+    await createCategoryTranslations(props, {
         intlTranslations,
         siteLanguages,
     })

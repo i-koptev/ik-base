@@ -1,8 +1,8 @@
 ---
-templateKey: category-page
+templateKey: category-item
 title: furniture
 categoryId: furniture
 categoryName:
-  ru: Мебель
-  en: Furniture
+    ru: Мебель
+    en: Furniture
 ---

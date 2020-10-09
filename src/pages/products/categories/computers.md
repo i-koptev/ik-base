@@ -1,8 +1,8 @@
 ---
-templateKey: category-page
+templateKey: category-item
 title: computers
 categoryId: computers
 categoryName:
-  ru: Компьютеры
-  en: Computers
+    ru: Компьютеры
+    en: Computers
 ---

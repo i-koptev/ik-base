@@ -8,7 +8,7 @@ module.exports = {
         {
             name: "templateKey",
             widget: "hidden",
-            default: "category-page",
+            default: "category-item",
         },
         {
             label: "Имя в файловой системе",
