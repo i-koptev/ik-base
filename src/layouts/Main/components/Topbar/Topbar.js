@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import PropTypes from "prop-types"
 // import AniLink from "gatsby-plugin-transition-link/AniLink"
 import {
     changeLocale,
@@ -9,7 +10,6 @@ import {
 } from "gatsby-plugin-intl"
 
 import clsx from "clsx"
-import PropTypes from "prop-types"
 import { makeStyles, useTheme } from "@material-ui/styles"
 import { AppBar, Toolbar, Badge, Hidden, IconButton } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
