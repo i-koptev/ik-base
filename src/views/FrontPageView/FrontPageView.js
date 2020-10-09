@@ -12,7 +12,6 @@ import SvgCompatibleBackgroundImage from "../../components/SvgCompatibleBackgrou
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        // padding: theme.spacing(4),
         [theme.breakpoints.up("lg")]: {
             // backgroundColor: "tomato",
         },

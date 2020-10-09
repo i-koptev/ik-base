@@ -10,7 +10,6 @@ import Typography from "@material-ui/core/Typography"
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        padding: theme.spacing(4),
         [theme.breakpoints.up("lg")]: {
             // backgroundColor: "tomato",
         },
