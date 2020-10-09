@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import clsx from "clsx"
 import { makeStyles, useTheme } from "@material-ui/styles"
 import { useMediaQuery } from "@material-ui/core"
+import Container from "@material-ui/core/Container"
 
 // import { Sidebar, Sidebar2, Topbar, Footer } from "./components"
 import { Sidebar, Topbar, Footer } from "./components"
@@ -60,10 +61,14 @@ const Main = (props) => {
                 variant={isDesktop ? "persistent" : "temporary"}
                 lang={lang}
             />
-            <main className={classes.content}>
+            <Container
+                maxWidth={theme.siteContainer.maxWidth}
+                component="main"
+                className={classes.content}
+            >
                 {children}
-                <Footer />
-            </main>
+            </Container>
+            <Footer />
         </div>
     )
 }
