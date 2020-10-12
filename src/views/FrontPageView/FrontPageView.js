@@ -112,8 +112,8 @@ const useStyles = makeStyles((theme) => ({
 const FrontPageView = ({
     heroImage,
     introBgImage,
-    header,
-    subheader,
+    heading,
+    subheading,
     feature1short,
     feature1detailed,
     feature2short,
@@ -139,11 +139,25 @@ const FrontPageView = ({
                     component="h1"
                     align="center"
                 >
-                    {header}
+                    {heading}
                 </Typography>
-                <p>subheader: {subheader}</p>
+                <p>subheading: {subheading}</p>
                 <p>feature1short: {feature1short}</p>
-                <p>feature1detailed: {feature1detailed}</p>
+                <p>feature1detailed:</p>
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: feature1detailed,
+                    }}
+                />
+
+                <p>feature2short: {feature2short}</p>
+                <p>feature2detailed:</p>
+                <div
+                    dangerouslySetInnerHTML={{
+                        __html: feature2detailed,
+                    }}
+                />
+
                 <div style={{ width: "25vw" }}>
                     <SvgCompatibleImage image={heroImage} />
                 </div>
@@ -157,11 +171,6 @@ const FrontPageView = ({
                         </div>
                     </SvgCompatibleBackgroundImage>
                 </div>
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html: feature1detailed,
-                    }}
-                />
             </Grid>
         </Grid>
     )

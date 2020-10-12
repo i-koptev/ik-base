@@ -21,10 +21,10 @@ const FrontPage = (props) => {
     const viewData = {
         heroImage: heroImage,
         introBgImage: introBgImage,
-        header: intl.formatMessage({
+        heading: intl.formatMessage({
             id: `front-page.sectionHero.heading`,
         }),
-        subheader: intl.formatMessage({
+        subheading: intl.formatMessage({
             id: `front-page.sectionHero.subheading`,
         }),
         feature1short: intl.formatMessage({
@@ -60,7 +60,7 @@ const FrontPage = (props) => {
         <MainLayout>
             <h3 style={{ paddingLeft: "2rem" }}>{__filename}</h3>
             <FrontPageView {...viewData} />
-            <DefaultPageView {...props} />
+            {/* <DefaultPageView {...props} /> */}
         </MainLayout>
     )
 }
