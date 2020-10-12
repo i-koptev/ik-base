@@ -23,7 +23,7 @@ const Contacts = (props) => {
         email: email,
         phone: phone,
         address: address,
-        header: intl.formatMessage({
+        heading: intl.formatMessage({
             id: `contacts-page.contactsHeading`,
         }),
         emailLabel: intl.formatMessage({

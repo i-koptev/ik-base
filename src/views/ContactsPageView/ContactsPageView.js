@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ContactsPageView = ({
     className,
-    header,
+    heading,
     emailLabel,
     email,
     addressLabel,
@@ -85,7 +85,7 @@ const ContactsPageView = ({
                     component="h1"
                     align="center"
                 >
-                    {header}
+                    {heading}
                 </Typography>
                 <h4>
                     {emailLabel}: {email}
