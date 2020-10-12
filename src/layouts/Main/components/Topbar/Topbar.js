@@ -54,12 +54,12 @@ const useStyles = makeStyles((theme) => ({
             color: theme.layouts.Main.Topbar.mainNavigationLinkActiveHoverColor,
         },
     },
-    langSwitherButton: {
-        color: theme.layouts.Main.Topbar.langSwitherButtonColor,
+    langSwitcherButton: {
+        color: theme.layouts.Main.Topbar.langSwitcherButtonColor,
         "&:hover": {
             // backgroundColor: "red",
-            outline: `2px solid ${theme.layouts.Main.Topbar.langSwitherButtonHoverOutlineColor}`,
-            color: theme.layouts.Main.Topbar.langSwitherButtonHoverColor,
+            outline: `2px solid ${theme.layouts.Main.Topbar.langSwitcherButtonHoverOutlineColor}`,
+            color: theme.layouts.Main.Topbar.langSwitcherButtonHoverColor,
         },
         "& .MuiButton-label": {
             letterSpacing: "0.02rem",
@@ -125,7 +125,7 @@ const Topbar = (props) => {
                     {props.intl.locale === "en" ? (
                         <Button
                             onClick={() => changeLocale("ru")}
-                            className={classes.langSwitherButton}
+                            className={classes.langSwitcherButton}
                             // color="inherit"
                         >
                             RU
@@ -133,7 +133,7 @@ const Topbar = (props) => {
                     ) : (
                         <Button
                             onClick={() => changeLocale("en")}
-                            className={classes.langSwitherButton}
+                            className={classes.langSwitcherButton}
                             // color="inherit"
                         >
                             EN
