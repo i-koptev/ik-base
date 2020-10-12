@@ -17,6 +17,7 @@ export default {
     // --- Topbar ---
     //
     topbarBackgroundColor: `${mainColor}`,
+    topbarPinnedBackgroundColor: `${mainColor.fade(0.25)}`,
     topbarLogoColor: `${white.fade(0.25)}`,
 
     mainNavigationLinkColor: `${white.fade(0.25)}`,
@@ -24,9 +25,9 @@ export default {
     mainNavigationLinkActiveColor: `${accentColor.lighten(0.2)}`,
     mainNavigationLinkActiveHoverColor: `${accentColor.lighten(0.3)}`,
 
-    langSwitherButtonColor: `${white.fade(0.25)}`,
-    langSwitherButtonHoverColor: `${white}`,
-    langSwitherButtonHoverOutlineColor: `${white.fade(0.75)}`,
+    langSwitcherButtonColor: `${white.fade(0.25)}`,
+    langSwitcherButtonHoverColor: `${white}`,
+    langSwitcherButtonHoverOutlineColor: `${white.fade(0.75)}`,
     //
     // --- Sidebar ---
     //

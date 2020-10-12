@@ -10,10 +10,11 @@ import { SidebarNav } from "./components"
 
 const useStyles = makeStyles((theme) => ({
     drawer: {
-        width: 240,
+        width: 290,
         [theme.breakpoints.up("lg")]: {
-            marginTop: 64,
-            height: "calc(100% - 64px)",
+            // marginTop: 64,
+            // height: "calc(100% - 64px)", // needed only if drawer is seen on >lg screens
+            height: "100%",
         },
     },
     root: {

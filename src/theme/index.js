@@ -97,9 +97,11 @@ const theme = createMuiTheme({
             },
         },
 
-        MuiToolbar: {
-            root: {},
-        },
+        // MuiToolbar: {
+        //     root: {
+        //         height: "200px",
+        //     },
+        // },
 
         MuiAppbar: {
             root: {
@@ -184,6 +186,7 @@ const theme = createMuiTheme({
         Main: {
             Topbar: {
                 backgroundColor: palette.topbarBackgroundColor,
+                pinnedBackgroundColor: palette.topbarPinnedBackgroundColor,
                 boxShadow: "none",
                 logoColor: palette.topbarLogoColor,
                 mainNavigationLinkColor: palette.mainNavigationLinkColor,
@@ -193,11 +196,11 @@ const theme = createMuiTheme({
                     palette.mainNavigationLinkActiveColor,
                 mainNavigationLinkActiveHoverColor:
                     palette.mainNavigationLinkActiveHoverColor,
-                langSwitherButtonColor: palette.langSwitherButtonColor,
-                langSwitherButtonHoverColor:
-                    palette.langSwitherButtonHoverColor,
-                langSwitherButtonHoverOutlineColor:
-                    palette.langSwitherButtonHoverOutlineColor,
+                langSwitcherButtonColor: palette.langSwitcherButtonColor,
+                langSwitcherButtonHoverColor:
+                    palette.langSwitcherButtonHoverColor,
+                langSwitcherButtonHoverOutlineColor:
+                    palette.langSwitcherButtonHoverOutlineColor,
             },
             Sidebar: {
                 backgroundColor: palette.sidebarBackgroundColor,
