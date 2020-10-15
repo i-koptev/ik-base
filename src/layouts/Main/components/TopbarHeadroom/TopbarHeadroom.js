@@ -42,10 +42,11 @@ const useStyles = makeStyles((theme) => ({
     },
     mainNavigationLink: {
         textDecoration: "none",
-        textTransform: "uppercase",
+        // textTransform: "uppercase",
+        textTransform: "capitalize",
         marginRight: "1rem",
         color: theme.layouts.Main.Topbar.mainNavigationLinkColor,
-        fontWeight: 500,
+        fontWeight: 400,
         letterSpacing: "0.15em",
         "&:hover": {
             color: theme.layouts.Main.Topbar.mainNavigationLinkHoverColor,
@@ -60,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     langSwitcherButton: {
         color: theme.layouts.Main.Topbar.langSwitcherButtonColor,
         "&:hover": {
-            // backgroundColor: "red",
+            // backgroundColor: "transparent",
             outline: `2px solid ${theme.layouts.Main.Topbar.langSwitcherButtonHoverOutlineColor}`,
             color: theme.layouts.Main.Topbar.langSwitcherButtonHoverColor,
         },
