@@ -29,6 +29,7 @@ export default {
     langSwitcherButtonColor: `${mainColor.fade(0.25)}`,
     langSwitcherButtonHoverColor: `${mainColor}`,
     langSwitcherButtonHoverOutlineColor: `${mainColor.fade(0.75)}`,
+    burgerColor: `${mainColor.fade(0.25)}`,
     //
     // --- Sidebar ---
     //

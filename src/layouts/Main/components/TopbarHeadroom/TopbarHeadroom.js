@@ -89,6 +89,10 @@ const useStyles = makeStyles((theme) => ({
             borderBottom: theme.mainNavigationPinnedBorderBottom,
         },
     },
+    burger: {
+        color: theme.layouts.Main.Topbar.burgerColor,
+        marginRight: "0.9rem",
+    },
 }))
 
 const TopbarHeadroom = (props) => {
@@ -206,7 +210,7 @@ const TopbarHeadroom = (props) => {
                                 color="inherit"
                                 onClick={onSidebarOpen}
                             >
-                                <MenuIcon />
+                                <MenuIcon className={classes.burger} />
                             </IconButton>
                         </Hidden>
                     </Toolbar>

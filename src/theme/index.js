@@ -31,10 +31,10 @@ const sitePaletteAccent = ""
 
 // ------------- Main Navigation - Desktop Size ----------------
 const mainNavigationBackgroundColor = "rgba(0, 20, 30, 0.7)"
-const mainNavigationBorderBottom = "1px solid rgba(255, 255, 255, 0.1)"
+const mainNavigationBorderBottom = "1px solid rgba(0,0,0, 0.001)"
 
 const mainNavigationPinnedBackgroundColor = "rgba(0, 20, 30, 0.9)"
-const mainNavigationPinnedBorderBottom = "1px solid rgba(255, 255, 255, 0.2)"
+const mainNavigationPinnedBorderBottom = "1px solid rgba(0,0,0, 0.05)"
 
 const mainNavigationUnpinnedBackgroundColor = ""
 const mainNavigationUnpinnedBorderBottom = ""
@@ -201,6 +201,7 @@ const theme = createMuiTheme({
                     palette.langSwitcherButtonHoverColor,
                 langSwitcherButtonHoverOutlineColor:
                     palette.langSwitcherButtonHoverOutlineColor,
+                burgerColor: palette.burgerColor,
             },
             Sidebar: {
                 backgroundColor: palette.sidebarBackgroundColor,

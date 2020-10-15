@@ -67,6 +67,10 @@ const useStyles = makeStyles((theme) => ({
             letterSpacing: "0.02rem",
         },
     },
+    burger: {
+        color: theme.layouts.Main.Topbar.burgerColor,
+        marginRight: "0.9rem",
+    },
 }))
 
 const Topbar = (props) => {
@@ -166,7 +170,7 @@ const Topbar = (props) => {
                             color="inherit"
                             onClick={onSidebarOpen}
                         >
-                            <MenuIcon />
+                            <MenuIcon className={classes.burger} />
                         </IconButton>
                     </Hidden>
                 </Toolbar>
