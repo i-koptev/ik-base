@@ -18,7 +18,7 @@ const FrontPage = (props) => {
         },
     } = data
 
-    const viewData = {
+    const viewSectionHeroData = {
         heroImage: heroImage,
         introBgImage: introBgImage,
         heading: intl.formatMessage({
@@ -56,10 +56,18 @@ const FrontPage = (props) => {
         }),
     }
 
+    const viewSectionProjectsData = {
+        title: "Our Projects",
+        subtitle: "Section Projects Subitle",
+    }
+
     return (
         <MainLayout>
-            <h3 style={{ paddingLeft: "2rem" }}>{__filename}</h3>
-            <FrontPageView {...viewData} />
+            {/* <h3 style={{ paddingLeft: "2rem" }}>{__filename}</h3> */}
+            <FrontPageView
+                viewSectionHeroData={viewSectionHeroData}
+                viewSectionProjectsData={viewSectionProjectsData}
+            />
             {/* <DefaultPageView {...props} /> */}
         </MainLayout>
     )
