@@ -53,6 +53,7 @@ const Main = (props) => {
 
     return (
         <div
+            // style={{ backgroundColor: "rgba(0,0,0,0.001)" }}
             className={clsx(
                 {
                     [classes.root]: !withReactHeadroom,
@@ -71,13 +72,13 @@ const Main = (props) => {
                 variant={isDesktop ? "persistent" : "temporary"}
                 lang={lang}
             />
-            <Container
+            {/* <Container
                 maxWidth={theme.siteContainer.maxWidth}
                 component="main"
                 className={classes.content}
-            >
-                {children}
-            </Container>
+            > */}
+            {children}
+            {/* </Container> */}
             <Footer />
         </div>
     )
