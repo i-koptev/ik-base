@@ -4,9 +4,17 @@ const siteTextFontFamily = ""
 const siteTextFontWeight = ""
 
 const headingsFontFamily =
-    "'Playfair Display', 'Open Sans', Roboto, Times, serif" //h1, h2, h3, h4, h5, h6
-const headingsLetterSpacing = "0.05em"
-const headingsWeight = 400
+    "Oswald, Roboto, 'Open Sans','Playfair Display', Times, serif" //h1, h2, h3, h4, h5, h6
+const headingsLetterSpacing = "0.01em"
+const headingsWeight = 500
+
+const sharedHeadingStyles = {
+    fontFamily: headingsFontFamily,
+    fontWeight: headingsWeight,
+    color: palette.headingsColor,
+    letterSpacing: headingsLetterSpacing,
+    textTransform: "uppercase",
+}
 
 export default {
     root: {
@@ -14,42 +22,15 @@ export default {
     },
     fontSize: 14,
     // htmlFontSize: 16,
-    h1: {
-        fontFamily: headingsFontFamily,
-        fontWeight: headingsWeight,
-        color: palette.headingsColor,
-        letterSpacing: headingsLetterSpacing,
-    },
+    h1: { ...sharedHeadingStyles },
     h2: {
-        fontFamily: headingsFontFamily,
-        fontWeight: headingsWeight,
-        color: palette.headingsColor,
-        letterSpacing: headingsLetterSpacing,
+        ...sharedHeadingStyles,
+        // textTransform: "lowercase",
     },
-    h3: {
-        fontFamily: headingsFontFamily,
-        fontWeight: headingsWeight,
-        color: palette.headingsColor,
-        letterSpacing: headingsLetterSpacing,
-    },
-    h4: {
-        fontFamily: headingsFontFamily,
-        fontWeight: headingsWeight,
-        color: palette.headingsColor,
-        letterSpacing: headingsLetterSpacing,
-    },
-    h5: {
-        fontFamily: headingsFontFamily,
-        fontWeight: headingsWeight,
-        color: palette.headingsColor,
-        letterSpacing: headingsLetterSpacing,
-    },
-    h6: {
-        fontFamily: headingsFontFamily,
-        fontWeight: headingsWeight,
-        color: palette.headingsColor,
-        letterSpacing: headingsLetterSpacing,
-    },
+    h3: { ...sharedHeadingStyles },
+    h4: { ...sharedHeadingStyles },
+    h5: { ...sharedHeadingStyles },
+    h6: { ...sharedHeadingStyles },
     body1: {
         // fontSize: "1rem",
     },

@@ -9,7 +9,7 @@ import typography from "./typography"
 
 // ----------- Theme Variables --------------
 
-const siteContainerMaxWidth = "xl"
+const siteContainerMaxWidth = "lg"
 const siteBackground = ""
 const siteBackgroundImage = ""
 
@@ -213,7 +213,7 @@ const theme = createMuiTheme({
 
                     // --- TEXT ---
                     fontColor: palette.sidebarFontColor,
-                    fontWeight: "500",
+                    fontWeight: "400",
                     hoverFontColor: palette.sidebarHoverFontColor,
                     hoverFontWeight: 200,
 
