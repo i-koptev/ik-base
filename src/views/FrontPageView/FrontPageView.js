@@ -1,12 +1,15 @@
 import React from "react"
 
-import { Hero, Projects } from "./sections"
+import { Hero, Projects, Inter } from "./sections"
+// import Test from "./Test"
 
 const FrontPageView = ({ viewSectionHeroData, viewSectionProjectsData }) => {
     return (
         <>
-            <Projects {...viewSectionProjectsData} />
+            {/* <Test /> */}
             <Hero {...viewSectionHeroData} />
+            <Projects {...viewSectionProjectsData} />
+            <Inter />
         </>
     )
 }

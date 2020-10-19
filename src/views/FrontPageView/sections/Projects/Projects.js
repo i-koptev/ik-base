@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useContext } from "react"
 
 import clsx from "clsx"
 import PropTypes from "prop-types"
-
+import { IntersectionObserver } from "../../../../components/Animated/IntersectionObserver"
+import { IntersectionContext } from "../../../../components/Animated/IntersectionObserver"
 import { motion } from "framer-motion"
 
 import useMediaQuery from "@material-ui/core/useMediaQuery"
@@ -29,6 +30,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert"
 import SvgCompatibleImage from "../../../../components/SvgCompatibleImage"
 import SvgCompatibleBackgroundImage from "../../../../components/SvgCompatibleBackgroundImage"
 
+import { AnimatedHeader } from "../../../../components/Animated/Typography"
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -101,47 +103,36 @@ const Projects = ({ title, subtitle }) => {
     const sm = useMediaQuery(theme.breakpoints.down("sm"))
     const adaptiveSpacing = xs ? 3 : sm ? 4 : 4
 
-    const aniDiv = (props) => (
-        <motion.div
-            initial={{ x: "1vw", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{
-                delay: props.delay,
-                type: "tween",
-                duration: 0.7,
-            }}
-            whileHover={{
-                scale: 1.2,
-                // originX: 0.5,
-                // originY: 0.5,
-                color: "#f8e112",
-            }}
-            {...props}
-        >
-            {props.children}
-        </motion.div>
-    )
+    const AniDiv = (props) => {
+        const { inView } = useContext(IntersectionContext)
 
-    const aniH2 = (props) => (
-        <motion.h2
-            initial={{ y: "-30px", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{
-                delay: props.delay,
-                type: "spring",
-                duration: 0.7,
-            }}
-            whileHover={{
-                scale: 1.2,
-                // originX: 0.5,
-                // originY: 0.5,
-                color: "#f8e112",
-            }}
-            {...props}
-        >
-            {props.children}
-        </motion.h2>
-    )
+        const variants = {
+            hidden: {
+                x: "100px",
+                opacity: 0,
+            },
+            show: {
+                x: 0,
+                opacity: 1,
+                transition: {
+                    delay: props.delay,
+                    type: "spring",
+                    duration: 2,
+                },
+            },
+        }
+        return (
+            <motion.div
+                initial="hidden"
+                // animate="show"
+                animate={inView ? "show" : "hidden"}
+                variants={variants}
+                {...props}
+            >
+                {props.children}
+            </motion.div>
+        )
+    }
 
     return (
         <section id="test" className={classes.root}>
@@ -152,15 +143,17 @@ const Projects = ({ title, subtitle }) => {
             >
                 <Grid container justify="center">
                     <Grid item xs={12}>
-                        <Typography
-                            className={classes.header}
-                            variant="h2"
-                            // component="h2"
-                            component={aniH2}
-                            align="center"
-                        >
-                            {title}
-                        </Typography>
+                        <IntersectionObserver>
+                            <Typography
+                                className={classes.header}
+                                variant="h2"
+                                component={AnimatedHeader}
+                                animatedComponent="h2"
+                                align="center"
+                            >
+                                {title}
+                            </Typography>
+                        </IntersectionObserver>
                     </Grid>
                 </Grid>
                 <Grid
@@ -169,39 +162,55 @@ const Projects = ({ title, subtitle }) => {
                     spacing={adaptiveSpacing}
                     className={clsx(classes.cardContainer, "anistart")}
                 >
-                    {[0, 1, 2, 3, 4, 5].map((value, index) => (
+                    {[...Array(6).keys()].map((value, index) => (
                         <Grid
                             item
                             xs={12}
                             sm={6}
                             md={4}
                             key={value}
-                            component={aniDiv}
-                            delay={index / 10}
+                            // component={AniDiv}
                         >
                             {/* <div ref={(div) => (allCards[index] = div)}> */}
-                            <Card className={clsx(classes.card, "test")}>
-                                <CardHeader
-                                    avatar={
-                                        <Avatar
-                                            aria-label="project"
-                                            className={classes.avatar}
-                                        >
-                                            {index}
-                                        </Avatar>
-                                    }
-                                    action={
-                                        <IconButton aria-label="settings">
-                                            <MoreVertIcon />
-                                        </IconButton>
-                                    }
-                                    title="IBM website redesign"
-                                    subheader="September 14, 2016"
-                                />
-                            </Card>
+                            <IntersectionObserver>
+                                <AniDiv delay={index / 7}>
+                                    <Card
+                                        className={clsx(classes.card, "test")}
+                                    >
+                                        <CardHeader
+                                            avatar={
+                                                <Avatar
+                                                    aria-label="project"
+                                                    className={classes.avatar}
+                                                >
+                                                    {index}
+                                                </Avatar>
+                                            }
+                                            action={
+                                                <IconButton aria-label="settings">
+                                                    <MoreVertIcon />
+                                                </IconButton>
+                                            }
+                                            title="IBM website redesign"
+                                            subheader="September 14, 2016"
+                                        />
+                                    </Card>
+                                </AniDiv>
+                            </IntersectionObserver>
                         </Grid>
                     ))}
                 </Grid>
+                <IntersectionObserver>
+                    <Typography
+                        className={classes.header}
+                        variant="h2"
+                        component={AnimatedHeader}
+                        animatedComponent="h2"
+                        align="center"
+                    >
+                        FINISH
+                    </Typography>
+                </IntersectionObserver>
             </Container>
         </section>
     )

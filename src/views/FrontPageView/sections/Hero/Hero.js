@@ -3,6 +3,10 @@ import React from "react"
 import clsx from "clsx"
 import PropTypes from "prop-types"
 
+import { IntersectionObserver } from "../../../../components/Animated/IntersectionObserver"
+
+import { motion } from "framer-motion"
+
 import { makeStyles, useTheme } from "@material-ui/styles"
 import { Grid } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
@@ -10,6 +14,8 @@ import Typography from "@material-ui/core/Typography"
 
 import SvgCompatibleImage from "../../../../components/SvgCompatibleImage"
 import SvgCompatibleBackgroundImage from "../../../../components/SvgCompatibleBackgroundImage"
+
+import { AnimatedHeader } from "../../../../components/Animated/Typography"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -134,14 +140,17 @@ const Hero = ({
             className={classes.root}
         >
             <Grid item xs={12}>
-                <Typography
-                    className={classes.header}
-                    variant="h1"
-                    component="h1"
-                    align="center"
-                >
-                    {heading}
-                </Typography>
+                <IntersectionObserver>
+                    <Typography
+                        className={classes.header}
+                        variant="h1"
+                        component={AnimatedHeader}
+                        animatedComponent="h1"
+                        align="center"
+                    >
+                        {heading}
+                    </Typography>
+                </IntersectionObserver>
                 <p>subheading: {subheading}</p>
                 <p>feature1short: {feature1short}</p>
                 <p>feature1detailed:</p>
@@ -159,9 +168,16 @@ const Hero = ({
                     }}
                 />
 
-                <div style={{ width: "25vw" }}>
+                <motion.div
+                    style={{ width: "25vw" }}
+                    animate={{
+                        x: [0, 600, 0],
+                        scale: [1, 3, 1],
+                    }}
+                    transition={{ duration: 0.5 }}
+                >
                     <SvgCompatibleImage image={heroImage} />
-                </div>
+                </motion.div>
                 <div style={{ height: "300px", width: "100%" }}>
                     <SvgCompatibleBackgroundImage
                         className={classes.hero}
