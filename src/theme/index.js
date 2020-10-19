@@ -96,6 +96,14 @@ const theme = createMuiTheme({
                 // fontSize: "3rem",
             },
         },
+        // MuiIconButton: {
+        //     root: {
+        //         backgroundColor: "#ff0000",
+        //         "&:hover": {
+        //             backgroundColor: "#00ff00",
+        //         },
+        //     },
+        // },
 
         // MuiToolbar: {
         //     root: {

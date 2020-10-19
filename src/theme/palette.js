@@ -18,7 +18,7 @@ export default {
     //
     // topbarBackgroundColor: `${mainColor}`,
     topbarBackgroundColor: `transparent`,
-    topbarPinnedBackgroundColor: `${mainColor.fade(0.85)}`,
+    topbarPinnedBackgroundColor: `${black.fade(0.95)}`,
     topbarLogoColor: `${mainColor}`,
 
     mainNavigationLinkColor: `${black.fade(0.15)}`,
