@@ -33,7 +33,10 @@ import SvgCompatibleBackgroundImage from "../../../../components/SvgCompatibleBa
 import { AnimatedHeader } from "../../../../components/Animated/Typography"
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
+        backgroundColor: "#efefef",
+    },
+    sectionContainer: {
+        // flexGrow: 1,
         paddingTop: "3rem",
         paddingBottom: "3rem",
         // backgroundColor: "#ee000033",
@@ -54,19 +57,10 @@ const useStyles = makeStyles((theme) => ({
         // width: 200,
     },
     header: {
-        padding: "1rem",
+        // padding: "1rem",
         paddingBottom: "1em",
     },
-    container: {
-        // paddingTop: "1rem",
-        // paddingBottom: "1rem",
-        // backgroundColor: "#00ee0033",
-        [theme.breakpoints.up("lg")]: {
-            // paddingTop: "2rem",
-            // paddingBottom: "2rem",
-            // backgroundColor: "tomato",
-        },
-    },
+
     // cardContainer: {
     //     paddingRight: "5vw",
     //     paddingLeft: "5vw",
@@ -135,13 +129,14 @@ const Projects = ({ title, subtitle }) => {
     }
 
     return (
-        <section id="test" className={classes.root}>
+        <section id="sectionProjects" className={classes.root}>
             <Container
                 maxWidth={theme.siteContainer.maxWidth}
-                component="div"
-                className={classes.container}
+                component="section"
+                className={classes.sectionContainer}
             >
-                <Grid container justify="center">
+                {/* <Grid container justify="center"> */}
+                <Grid container>
                     <Grid item xs={12}>
                         <IntersectionObserver>
                             <Typography
@@ -200,17 +195,6 @@ const Projects = ({ title, subtitle }) => {
                         </Grid>
                     ))}
                 </Grid>
-                <IntersectionObserver>
-                    <Typography
-                        className={classes.header}
-                        variant="h2"
-                        component={AnimatedHeader}
-                        animatedComponent="h2"
-                        align="center"
-                    >
-                        FINISH
-                    </Typography>
-                </IntersectionObserver>
             </Container>
         </section>
     )
