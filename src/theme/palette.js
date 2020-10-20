@@ -11,7 +11,7 @@ const black = Color("#000000")
 
 export default {
     siteTextColor: `${black}`,
-    headingsColor: `${mainColor.fade(0.25)}`,
+    headingsColor: `${black.fade(0.25)}`,
     // headingsColor: `${secondaryColor}`,
     //
     // --- Topbar ---
@@ -49,4 +49,10 @@ export default {
     // sidebarHoverFontColor: `${white}`,
     // sidebarActiveFontColor: `${accentColor.lighten(0.2)}`,
     // sidebarActiveHoverFontColor: `${accentColor}`,
+
+    // --- Pages ---
+    // --- Front Page ---
+    ctaButtonGradientColor1: `${mainColor}`,
+    ctaButtonGradientColor2: `${mainColor.fade(0.15)}`,
+    ctaButtonBoxShadowColor: `${mainColor.fade(0.25).alpha(0.3)}`,
 }

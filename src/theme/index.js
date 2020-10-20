@@ -189,6 +189,21 @@ const theme = createMuiTheme({
             postCardBackground: "rgba(0, 41, 63, 0.7)",
             postCardTextColor: "rgba(255, 255, 255, 0.7)",
         },
+        hero: {
+            ctaButton: {
+                //blue
+                // gradientColor1: "#2196F3",
+                // gradientColor2: "#21CBF3",
+                // boxShadow: "0 3px 5px 2px rgba(33, 203, 243, .3)",
+                //pink
+                // gradientColor1: "#FE6B8B",
+                // gradientColor2: "#FF8E53",
+                // boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+                gradientColor1: palette.ctaButtonGradientColor1,
+                gradientColor2: palette.ctaButtonGradientColor2,
+                boxShadow: `0 3px 5px 2px ${palette.ctaButtonBoxShadowColor}`,
+            },
+        },
     },
     layouts: {
         Main: {
