@@ -7,7 +7,7 @@ const Headers = (props) => {
     const { inView } = useContext(IntersectionContext)
     const variants = {
         hidden: {
-            y: "-100px",
+            y: "-50px",
             opacity: 0,
         },
         show: {

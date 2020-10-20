@@ -1,9 +1,9 @@
 ---
 indexSectionHero:
-  heroImage: /img/hero-area.svg
+  heroImage: /img/undraw_mobile_testing_reah_pink.svg
   heading:
-    ru: fgh
-    en: fgh
+    ru: Программирование Успеха
+    en: Programming Success
   subheading:
     ru: fgh
     en: fgh
@@ -37,5 +37,5 @@ indexSectionHero:
         ru: fgh
         en: fgh
 indexSectionIntro:
-  introBgImage: /img/pic-1.jpg
+  introBgImage: /img/hero-area.svg
 ---
