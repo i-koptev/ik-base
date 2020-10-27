@@ -1,5 +1,6 @@
 module.exports = {
     plugins: [
+        "gatsby-plugin-sass",
         "gatsby-plugin-top-layout",
         {
             resolve: `gatsby-plugin-intl`,
