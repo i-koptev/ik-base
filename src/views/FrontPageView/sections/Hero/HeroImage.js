@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const HeroImage = ({ className, ...rest }) => {
+    const theme = useTheme()
     const variants = {
         hidden: {
             y: "-50px",
@@ -112,7 +113,7 @@ const HeroImage = ({ className, ...rest }) => {
                 <path
                     d="M414 316.8c-36.1-11.7-74.3-21.5-113.3-20.5-57.4 1.5-112.6 28.2-139.8 67.8-23 33.5-26.1 72.9-36.1 110.1-12.4 45.9-35.9 89.4-60.9 132-13.5 22.9-27.7 46.2-30 71.3-3.2 34.9 17.9 69.8 51.3 93.2s77.7 35.8 122.2 38.8c23.7 1.5 48.5.3 69.6-8.2 22.3-9 38.7-25.5 61.1-34.4 20.8-8.2 45-9.3 68.3-8.1a374.6 374.6 0 0189.1 15.3c32.5 9.7 62.7 23.7 95.1 33.6s68.7 15.4 101.9 7.5c31.2-7.4 55.9-25.8 78.2-44.4a849.25 849.25 0 00100-98c20.1-23.4 38.9-48.1 47.9-75.4 17.2-52.3-5.8-111.4-57.4-147.4-42.7-29.8-100.1-43-156.4-51-51.3-7.4-110.6-8.1-157.8-26.9-44.9-18-85.8-40-133-55.3z"
                     transform="translate(0 .03)"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <ellipse
@@ -120,7 +121,7 @@ const HeroImage = ({ className, ...rest }) => {
                     cy="491.83"
                     rx="23.1"
                     ry="3.2"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <ellipse
@@ -128,7 +129,7 @@ const HeroImage = ({ className, ...rest }) => {
                     cy="500.73"
                     rx="23.1"
                     ry="3.2"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <ellipse
@@ -136,7 +137,7 @@ const HeroImage = ({ className, ...rest }) => {
                     cy="488.63"
                     rx="23.1"
                     ry="3.2"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <ellipse
@@ -144,7 +145,7 @@ const HeroImage = ({ className, ...rest }) => {
                     cy="526.33"
                     rx="16.4"
                     ry="2.3"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <ellipse
@@ -152,13 +153,13 @@ const HeroImage = ({ className, ...rest }) => {
                     cy="524.03"
                     rx="16.4"
                     ry="2.3"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <path
                     d="M785.4 500s32.4-106.3-5.1-148.8c-28-31.8-59.9-28-74.1-24.1a26.41 26.41 0 00-17 14.1c-5 10.8-4.1 28.2 31.1 48.6 58.9 34.1 62.6 80.9 62.6 80.9z"
                     transform="translate(0 .03)"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                 />
                 <path
                     d="M711.3 342.2s95.6 29.9 74.1 157.8M767.1 352.9s-13.2 8.9-9 22.2M720.9 360.8s8-8.2 17.8-3.7M758.7 401.9s14.1-7.2 17.8 1.8M793.6 416.9s-10.6-.8-10.8 4.2"
@@ -170,7 +171,7 @@ const HeroImage = ({ className, ...rest }) => {
                 <path
                     d="M786.7 500.9s-38-77.2-48.4-75.5c-5 .8-7.2 5.7-8.3 10.6a30.43 30.43 0 002.1 18.8c5.4 12.2 19.9 35.7 54.6 46.1z"
                     transform="translate(0 .03)"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                 />
                 <path
                     d="M738.6 440s39.8 57.8 47.6 60.3"
@@ -188,7 +189,7 @@ const HeroImage = ({ className, ...rest }) => {
                 <path
                     d="M785.6 500.9s38-77.2 48.4-75.5c5 .8 7.2 5.7 8.3 10.6a30.43 30.43 0 01-2.1 18.8c-5.4 12.2-19.9 35.7-54.6 46.1z"
                     transform="translate(0 .03)"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                 />
                 <path
                     d="M833.7 440s-39.8 57.8-47.5 60.3"
@@ -206,7 +207,7 @@ const HeroImage = ({ className, ...rest }) => {
                 <path
                     d="M720.4 518.9a6.9 6.9 0 01-2.2-3.3 3 3 0 011.5-3.3c1.4-.5 2.9.4 4 1.4s2.4 2.1 3.9 1.9a6 6 0 01-1.8-5.5 2.22 2.22 0 01.5-1.1c.8-.8 2.2-.5 3.1.2 2.9 2.1 3.8 6 3.8 9.6a26.7 26.7 0 000-4 4 4 0 011.5-3.5 3.72 3.72 0 012.3-.5 4.89 4.89 0 013.7 1c1.1 1.2.8 3.2-.2 4.5a15.73 15.73 0 01-3.8 3 7.46 7.46 0 00-2.7 2.6c-.1.1-.1.3-.2.5h-8.3a25.62 25.62 0 01-5.1-3.5zM865.1 487.8a6.9 6.9 0 01-2.2-3.3 3 3 0 011.5-3.3c1.4-.5 2.9.4 4 1.4s2.4 2.1 3.9 1.9a6 6 0 01-1.8-5.5 2.22 2.22 0 01.5-1.1c.8-.8 2.2-.5 3.1.2 2.9 2.1 3.8 6 3.8 9.6a26.7 26.7 0 000-4 4 4 0 011.5-3.5 3.72 3.72 0 012.3-.5 4.89 4.89 0 013.7 1c1.1 1.2.8 3.2-.2 4.5a16.14 16.14 0 01-3.8 3.1 7.46 7.46 0 00-2.7 2.6c-.1.1-.1.3-.2.5h-8.3a27.38 27.38 0 01-5.1-3.6zM816.9 518.9a6.9 6.9 0 01-2.2-3.3 3 3 0 011.5-3.3c1.4-.5 2.9.4 4 1.4s2.4 2.1 3.9 1.9a6 6 0 01-1.8-5.5 2.22 2.22 0 01.5-1.1c.8-.8 2.2-.5 3.1.2 2.9 2.1 3.8 6 3.8 9.6a13.41 13.41 0 000-4 4 4 0 011.5-3.5 3.72 3.72 0 012.3-.5 4.89 4.89 0 013.7 1c1.1 1.2.8 3.2-.2 4.5a15.73 15.73 0 01-3.8 3 7.46 7.46 0 00-2.7 2.6c-.1.1-.1.3-.2.5H822a23 23 0 01-5.1-3.5zM680.1 456s-3.1 4 1.4 10.2 8.3 11.3 6.8 15.1c0 0-6.8-11.4-12.4-11.5s-1.9-6.9 4.2-13.8z"
                     transform="translate(0 .03)"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                 />
                 <path
                     d="M680.1 456a3.1 3.1 0 00-.6 1.3c-5.4 6.4-8.3 12.3-3.1 12.5 4.9.1 10.7 8.8 12.1 11 0 .2-.1.3-.2.5 0 0-6.8-11.4-12.4-11.5s-1.9-6.9 4.2-13.8z"
@@ -226,7 +227,7 @@ const HeroImage = ({ className, ...rest }) => {
                 <path
                     d="M696.5 456s3.1 4-1.4 10.2-8.3 11.3-6.7 15.1c0 0 6.8-11.4 12.4-11.5s1.8-6.9-4.3-13.8z"
                     transform="translate(0 .03)"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                 />
                 <path
                     d="M696.5 456a3.1 3.1 0 01.6 1.3c5.4 6.4 8.3 12.3 3.1 12.5-4.9.1-10.7 8.8-12.1 11 0 .2.1.3.2.5 0 0 6.8-11.4 12.4-11.5s1.9-6.9-4.2-13.8z"
@@ -257,28 +258,28 @@ const HeroImage = ({ className, ...rest }) => {
                     cx="129"
                     cy="60.53"
                     r="21.6"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <circle
                     cx="503.12"
                     cy="26.43"
                     r="21.6"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <circle
                     cx="846.3"
                     cy="111.83"
                     r="21.6"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <circle
                     cx="36.3"
                     cy="258.93"
                     r="36.3"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <circle
@@ -286,14 +287,14 @@ const HeroImage = ({ className, ...rest }) => {
                     cy="437.9"
                     r="36.3"
                     transform="rotate(-88.09 71.03 437.926)"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <circle
                     cx="749.9"
                     cy="280.03"
                     r="36.3"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                     opacity=".1"
                 />
                 <path
@@ -314,7 +315,7 @@ const HeroImage = ({ className, ...rest }) => {
                 <path
                     d="M525.7 95.8c.8 2.1.4 4.5.2 6.7-.3 5 .7 10 .5 15.1s-1.8 9.9-2.9 14.8c-3.1 14.1-2.3 28.7-5.1 42.9-3.4 17.5-12.2 33.8-13.9 51.6-.5 5.6-.5 11.7-3.6 16.4a257.92 257.92 0 01-51.7-30.4c3.5-26.1 7-52.4 6.5-78.7a33.59 33.59 0 01.7-9.5 26.7 26.7 0 013.6-7.4c3.9-6.3 8.1-12.3 12.4-18.4 2.7-3.9 5.7-7.9 10-9.7s9.5-1 14.2-.1c5.7 1 11.4 2.1 17.1 3.1 3.4.7 10.5-.5 12 3.6z"
                     transform="translate(0 .03)"
-                    fill="#f63854"
+                    fill={theme.sections.hero.image.mainColor}
                 />
                 <path
                     d="M388.7 195.8a57.78 57.78 0 00-7.6-6.3c3.5-4.3 2.8-10.6 3.7-16.1a55.31 55.31 0 013.2-10.5c.4-.9.9-2 1.9-2.3a2.89 2.89 0 011.8.3c3 1.1 9.3 1 11.6 2.9 2.8 2.4.2 7.3-.8 10.3-.8 2.1-12.3 23.2-13.8 21.7z"
@@ -434,7 +435,7 @@ const HeroImage = ({ className, ...rest }) => {
                 <path
                     d="M270.9 168.5a43.54 43.54 0 013.2 7.4c3 10.6-2.4 21.5-5 32.2-3.3 13.7-1.9 28.1-2.1 42.2-.1 6.5-.8 13.6-5.4 18a19.33 19.33 0 00-3.5 3.5 14.22 14.22 0 00-1.1 3.3 17.05 17.05 0 01-21.1 11.7 19.43 19.43 0 01-3.6-1.5c-3.8-2.1-7.1-5.8-11.4-5.9a28.68 28.68 0 00-4.1.5c-4.3.4-8.5-1.2-12.6-2.7a8.67 8.67 0 01-2.7-1.4c-.7-.7-1.2-1.6-1.9-2.3-2.5-2.7-6.7-2.2-10.3-2.9a14.31 14.31 0 01-10.9-10.9c-.7-3.4-.1-7 .5-10.5l2.7-15.5a142.09 142.09 0 002.3-17.2 70.5 70.5 0 00-1.7-19.4c-1.2-5.2-2.9-10.3-3.6-15.6a38.17 38.17 0 017-26.8c1.4-1.9 3.2-3.8 5.6-4 1.9-.2 3.7.9 5.4 1.8q21.6 12.75 43.6 25.1c4 2.3 8.1 4.5 12.5 5.6 1.3.3 3.3.2 3.5-1.2a2.82 2.82 0 00-.4-1.5c-2.5-4.8-6.1-8.9-9-13.5s-5.1-10-4.3-15.3c1.2-7.4 8-12.2 13.6-6.5 6.5 6.9 10.7 15.3 14.8 23.3z"
                     transform="translate(0 .03)"
-                    fill="#f86d70"
+                    fill={theme.sections.hero.image.thirdColor}
                 />
                 <path
                     d="M226.1 261.9c11.7.8 23.7 1.5 34.6 6 3.5 1.4 7.2 3.3 10.9 2.4a16.18 16.18 0 005-2.7 120.79 120.79 0 0012.8-10.9c-.4-2.2-3.4-2.5-5.6-2.5a35.1 35.1 0 01-15.6-3.7 25 25 0 00-5-2.3c-4.8-1.3-9.6 1.2-14.4 2.4-7.1 1.8-14.5.8-21.7-.3l-19.5-2.9c-1.8-.3-3.9-.5-5.3.6a6.42 6.42 0 00-1.9 3.4c-2.4 8-1.2 8.7 6.7 9.2z"
@@ -482,7 +483,7 @@ const HeroImage = ({ className, ...rest }) => {
                 <path
                     d="M211.8 189.7c2.9 1.8 6.1 3 8.9 4.9s5.3 4.8 5.4 8.2-2 6.1-4 8.7l-24.4 31.9 12.4 3.3c-2 2.8-2.5 6.3-3.5 9.5s-3 6.6-6.3 7.5c-3 .8-6.1-.8-9.2-.6-2.3.1-4.5 1.2-6.7 1.3-3 .1-5.7-1.4-8.1-3.1-5.5-3.7-10.9-8.9-10.9-15.5a24.21 24.21 0 011.3-6.5c3.6-11.7 7.3-23.7 14.8-33.4 4-5.2 8.9-9.6 13.8-14a13.58 13.58 0 013.9-2.7c3.2-1.2 6.7.3 10 1.3s7.5 1.1 9.4-1.7"
                     transform="translate(0 .03)"
-                    fill="#f86d70"
+                    fill={theme.sections.hero.image.thirdColor}
                 />
                 <g opacity=".1">
                     <path
@@ -585,35 +586,35 @@ const HeroImage = ({ className, ...rest }) => {
                     variants={panelVariants}
                     animate="animationOne"
                     id="Panel5"
-                    fill="#f86d70"
+                    fill={theme.sections.hero.image.secondaryColor}
                     d="M529.6 640.53l144.5-71.7-25.2-12.3-145.7 71.3 26.4 12.7z"
                 />
                 <motion.path
                     variants={panelVariants}
                     animate="animationTwo"
                     id="Panel4"
-                    fill="#f86d70"
+                    fill={theme.sections.hero.image.secondaryColor}
                     d="M482.6 619.23l144.5-71.8-25.2-12.2-145.7 71.2 26.4 12.8z"
                 />
                 <motion.path
                     variants={panelVariants}
                     animate="animationThree"
                     id="Panel3"
-                    fill="#f86d70"
+                    fill={theme.sections.hero.image.secondaryColor}
                     d="M435.6 597.83l144.5-71.7-25.2-12.2-145.7 71.2 26.4 12.7z"
                 />
                 <motion.path
                     variants={panelVariants}
                     animate="animationFour"
                     id="Panel2"
-                    fill="#f86d70"
+                    fill={theme.sections.hero.image.secondaryColor}
                     d="M388.6 576.53l144.5-71.7-25.2-12.3-145.7 71.3 26.4 12.7z"
                 />
                 <motion.path
                     variants={panelVariants}
                     animate="animationFive"
                     id="Panel1"
-                    fill="#f86d70"
+                    fill={theme.sections.hero.image.secondaryColor}
                     d="M341.6 555.23l144.5-71.8-25.2-12.2-145.7 71.2 26.4 12.8z"
                 />
             </svg>

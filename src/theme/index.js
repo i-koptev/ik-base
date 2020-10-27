@@ -203,6 +203,18 @@ const theme = createMuiTheme({
                 gradientColor2: palette.ctaButtonGradientColor2,
                 boxShadow: `0 3px 5px 2px ${palette.ctaButtonBoxShadowColor}`,
             },
+            image: {
+                mainColor: palette.sectionHeroImageMainColor,
+                secondaryColor: palette.sectionHeroImageSecondaryColor,
+                thirdColor: palette.sectionHeroImageThirdColor,
+            },
+        },
+        projects: {
+            card: {
+                iconColor: palette.sectionProjectsCardIconColor,
+                iconHoverColor: palette.sectionProjectsCardIconHoverColor,
+                iconHoverBgColor: palette.sectionProjectsCardIconHoverBgColor,
+            },
         },
     },
     layouts: {

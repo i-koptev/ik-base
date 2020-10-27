@@ -1,6 +1,7 @@
 import { colors } from "@material-ui/core"
 import Color from "color"
 
+// const mainColor = Color("#16598C")
 const mainColor = Color("#F63854")
 // const accentColor = Color("#F03C30")
 const accentColor = Color("#f44336")
@@ -55,4 +56,12 @@ export default {
     ctaButtonGradientColor1: `${mainColor}`,
     ctaButtonGradientColor2: `${mainColor.fade(0.15)}`,
     ctaButtonBoxShadowColor: `${mainColor.fade(0.25).alpha(0.3)}`,
+
+    sectionHeroImageMainColor: `${mainColor}`,
+    sectionHeroImageSecondaryColor: `${mainColor}`,
+    sectionHeroImageThirdColor: `${mainColor.lightness(50).desaturate(0.5)}`,
+
+    sectionProjectsCardIconColor: `${mainColor}`,
+    sectionProjectsCardIconHoverColor: `${white}`,
+    sectionProjectsCardIconHoverBgColor: `${mainColor}`,
 }

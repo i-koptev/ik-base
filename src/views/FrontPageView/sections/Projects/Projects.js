@@ -48,8 +48,8 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             boxShadow: "0 10px 22px 10px rgba(27, 38, 49, 0.1)",
             "& $iconButton": {
-                backgroundColor: "red",
-                color: "white",
+                backgroundColor: theme.sections.projects.card.iconHoverBgColor,
+                color: theme.sections.projects.card.iconHoverColor,
             },
             "& $cardContentText": {
                 opacity: "1",
@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "transparent",
         border: "1px solid #f1f1f1",
         transition: "background 0.7s",
-        color: "red",
+        color: theme.sections.projects.card.iconColor,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
