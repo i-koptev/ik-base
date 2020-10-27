@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(1),
     },
     mainNavigationLink: {
+        transition: "color 200ms linear",
         textDecoration: "none",
         // textTransform: "uppercase",
         textTransform: "capitalize",
@@ -48,16 +49,52 @@ const useStyles = makeStyles((theme) => ({
         color: theme.layouts.Main.Topbar.mainNavigationLinkColor,
         fontWeight: 400,
         letterSpacing: "0.15em",
+        "&::after": {
+            content: '""',
+            width: "100%",
+            height: "1px",
+            margin: "0 auto",
+            backgroundColor:
+                theme.layouts.Main.Topbar.mainNavigationLinkActiveColor,
+            display: "block",
+            // margin-bottom: .3rem;
+            opacity: "0",
+            transitionDuration: "500ms",
+            transitionProperty: "opacity",
+        },
         "&:hover": {
             color: theme.layouts.Main.Topbar.mainNavigationLinkHoverColor,
+            "&::after": {
+                opacity: "0.5",
+            },
+        },
+        "&$active": {
+            color: theme.layouts.Main.Topbar.mainNavigationLinkActiveColor,
+            "&:hover": {
+                cursor: "default",
+                // color:
+                //     theme.layouts.Main.Topbar
+                //         .mainNavigationLinkActiveHoverColor,
+                "&::after": {
+                    opacity: "1",
+                },
+            },
+            "&::after": {
+                content: '""',
+                width: "100%",
+                height: "1px",
+                margin: "0 auto",
+                backgroundColor:
+                    theme.layouts.Main.Topbar.mainNavigationLinkActiveColor,
+                display: "block",
+                // margin-bottom: .3rem;
+                opacity: "1",
+                transitionDuration: "500ms",
+                transitionProperty: "opacity",
+            },
         },
     },
-    active: {
-        color: theme.layouts.Main.Topbar.mainNavigationLinkActiveColor,
-        "&:hover": {
-            color: theme.layouts.Main.Topbar.mainNavigationLinkActiveHoverColor,
-        },
-    },
+    active: {},
     langSwitcherButton: {
         color: theme.layouts.Main.Topbar.langSwitcherButtonColor,
         "&:hover": {
