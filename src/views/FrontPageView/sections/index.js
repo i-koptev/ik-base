@@ -1,3 +1,5 @@
 export { default as Hero } from "./Hero"
+export { default as GsapProjects } from "./GsapProjects"
 export { default as Projects } from "./Projects"
 export { default as Inter } from "./Inter"
+export { default as Team } from "./Team"

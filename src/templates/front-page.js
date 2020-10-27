@@ -59,6 +59,76 @@ const FrontPage = (props) => {
     const viewSectionProjectsData = {
         title: "Our Projects",
         subtitle: "Section Projects Subitle",
+        projects: [
+            {
+                projectHeader: "Project 1 header",
+                projectDescription:
+                    "Project 1 description. Lorem ipsum papirosum.",
+            },
+            {
+                projectHeader: "Project 2 header",
+                projectDescription:
+                    "Project 2 description. Lorem ipsum papirosum.",
+            },
+            {
+                projectHeader: "Project 3 header",
+                projectDescription:
+                    "Project 3 description. Lorem ipsum papirosum.",
+            },
+            {
+                projectHeader: "Project 4 header",
+                projectDescription:
+                    "Project 4 description. Lorem ipsum papirosum.",
+            },
+            {
+                projectHeader: "Project 5 header",
+                projectDescription:
+                    "Project 5 description. Lorem ipsum papirosum.",
+            },
+            {
+                projectHeader: "Project 6 header",
+                projectDescription:
+                    "Project 6 description. Lorem ipsum papirosum.",
+            },
+        ],
+    }
+
+    const viewSectionTeamData = {
+        title: "Our Projects",
+        team: [
+            { firstName: "Ivans", secondName: "Ivanovs", role: "Developer" },
+            {
+                firstName: "Sidors",
+                secondName: "Sidorovs",
+                role: "Developer2",
+            },
+            {
+                firstName: "Pjotrs",
+                secondName: "Petrovs",
+                role: "Developer2",
+            },
+            {
+                firstName: "Grigorijs",
+                secondName: "Grigorjevs",
+                role: "Developer3",
+            },
+            { firstName: "Ivans", secondName: "Ivanovs", role: "Developer" },
+            {
+                firstName: "Sidors",
+                secondName: "Sidorovs",
+                role: "Developer2",
+            },
+            {
+                firstName: "Pjotrs",
+                secondName: "Petrovs",
+                role: "Developer2",
+            },
+            {
+                firstName: "Grigorijs",
+                secondName: "Grigorjevs",
+                role: "Developer3",
+            },
+        ],
     }
 
     return (
@@ -67,6 +137,7 @@ const FrontPage = (props) => {
             <FrontPageView
                 viewSectionHeroData={viewSectionHeroData}
                 viewSectionProjectsData={viewSectionProjectsData}
+                viewSectionTeamData={viewSectionTeamData}
             />
             {/* <DefaultPageView {...props} /> */}
         </MainLayout>
