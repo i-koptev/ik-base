@@ -1,14 +1,22 @@
 import React from "react"
 
-import { Hero, Projects, Inter } from "./sections"
+import { Hero, Projects, GsapProjects, Inter, Team } from "./sections"
+import Slider from "./Slider"
 // import Test from "./Test"
 
-const FrontPageView = ({ viewSectionHeroData, viewSectionProjectsData }) => {
+const FrontPageView = ({
+    viewSectionHeroData,
+    viewSectionProjectsData,
+    viewSectionTeamData,
+}) => {
     return (
         <>
             {/* <Test /> */}
             <Hero {...viewSectionHeroData} />
             <Projects {...viewSectionProjectsData} />
+            <GsapProjects {...viewSectionProjectsData} />
+            <Team {...viewSectionTeamData} />
+            <Slider />
             <Inter />
         </>
     )
