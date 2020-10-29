@@ -7,6 +7,6 @@ export default {
         // lg: 1120,
         lg: 1280,
         // xl: 1472,
-        xl: 1922,
+        xl: 1920,
     },
 }
