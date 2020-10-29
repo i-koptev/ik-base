@@ -36,17 +36,7 @@ const ProductList = ({ products }) => {
                             </Typography>
                         </Link>
                         <div>category: {product.category}</div>
-                        <div>id: {product.id}</div>
-                        <div>Short Description: {product.shortDescription}</div>
-                        <div>Description:</div>
 
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: product.description,
-                            }}
-                        />
-
-                        <div>Price: {product.price}€</div>
                         <div className={classes.test}>
                             <SvgCompatibleImage
                                 image={product.featuredImage}
@@ -99,6 +89,18 @@ const ProductList = ({ products }) => {
                                 />
                             </Grid>
                         </Grid>
+
+                        <div>id: {product.id}</div>
+                        <div>Short Description: {product.shortDescription}</div>
+                        <div>Description:</div>
+
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: product.description,
+                            }}
+                        />
+
+                        <div>Price: {product.price}€</div>
                     </Grid>
                 )
             })}

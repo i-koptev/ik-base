@@ -100,12 +100,23 @@ const ProductsPageView = ({
                     <p>{pageSubheader}</p>
                     {/* <pre>{JSON.stringify(allProductsList, null, 4)}</pre> */}
                 </Grid>
+                <Grid item xs={12}>
+                    <Grid container spacing={4}>
+                        <Grid item xs={12} sm={12} md={2}>
+                            <CategoryList
+                                allCategoryList={allCategoryList}
+                                setCategory={handleSetCategory}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={10}>
+                            {" "}
+                            <ProductList
+                                products={filteredByCategoryProducts}
+                            />
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Grid>
-            <ProductList products={filteredByCategoryProducts} />
-            <CategoryList
-                allCategoryList={allCategoryList}
-                setCategory={handleSetCategory}
-            />
         </Container>
     )
 }

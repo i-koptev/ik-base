@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 
 import clsx from "clsx"
 import PropTypes from "prop-types"
@@ -20,6 +20,7 @@ import IconButton from "@material-ui/core/IconButton"
 
 import { Coffee, Food } from "mdi-material-ui"
 import { Camera, Settings } from "mdi-material-ui/light"
+import SettingsSVG from "./components/SettingsSVG"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -122,9 +123,21 @@ const Projects = ({ title, subtitle, projects }) => {
                       },
                   },
               }
+        const onCardHover = {
+            scaleX: [1, 0.95, 1],
+            // x: [0, 1, -1, 0],
+            // y: [0, -1, -1, 0],
+            transition: { type: "spring", duration: 0.5 },
+        }
+        const onCardTap = {
+            rotate: 3,
+            transition: { type: "spring", duration: 1 },
+        }
 
         return (
             <motion.div
+                whileHover={onCardHover}
+                whileTap={onCardTap}
                 initial="hidden"
                 animate={inView ? "show" : "hidden"}
                 variants={variants}
@@ -182,8 +195,12 @@ const Projects = ({ title, subtitle, projects }) => {
                                                 aria-label="settings"
                                                 className={classes.iconButton}
                                             >
-                                                <Settings
+                                                {/* <Settings
                                                     className={classes.icon}
+                                                /> */}
+                                                <SettingsSVG
+                                                    className={classes.icon}
+                                                    rotate={true}
                                                 />
                                             </IconButton>
                                         </div>
