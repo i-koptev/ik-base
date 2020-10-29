@@ -61,49 +61,52 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const ProductsPageView = ({
-    intl,
     className,
     pageHeader,
     pageSubheader,
-    allProducts,
+    allProductsList,
     allCategoryList,
 }) => {
     const classes = useStyles()
+    const theme = useTheme()
 
     const [categories, setCategories] = React.useState(allCategoryList)
     const handleSetCategory = (cat) => setCategories(cat)
 
     const filteredByCategoryProducts =
-        !!allProducts &&
-        allProducts.filter((product) =>
-            categories.includes(product.frontmatter.productCategory)
+        !!allProductsList &&
+        allProductsList.filter((product) =>
+            // categories.includes(product.frontmatter.productCategory)
+            categories.includes(product.categoryId)
         )
 
     return (
-        <Grid
-            container
-            spacing={4}
+        <Container
+            maxWidth={theme.siteContainer.maxWidth}
             // {...rest}
             className={clsx(classes.root, className)}
         >
-            <Grid item xs={12}>
-                <Typography
-                    className={classes.header}
-                    variant="h1"
-                    component="h1"
-                    align="center"
-                >
-                    {pageHeader}
-                </Typography>
+            <Grid container spacing={4}>
+                <Grid item xs={12}>
+                    <Typography
+                        className={classes.header}
+                        variant="h1"
+                        component="h1"
+                        align="center"
+                    >
+                        {pageHeader}
+                    </Typography>
 
-                <p>{pageSubheader}</p>
-                <ProductList products={filteredByCategoryProducts} />
-                <CategoryList
-                    allCategoryList={allCategoryList}
-                    setCategory={handleSetCategory}
-                />
+                    <p>{pageSubheader}</p>
+                    {/* <pre>{JSON.stringify(allProductsList, null, 4)}</pre> */}
+                </Grid>
             </Grid>
-        </Grid>
+            <ProductList products={filteredByCategoryProducts} />
+            <CategoryList
+                allCategoryList={allCategoryList}
+                setCategory={handleSetCategory}
+            />
+        </Container>
     )
 }
 

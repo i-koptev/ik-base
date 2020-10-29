@@ -22,18 +22,67 @@ const ProductsPage = (props) => {
         (cat) => cat.node.frontmatter.categoryId
     )
 
+    const allProductsList = allProducts.map((product) => {
+        return {
+            id: product.id,
+            slug: product.fields.slug,
+            title: product.frontmatter.title,
+            price: product.frontmatter.price,
+
+            categoryId: product.frontmatter.productCategory,
+            category: intl.formatMessage({
+                id: `category.${product.frontmatter.productCategory}`,
+            }),
+            isFeatured: product.frontmatter.featuredproduct,
+            shortDescription: intl.formatMessage({
+                id: `${product.id}.productShortDescription`,
+            }),
+            description: intl.formatMessage({
+                id: `${product.id}.productDescription`,
+            }),
+            featuredImage: {
+                ...product.frontmatter.featuredImageObject.featuredImage,
+                alt: intl.formatMessage({
+                    id: `${product.id}.featuredImageAlt`,
+                }),
+            },
+            cardImages: [
+                {
+                    ...product.frontmatter.productCardImages.image1Object
+                        .image1,
+                    alt: intl.formatMessage({
+                        id: `${product.id}.productCardImage1Alt`,
+                    }),
+                },
+                {
+                    ...product.frontmatter.productCardImages.image2Object
+                        .image2,
+                    alt: intl.formatMessage({
+                        id: `${product.id}.productCardImage2Alt`,
+                    }),
+                },
+                {
+                    ...product.frontmatter.productCardImages.image3Object
+                        .image3,
+                    alt: intl.formatMessage({
+                        id: `${product.id}.productCardImage3Alt`,
+                    }),
+                },
+            ],
+        }
+    })
+
     const viewData = {
         pageHeader: intl.formatMessage({ id: `products-page.productsHeading` }),
         pageSubheader: intl.formatMessage({
             id: `products-page.productsSubheading`,
         }),
-        allProducts: allProducts,
+        allProductsList: allProductsList,
         allCategoryList: allCategoryList,
     }
 
     return (
         <MainLayout>
-            <h3 style={{ paddingLeft: "2rem" }}>{__filename}</h3>
             <ProductsPageView {...viewData} />
             {/* <DefaultPageView {...props} /> */}
         </MainLayout>
@@ -74,11 +123,46 @@ export const pageQuery = graphql`
                             }
                         }
                     }
+                    productCardImages {
+                        image1Object {
+                            image1 {
+                                id
+                                publicURL
+                                childImageSharp {
+                                    fluid(maxWidth: 800, quality: 100) {
+                                        ...GatsbyImageSharpFluid
+                                    }
+                                }
+                            }
+                        }
+                        image2Object {
+                            image2 {
+                                id
+                                publicURL
+                                childImageSharp {
+                                    fluid(maxWidth: 800, quality: 100) {
+                                        ...GatsbyImageSharpFluid
+                                    }
+                                }
+                            }
+                        }
+                        image3Object {
+                            image3 {
+                                id
+                                publicURL
+                                childImageSharp {
+                                    fluid(maxWidth: 800, quality: 100) {
+                                        ...GatsbyImageSharpFluid
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
         categories: allMarkdownRemark(
-            filter: { frontmatter: { templateKey: { eq: "category-page" } } }
+            filter: { frontmatter: { templateKey: { eq: "category-item" } } }
         ) {
             edges {
                 node {

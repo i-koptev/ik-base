@@ -1,4 +1,5 @@
 const { resolve } = require(`path`)
+const showdown = require("showdown")
 const fs = require("fs")
 const { dd } = require("dumper.js")
 const { dump } = require("dumper.js")
@@ -79,6 +80,8 @@ module.exports = async ({ actions, graphql }, options) => {
         ? result.data.allMarkdownRemark.nodes
         : result.data.allMarkdownRemark
 
+    const converter = new showdown.Converter({ noHeaderId: true })
+
     if (allProductsItems) {
         siteLanguages.map((language) => {
             allProductsItems.forEach((productItem) => {
@@ -88,7 +91,9 @@ module.exports = async ({ actions, graphql }, options) => {
 
                 intlTranslations[language][
                     `${productItem.id}.productDescription`
-                ] = productItem.frontmatter.productDescription[language]
+                ] = converter.makeHtml(
+                    productItem.frontmatter.productDescription[language]
+                )
 
                 intlTranslations[language][
                     `${productItem.id}.featuredImageAlt`
