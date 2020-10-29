@@ -55,11 +55,11 @@ const useStyles = makeStyles((theme) => ({
     },
     sectionContainer: {
         // flexGrow: 1,
-        paddingTop: "3rem",
+        paddingTop: "2.5rem",
         paddingBottom: "3rem",
         // backgroundColor: "#ee000033",
         [theme.breakpoints.up("lg")]: {
-            paddingTop: "3.5rem",
+            paddingTop: "3rem",
             paddingBottom: "3.5rem",
             // backgroundColor: "tomato",
         },
@@ -70,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         [theme.breakpoints.up("md")]: {
             textAlign: "left",
+            marginTop: "-1em",
         },
     },
     heroBg: {
