@@ -5,8 +5,8 @@ const siteTextFontWeight = ""
 
 const headingsFontFamily =
     "Oswald, Roboto, 'Open Sans','Playfair Display', Times, serif" //h1, h2, h3, h4, h5, h6
-const headingsLetterSpacing = "0.01em"
-const headingsWeight = 500
+const headingsLetterSpacing = "0.03em"
+const headingsWeight = 700
 
 const sharedHeadingStyles = {
     fontFamily: headingsFontFamily,
@@ -39,8 +39,8 @@ export default {
     },
 
     fontFamily: [
-        "Open Sans",
         "Roboto",
+        "Open Sans",
         '"Segoe UI"',
         "PT Sans",
         "Arial",
