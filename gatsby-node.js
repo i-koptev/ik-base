@@ -207,10 +207,14 @@ exports.createPages = async (props) => {
             context: {
                 id: id,
                 slug: page.fields.slug,
+                strippedSlug: getLastEl(page.fields.slug),
             },
         })
     })
 }
+
+const getLastEl = (slug) =>
+    slug.split("/").filter(Boolean)[slug.split("/").filter(Boolean).length - 1]
 
 const replacePath = (path) =>
     path === `/` ? path : path.replace(`-REPLACEBYSLASH-`, `/`)
