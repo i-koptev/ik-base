@@ -39,7 +39,7 @@ const Contacts = (props) => {
 
     return (
         <MainLayout>
-            <h3 style={{ paddingLeft: "2rem" }}>{__filename}</h3>
+            {/* <h3 style={{ paddingLeft: "2rem" }}>{__filename}</h3> */}
 
             {/* <DefaultPageView {...props} /> */}
             <ContactsPageView {...viewData} />
