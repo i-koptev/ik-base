@@ -18,9 +18,10 @@ const ProductsPage = (props) => {
         categories: { edges: allCategories },
     } = data
 
-    const allCategoryList = allCategories.map(
-        (cat) => cat.node.frontmatter.categoryId
-    )
+    const allCategoryObjectsList = allCategories.map((cat) => ({
+        id: cat.node.frontmatter.categoryId,
+        templateKey: cat.node.frontmatter.templateKey,
+    }))
 
     const allProductsList = allProducts.map((product) => {
         return {
@@ -78,11 +79,13 @@ const ProductsPage = (props) => {
             id: `products-page.productsSubheading`,
         }),
         allProductsList: allProductsList,
-        allCategoryList: allCategoryList,
+        allCategoryObjectsList: allCategoryObjectsList,
     }
 
     return (
         <MainLayout>
+            {/* <pre>{JSON.stringify(data, null, 4)}</pre> */}
+            {/* <pre>{JSON.stringify(allCategoryObjectsList, null, 4)}</pre> */}
             <ProductsPageView {...viewData} />
             {/* <DefaultPageView {...props} /> */}
         </MainLayout>
@@ -168,6 +171,7 @@ export const pageQuery = graphql`
                 node {
                     frontmatter {
                         categoryId
+                        templateKey
                     }
                 }
             }
