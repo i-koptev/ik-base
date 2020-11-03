@@ -68,22 +68,40 @@ const ProductsPageView = ({
     pageHeader,
     pageSubheader,
     allProductsList,
-    allCategoryObjectsList,
+    allCategoryList,
 }) => {
     const classes = useStyles()
     const theme = useTheme()
+    const [value, setValue] = React.useState("all")
 
-    // const filteredByCategoryProducts =
-    //     !!allProductsList &&
-    //     allProductsList.filter((product) =>
-    //         // categories.includes(product.frontmatter.productCategory)
-    //         categories.includes(product.categoryId)
-    //     )
-
-    const filterProductListByCategory = (list, category) => {
-        if (list)
-            return list.filter((listItem) => listItem.categoryId === category)
+    const [categories, setCategories] = React.useState(allCategoryList)
+    const handleSetCategory = (cat) => {
+        if (cat === "all") {
+            setCategories(allCategoryList)
+            setValue(cat)
+        } else {
+            console.log(cat)
+            setCategories(cat)
+            setValue(cat)
+        }
     }
+
+    const handleChange = (event, newValue) => {
+        if (newValue === "all") {
+            setCategories(allCategoryList)
+            setValue(newValue)
+        } else {
+            setValue(newValue)
+            setCategories(newValue)
+        }
+    }
+
+    const filteredByCategoryProducts =
+        !!allProductsList &&
+        allProductsList.filter((product) =>
+            // categories.includes(product.frontmatter.productCategory)
+            categories.includes(product.categoryId)
+        )
 
     return (
         <Container
@@ -91,68 +109,48 @@ const ProductsPageView = ({
             // {...rest}
             className={clsx(classes.root, className)}
         >
-            <Grid container spacing={0} style={{ marginBottom: "1rem" }}>
+            <Grid container spacing={4}>
                 <Grid item xs={12}>
                     <Typography
                         className={classes.header}
-                        variant="h3"
-                        component="h3"
+                        variant="h1"
+                        component="h1"
                         align="center"
                     >
                         {pageHeader}
                     </Typography>
-                    <Typography
-                        className={classes.subheader}
-                        variant="h6"
-                        component="h6"
-                        align="center"
-                    >
-                        {pageSubheader}
-                    </Typography>
 
+                    <p>{pageSubheader}</p>
                     {/* <pre>{JSON.stringify(allProductsList, null, 4)}</pre> */}
-                </Grid>
-            </Grid>
-
-            {/* --- SLIDER --- */}
-            <Grid container spacing={1} style={{ marginBottom: "1rem" }}>
-                <Grid item xs={12} md={2}>
-                    {" "}
-                    <CategoryList
-                        allCategoryObjectsList={allCategoryObjectsList}
-                    />
-                </Grid>
-                <Grid item xs={12} md={10}>
-                    <div
-                        style={{
-                            height: "300px",
-                            backgroundColor: "#333",
-                            padding: "50px",
-                            fontSize: "5rem",
-                            fontWeight: 700,
-                            color: "white",
-                            textAlign: "center",
-                        }}
+                    <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        centered
                     >
-                        SLIDER
-                    </div>
+                        <Tab value={"computers"} label="Компьютеры" />
+                        <Tab value={"furniture"} label="Мэбэль" />
+                        <Tab value={"all"} label="Все" />
+                    </Tabs>
+                </Grid>
+                <Grid item xs={12}>
+                    <Grid container spacing={4}>
+                        <Grid item xs={12} sm={12} md={2}>
+                            <CategoryList
+                                allCategoryList={allCategoryList}
+                                setCategory={handleSetCategory}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={10}>
+                            {" "}
+                            <ProductList
+                                products={filteredByCategoryProducts}
+                            />
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
-
-            {allCategoryObjectsList.map((category) => {
-                const products = filterProductListByCategory(
-                    allProductsList,
-                    category.id
-                )
-                return (
-                    <ProductList
-                        products={products.slice(0, 2)}
-                        // products={products}
-                        category={category.id}
-                        key={`key-${category.id}`}
-                    />
-                )
-            })}
         </Container>
     )
 }
