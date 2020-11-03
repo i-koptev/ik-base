@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: "1em",
     },
     card: {
+        border: "1px solid #ccc",
         minHeight: 240,
         padding: "20px",
         // borderRadius: 20,
