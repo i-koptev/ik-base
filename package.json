@@ -47,6 +47,7 @@
         "react-dom": "^16.13.1",
         "react-headroom": "^3.0.0",
         "react-helmet": "^6.1.0",
+        "react-transition-group": "1.x",
         "react-use": "^15.3.4",
         "showdown": "^1.9.1",
         "swiper": "^6.3.3"
