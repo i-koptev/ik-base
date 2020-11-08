@@ -1,7 +1,7 @@
 import React from "react"
 import BackgroundImage from "gatsby-background-image"
 
-const SvgCompatibleBackgroundImage = props => {
+const SvgCompatibleBackgroundImage = (props) => {
     if (!!props.image.publicURL && !!props.image.childImageSharp) {
         return (
             <BackgroundImage
@@ -9,6 +9,7 @@ const SvgCompatibleBackgroundImage = props => {
                 Tag="section"
                 className={props.className}
                 fadeIn="soft"
+                id={props.id ? props.id : "genericSection"}
             >
                 {props.children}
             </BackgroundImage>
@@ -18,6 +19,7 @@ const SvgCompatibleBackgroundImage = props => {
     if (!!props.image && typeof props.image.publicURL === "string")
         return (
             <section
+                id={props.id ? props.id : "genericSection"}
                 className={props.className}
                 style={{
                     backgroundImage: `url(${props.image.publicURL})`,
