@@ -23,14 +23,21 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        // backgroundColor: "#f1f1f1",
-        [theme.breakpoints.up("lg")]: {
-            // backgroundColor: "tomato",
+        backgroundColor: "#eee",
+        marginTop: "-56px",
+        [theme.breakpoints.up("sm")]: {
+            marginTop: "-65px",
+        },
+    },
+    sectionContainer: {
+        backgroundColor: "#fff",
+        paddingTop: `56px`,
+        [theme.breakpoints.up("sm")]: {
+            paddingTop: `65px`,
         },
     },
     header: {
-        marginTop: "2rem",
-        marginBottom: "3rem",
+        padding: "1rem",
     },
     label: {
         display: "inline-block",
@@ -38,7 +45,11 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "1em",
     },
     // leftCol: { minHeight: "200px", backgroundColor: "#efefef" },
-    rightCol: { border: "1px solid skyblue", width: "100%" },
+    mapWrapper: {
+        border: "1px solid skyblue",
+        minHeight: "350px",
+        width: "100%",
+    },
     form: {
         // width: "100%",
         // border: "1px solid skyblue",
@@ -184,158 +195,161 @@ const ContactsPageView = ({
     const theme = useTheme()
 
     return (
-        <Container
-            maxWidth={theme.siteContainer.maxWidth}
-            // {...rest}
-            className={clsx(classes.root, className)}
-        >
-            <Grid container spacing={4}>
-                <Grid item xs={12}>
-                    {/* <DevTool control={control} /> */}
-                    <Typography
-                        className={classes.header}
-                        variant="h3"
-                        component="h3"
-                        align="center"
-                    >
-                        {heading}
-                    </Typography>
-                </Grid>
-            </Grid>
-
-            <Grid container spacing={4}>
-                <Grid item xs={12} md={7}>
-                    <form
-                        className={classes.form}
-                        onSubmit={handleSubmit(onSubmit)}
-                    >
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    variant="outlined"
-                                    size="small"
-                                    margin="normal"
-                                    // required
-                                    fullWidth
-                                    name="name"
-                                    label="Your Name"
-                                    type="text"
-                                    id="name"
-                                    autoComplete="off"
-                                    className={classes.textField}
-                                    // error={errors.name}
-                                    inputRef={register}
-                                    // autoFocus
-                                    onChange={clearInputError}
-                                />
-                                {
-                                    <div className={classes.error}>
-                                        {errors.name &&
-                                            intl.formatMessage({
-                                                id: errors.name.message,
-                                            })}
-                                    </div>
-                                }
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <TextField
-                                    variant="outlined"
-                                    size="small"
-                                    margin="normal"
-                                    // required
-                                    fullWidth
-                                    name="email"
-                                    label="Your EMail"
-                                    type="email"
-                                    id="email"
-                                    autoComplete="off"
-                                    className={classes.textField}
-                                    // error={!!errors.phone}
-                                    inputRef={register}
-                                    onChange={clearInputError}
-                                />
-                                {
-                                    <div className={classes.error}>
-                                        {errors.email &&
-                                            intl.formatMessage({
-                                                id: errors.email.message,
-                                            })}
-                                    </div>
-                                }
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    size="small"
-                                    margin="normal"
-                                    // required
-                                    fullWidth
-                                    name="email"
-                                    label="Your EMail"
-                                    type="email"
-                                    id="email"
-                                    autoComplete="off"
-                                    className={classes.textField}
-                                    // error={!!errors.phone}
-                                    inputRef={register}
-                                    onChange={clearInputError}
-                                />
-                                {
-                                    <div className={classes.error}>
-                                        {errors.email &&
-                                            intl.formatMessage({
-                                                id: errors.email.message,
-                                            })}
-                                    </div>
-                                }
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    size="small"
-                                    margin="normal"
-                                    multiline
-                                    rows={7}
-                                    rowsMax={12}
-                                    // required
-                                    fullWidth
-                                    name="email"
-                                    label="Your EMail"
-                                    type="email"
-                                    id="email"
-                                    autoComplete="off"
-                                    className={classes.textField}
-                                    // error={!!errors.phone}
-                                    inputRef={register}
-                                    onChange={clearInputError}
-                                />
-                                {
-                                    <div>
-                                        {errors.email &&
-                                            intl.formatMessage({
-                                                id: errors.email.message,
-                                            })}
-                                    </div>
-                                }
-                            </Grid>
-                        </Grid>
-                        <Button
-                            variant="contained"
-                            type="submit"
-                            disabled={!!errors.name || !!errors.email}
-                            className={classes.submit}
+        <div className={classes.root}>
+            <Container
+                maxWidth={theme.siteContainer.maxWidth}
+                // {...rest}
+                className={classes.sectionContainer}
+            >
+                <Grid container spacing={4}>
+                    <Grid item xs={12}>
+                        {/* <DevTool control={control} /> */}
+                        <Typography
+                            className={classes.header}
+                            variant="h3"
+                            component="h3"
+                            align="center"
                         >
-                            Send
-                        </Button>
-                    </form>
+                            {heading}
+                        </Typography>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={5} container>
-                    <div className={classes.rightCol}></div>
+
+                <Grid container spacing={4}>
+                    <Grid item xs={12} md={7}>
+                        <form
+                            className={classes.form}
+                            onSubmit={handleSubmit(onSubmit)}
+                        >
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        variant="outlined"
+                                        size="small"
+                                        margin="normal"
+                                        // required
+                                        fullWidth
+                                        name="name"
+                                        label="Your Name"
+                                        type="text"
+                                        id="name"
+                                        autoComplete="off"
+                                        className={classes.textField}
+                                        // error={errors.name}
+                                        inputRef={register}
+                                        // autoFocus
+                                        onChange={clearInputError}
+                                    />
+                                    {
+                                        <div className={classes.error}>
+                                            {errors.name &&
+                                                intl.formatMessage({
+                                                    id: errors.name.message,
+                                                })}
+                                        </div>
+                                    }
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        variant="outlined"
+                                        size="small"
+                                        margin="normal"
+                                        // required
+                                        fullWidth
+                                        name="email"
+                                        label="Your EMail"
+                                        type="email"
+                                        id="email"
+                                        autoComplete="off"
+                                        className={classes.textField}
+                                        // error={!!errors.phone}
+                                        inputRef={register}
+                                        onChange={clearInputError}
+                                    />
+                                    {
+                                        <div className={classes.error}>
+                                            {errors.email &&
+                                                intl.formatMessage({
+                                                    id: errors.email.message,
+                                                })}
+                                        </div>
+                                    }
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        variant="outlined"
+                                        size="small"
+                                        margin="normal"
+                                        // required
+                                        fullWidth
+                                        name="email"
+                                        label="Your EMail"
+                                        type="email"
+                                        id="email"
+                                        autoComplete="off"
+                                        className={classes.textField}
+                                        // error={!!errors.phone}
+                                        inputRef={register}
+                                        onChange={clearInputError}
+                                    />
+                                    {
+                                        <div className={classes.error}>
+                                            {errors.email &&
+                                                intl.formatMessage({
+                                                    id: errors.email.message,
+                                                })}
+                                        </div>
+                                    }
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        variant="outlined"
+                                        size="small"
+                                        margin="normal"
+                                        multiline
+                                        rows={7}
+                                        rowsMax={12}
+                                        // required
+                                        fullWidth
+                                        name="email"
+                                        label="Your EMail"
+                                        type="email"
+                                        id="email"
+                                        autoComplete="off"
+                                        className={classes.textField}
+                                        // error={!!errors.phone}
+                                        inputRef={register}
+                                        onChange={clearInputError}
+                                    />
+                                    {
+                                        <div className={classes.error}>
+                                            {errors.email &&
+                                                intl.formatMessage({
+                                                    id: errors.email.message,
+                                                })}
+                                        </div>
+                                    }
+                                </Grid>
+                            </Grid>
+                            <Button
+                                variant="contained"
+                                type="submit"
+                                disabled={!!errors.name || !!errors.email}
+                                className={classes.submit}
+                            >
+                                Send
+                            </Button>
+                        </form>
+                    </Grid>
+                    <Grid item xs={12} md={5} container>
+                        <div className={classes.mapWrapper}></div>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Container>
+            </Container>
+        </div>
     )
 }
+//AKIARD7MRFOL4GUWS64O
 
 export default injectIntl(ContactsPageView)
 

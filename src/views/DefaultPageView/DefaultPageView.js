@@ -18,8 +18,17 @@ import Typography from "@material-ui/core/Typography"
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        [theme.breakpoints.up("lg")]: {
-            // backgroundColor: "tomato",
+        backgroundColor: "#eee",
+        marginTop: "-56px",
+        [theme.breakpoints.up("sm")]: {
+            marginTop: "-65px",
+        },
+    },
+    sectionContainer: {
+        backgroundColor: "#fff",
+        paddingTop: `56px`,
+        [theme.breakpoints.up("sm")]: {
+            paddingTop: `65px`,
         },
     },
     header: {

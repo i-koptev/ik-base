@@ -12,8 +12,17 @@ import SvgCompatibleBackgroundImage from "../../components/SvgCompatibleBackgrou
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        [theme.breakpoints.up("lg")]: {
-            // backgroundColor: "tomato",
+        backgroundColor: "#eee",
+        marginTop: "-56px",
+        [theme.breakpoints.up("sm")]: {
+            marginTop: "-65px",
+        },
+    },
+    sectionContainer: {
+        backgroundColor: "#fff",
+        paddingTop: `56px`,
+        [theme.breakpoints.up("sm")]: {
+            paddingTop: `65px`,
         },
     },
     hero: {
@@ -115,40 +124,42 @@ const ProductPageView = ({
     const classes = useStyles()
 
     return (
-        <Grid
-            container
-            spacing={4}
-            // {...rest}
-            className={clsx(classes.root, className)}
-        >
-            <Grid item xs={12}>
-                <Typography
-                    className={classes.header}
-                    variant="h1"
-                    component="h1"
-                    align="center"
-                >
-                    {title}
-                </Typography>
-                <h4>{shortDescription}</h4>
-                <p>{description}</p>
-                <pre>{JSON.stringify(featuredImage, null, 4)}</pre>
-
-                <div style={{ height: "300px", width: "100vw" }}>
-                    <SvgCompatibleBackgroundImage
-                        className={classes.hero}
-                        image={image1}
+        <div className={classes.root}>
+            <Grid
+                container
+                spacing={4}
+                // {...rest}
+                className={clsx(classes.className, classes.sectionContainer)}
+            >
+                <Grid item xs={12}>
+                    <Typography
+                        className={classes.header}
+                        variant="h1"
+                        component="h1"
+                        align="center"
                     >
-                        <div className={classes.overlay}></div>
-                    </SvgCompatibleBackgroundImage>
-                </div>
-                {/* <div
+                        {title}
+                    </Typography>
+                    <h4>{shortDescription}</h4>
+                    <p>{description}</p>
+                    <pre>{JSON.stringify(featuredImage, null, 4)}</pre>
+
+                    <div style={{ height: "300px", width: "100vw" }}>
+                        <SvgCompatibleBackgroundImage
+                            className={classes.hero}
+                            image={image1}
+                        >
+                            <div className={classes.overlay}></div>
+                        </SvgCompatibleBackgroundImage>
+                    </div>
+                    {/* <div
                     dangerouslySetInnerHTML={{
                         __html: feature1detailed,
                     }}
                 /> */}
+                </Grid>
             </Grid>
-        </Grid>
+        </div>
     )
 }
 

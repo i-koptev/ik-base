@@ -47,30 +47,10 @@ SwiperCore.use([
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        // backgroundColor: "#ffffff",
-        // marginTop: "-64px",
-        minHeight: "calc(100vh - 64px)",
-        // minHeight: "calc(650px - 64px)",
-        // minHeight: "calc(650px - 64px)",
-    },
-    sectionContainer: {
-        // flexGrow: 1,
-        paddingTop: "2.5rem",
-        paddingBottom: "3rem",
-        // backgroundColor: "#ee000033",
-        [theme.breakpoints.up("lg")]: {
-            paddingTop: "3rem",
-            paddingBottom: "3.5rem",
-            // backgroundColor: "tomato",
-        },
-    },
-
-    header: {
-        paddingBottom: "1em",
-        textAlign: "center",
-        [theme.breakpoints.up("md")]: {
-            textAlign: "left",
-            marginTop: "-1em",
+        // backgroundColor: "#fde",
+        minHeight: "calc(100vh - 56px)",
+        [theme.breakpoints.up("sm")]: {
+            minHeight: "calc(100vh - 65px)",
         },
     },
     heroBg: {
@@ -79,6 +59,35 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: "left center",
         overflow: "hidden",
     },
+    sectionContainer: {
+        // backgroundColor: "#eee",
+        paddingTop: "calc(56px + 2.5rem)",
+        paddingBottom: "3rem",
+        [theme.breakpoints.up("sm")]: {
+            minHeight: "calc(100vh - 65px)",
+            paddingTop: "calc(65px + 16px + 2.5rem)",
+        },
+
+        [theme.breakpoints.up("lg")]: {
+            paddingTop: "calc(65px + 16px + 3rem)",
+            paddingBottom: "3.5rem",
+            // backgroundColor: "tomato",
+        },
+    },
+
+    header: {
+        paddingBottom: "1em",
+        textAlign: "center",
+
+        [theme.breakpoints.down("xs")]: {
+            fontSize: "1.8rem",
+        },
+        [theme.breakpoints.up("md")]: {
+            textAlign: "left",
+            marginTop: "-1em",
+        },
+    },
+
     content: {
         [theme.breakpoints.up("md")]: {
             padding: "60px 0 80px",
@@ -186,6 +195,7 @@ const Hero = ({
     feature3detailed,
     feature4short,
     feature4detailed,
+    className,
 }) => {
     const classes = useStyles()
     const theme = useTheme()
@@ -196,142 +206,149 @@ const Hero = ({
 
     return (
         <SvgCompatibleBackgroundImage
-            className={classes.heroBg}
+            id="sectionHero"
+            className={clsx(classes.heroBg, classes.root, className)}
             image={introBgImage}
         >
-            <section id="sectionProjects" className={classes.root}>
-                <Container
-                    maxWidth={theme.siteContainer.maxWidth}
-                    component="section"
-                    className={classes.sectionContainer}
+            <Container
+                maxWidth={theme.siteContainer.maxWidth}
+                // component="section"
+                className={classes.sectionContainer}
+            >
+                <Grid
+                    container
+                    spacing={adaptiveSpacing}
+                    className={classes.content}
+                    // {...rest}
+                    justify="center"
                 >
-                    <Grid
-                        container
-                        spacing={adaptiveSpacing}
-                        className={classes.content}
-                        // {...rest}
-                        justify="center"
-                    >
-                        <Grid item xs={11} sm={10} md={7}>
-                            <IntersectionObserver>
-                                <Typography
-                                    className={classes.header}
-                                    variant="h2"
-                                    component={AnimatedHeader}
-                                    animatedComponent="h1"
-                                    // align="center"
-                                >
-                                    {heading}
-                                </Typography>
-                            </IntersectionObserver>
-                            <Swiper
-                                loop
-                                id="main"
-                                tag="section"
-                                // wrapperTag="ul"
-                                className={classes.slider}
-                                // spaceBetween={8}
-                                slidesPerView={1}
-                                speed={2000}
-                                // navigation
-                                effect="fade"
-                                fadeEffect={{ crossFade: true }}
-                                pagination={{ clickable: true }}
-                                // scrollbar={{ draggable: false }}
-                                autoplay={{
-                                    delay: "3500",
-                                    disableOnInteraction: "true",
-                                }}
+                    <Grid item xs={11} sm={10} md={7}>
+                        <IntersectionObserver>
+                            <Typography
+                                className={classes.header}
+                                variant="h2"
+                                component={AnimatedHeader}
+                                animatedComponent="h1"
+                                // align="center"
                             >
-                                <SwiperSlide>
-                                    <Typography
-                                        variant="h6"
-                                        style={{ marginBottom: "0.7em" }}
-                                    >
-                                        {feature1short}
-                                    </Typography>
-                                    <Typography>{feature1detailed}</Typography>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Typography
-                                        variant="h6"
-                                        style={{ marginBottom: "0.7em" }}
-                                    >
-                                        {feature1short}
-                                    </Typography>
-                                    <Typography>
-                                        Эгоцентризм прекрасно дает
-                                        интеракционизм, независимо от
-                                        психического состояния пациента.
-                                        Бессознательное социально отчуждает
-                                        латентный гештальт, Гоббс одним из
-                                        первых осветил эту проблему с позиций
-                                        психологии. Коллективное бессознательное
-                                        отталкивает гендер. Объект вразнобой
-                                        интегрирует страх. Бихевиоризм вызывает
-                                        культурный эриксоновский гипноз.
-                                    </Typography>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Typography
-                                        variant="h6"
-                                        style={{ marginBottom: "0.7em" }}
-                                    >
-                                        {feature1short}
-                                    </Typography>
-                                    <Typography>
-                                        Конформизм отчуждает индивидуальный
-                                        субъект, что отмечают такие крупнейшие
-                                        ученые как Фрейд, Адлер, Юнг, Эриксон,
-                                        Фромм. Сновидение представляет собой
-                                        экзистенциальный контраст.
-                                        Акцентуированная личность выбирает
-                                        экспериментальный стресс, тем не менее
-                                        как только ортодоксальность окончательно
-                                        возобладает, даже эта маленькая лазейка
-                                        будет закрыта. Ассоцианизм понимает
-                                        экспериментальный автоматизм.
-                                    </Typography>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <Typography
-                                        variant="h6"
-                                        style={{ marginBottom: "0.7em" }}
-                                    >
-                                        {feature1short}
-                                    </Typography>
-                                    <Typography>
-                                        Заблуждение, как следует из
-                                        вышесказанного, транспонирует
-                                        примитивный позитивизм, однако Зигварт
-                                        считал критерием истинности
-                                        необходимость и общезначимость, для
-                                        которых нет никакой опоры в объективном
-                                        мире. Отношение к современности
-                                        непредвзято трансформирует примитивный
-                                        структурализм. Отсюда естественно
-                                        следует, что сомнение осмысленно
-                                        раскладывает на элементы сложный предмет
-                                        деятельности. Дуализм естественно
-                                        транспонирует мир, учитывая опасность,
-                                        которую представляли собой писания
-                                        Дюринга для не окрепшего еще немецкого
-                                        рабочего движения. Апостериори,
-                                        дедуктивный метод не так уж очевиден.
-                                        Предмет деятельности прост.
-                                    </Typography>
-                                </SwiperSlide>
-                            </Swiper>
-                            <AdaptiveButton className={classes.ctaButton}>
-                                Test
-                            </AdaptiveButton>
-                        </Grid>
+                                {heading}
+                            </Typography>
+                        </IntersectionObserver>
+                        <Swiper
+                            loop
+                            id="main"
+                            tag="section"
+                            // wrapperTag="ul"
+                            className={classes.slider}
+                            // spaceBetween={8}
+                            slidesPerView={1}
+                            speed={2000}
+                            // navigation
+                            effect="fade"
+                            fadeEffect={{ crossFade: true }}
+                            pagination={{ clickable: true }}
+                            // scrollbar={{ draggable: false }}
+                            autoplay={{
+                                delay: "3500",
+                                disableOnInteraction: "true",
+                            }}
+                        >
+                            <SwiperSlide>
+                                <Typography
+                                    variant="h6"
+                                    style={{ marginBottom: "0.7em" }}
+                                >
+                                    {feature1short}
+                                </Typography>
+                                <Typography>
+                                    {feature1detailed}
+                                    Конформизм отчуждает индивидуальный субъект,
+                                    что отмечают такие крупнейшие ученые как
+                                    Фрейд, Адлер, Юнг, Эриксон, Фромм.
+                                    Сновидение представляет собой
+                                    экзистенциальный контраст. Акцентуированная
+                                    личность выбирает экспериментальный стресс,
+                                    тем не менее как только ортодоксальность
+                                    окончательно возобладает, даже эта маленькая
+                                    лазейка будет закрыта. Ассоцианизм понимает
+                                    экспериментальный автоматизм.
+                                </Typography>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Typography
+                                    variant="h6"
+                                    style={{ marginBottom: "0.7em" }}
+                                >
+                                    {feature1short}
+                                </Typography>
+                                <Typography>
+                                    Эгоцентризм прекрасно дает интеракционизм,
+                                    независимо от психического состояния
+                                    пациента. Бессознательное социально
+                                    отчуждает латентный гештальт, Гоббс одним из
+                                    первых осветил эту проблему с позиций
+                                    психологии. Коллективное бессознательное
+                                    отталкивает гендер. Объект вразнобой
+                                    интегрирует страх. Бихевиоризм вызывает
+                                    культурный эриксоновский гипноз.
+                                </Typography>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Typography
+                                    variant="h6"
+                                    style={{ marginBottom: "0.7em" }}
+                                >
+                                    {feature1short}
+                                </Typography>
+                                <Typography>
+                                    Конформизм отчуждает индивидуальный субъект,
+                                    что отмечают такие крупнейшие ученые как
+                                    Фрейд, Адлер, Юнг, Эриксон, Фромм.
+                                    Сновидение представляет собой
+                                    экзистенциальный контраст. Акцентуированная
+                                    личность выбирает экспериментальный стресс,
+                                    тем не менее как только ортодоксальность
+                                    окончательно возобладает, даже эта маленькая
+                                    лазейка будет закрыта. Ассоцианизм понимает
+                                    экспериментальный автоматизм.
+                                </Typography>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Typography
+                                    variant="h6"
+                                    style={{ marginBottom: "0.7em" }}
+                                >
+                                    {feature1short}
+                                </Typography>
+                                <Typography>
+                                    Заблуждение, как следует из вышесказанного,
+                                    транспонирует примитивный позитивизм, однако
+                                    Зигварт считал критерием истинности
+                                    необходимость и общезначимость, для которых
+                                    нет никакой опоры в объективном мире.
+                                    Отношение к современности непредвзято
+                                    трансформирует примитивный структурализм.
+                                    Отсюда естественно следует, что сомнение
+                                    осмысленно раскладывает на элементы сложный
+                                    предмет деятельности. Дуализм естественно
+                                    транспонирует мир, учитывая опасность,
+                                    которую представляли собой писания Дюринга
+                                    для не окрепшего еще немецкого рабочего
+                                    движения. Апостериори, дедуктивный метод не
+                                    так уж очевиден. Предмет деятельности прост.
+                                </Typography>
+                            </SwiperSlide>
+                        </Swiper>
+                        <AdaptiveButton className={classes.ctaButton}>
+                            Test
+                        </AdaptiveButton>
+                    </Grid>
 
-                        <Grid item xs={10} md={5}>
-                            <HeroImage className={classes.heroImage} />
-                        </Grid>
+                    <Grid item xs={10} md={5}>
+                        <HeroImage className={classes.heroImage} />
+                    </Grid>
 
-                        {/* <p>subheading: {subheading}</p>
+                    {/* <p>subheading: {subheading}</p>
                             <p>feature1short: {feature1short}</p>
                             <p>feature1detailed:</p>
                             <div
@@ -348,7 +365,7 @@ const Hero = ({
                                 }}
                             /> */}
 
-                        {/* 
+                    {/* 
                             <div style={{ height: "300px", width: "100%" }}>
                                 <SvgCompatibleBackgroundImage
                                     className={classes.hero}
@@ -359,9 +376,8 @@ const Hero = ({
                                     </div>
                                 </SvgCompatibleBackgroundImage>
                             </div> */}
-                    </Grid>
-                </Container>
-            </section>
+                </Grid>
+            </Container>
         </SvgCompatibleBackgroundImage>
     )
 }

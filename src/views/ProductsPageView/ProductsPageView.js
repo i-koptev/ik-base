@@ -13,8 +13,17 @@ import { ProductList, CategoryList } from "./components"
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        [theme.breakpoints.up("lg")]: {
-            // backgroundColor: "tomato",
+        backgroundColor: "#eee",
+        marginTop: "-56px",
+        [theme.breakpoints.up("sm")]: {
+            marginTop: "-65px",
+        },
+    },
+    sectionContainer: {
+        backgroundColor: "#fff",
+        paddingTop: `56px`,
+        [theme.breakpoints.up("sm")]: {
+            paddingTop: `65px`,
         },
     },
     header: {
@@ -86,74 +95,76 @@ const ProductsPageView = ({
     }
 
     return (
-        <Container
-            maxWidth={theme.siteContainer.maxWidth}
-            // {...rest}
-            className={clsx(classes.root, className)}
-        >
-            <Grid container spacing={0} style={{ marginBottom: "1rem" }}>
-                <Grid item xs={12}>
-                    <Typography
-                        className={classes.header}
-                        variant="h3"
-                        component="h3"
-                        align="center"
-                    >
-                        {pageHeader}
-                    </Typography>
-                    <Typography
-                        className={classes.subheader}
-                        variant="h6"
-                        component="h6"
-                        align="center"
-                    >
-                        {pageSubheader}
-                    </Typography>
+        <div className={classes.root}>
+            <Container
+                maxWidth={theme.siteContainer.maxWidth}
+                // {...rest}
+                className={clsx(classes.sectionContainer, className)}
+            >
+                <Grid container spacing={0} style={{ marginBottom: "1rem" }}>
+                    <Grid item xs={12}>
+                        <Typography
+                            className={classes.header}
+                            variant="h3"
+                            component="h3"
+                            align="center"
+                        >
+                            {pageHeader}
+                        </Typography>
+                        <Typography
+                            className={classes.subheader}
+                            variant="h6"
+                            component="h6"
+                            align="center"
+                        >
+                            {pageSubheader}
+                        </Typography>
 
-                    {/* <pre>{JSON.stringify(allProductsList, null, 4)}</pre> */}
+                        {/* <pre>{JSON.stringify(allProductsList, null, 4)}</pre> */}
+                    </Grid>
                 </Grid>
-            </Grid>
 
-            {/* --- SLIDER --- */}
-            <Grid container spacing={1} style={{ marginBottom: "1rem" }}>
-                <Grid item xs={12} md={2}>
-                    {" "}
-                    <CategoryList
-                        allCategoryObjectsList={allCategoryObjectsList}
-                    />
+                {/* --- SLIDER --- */}
+                <Grid container spacing={1} style={{ marginBottom: "1rem" }}>
+                    <Grid item xs={12} md={2}>
+                        {" "}
+                        <CategoryList
+                            allCategoryObjectsList={allCategoryObjectsList}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={10}>
+                        <div
+                            style={{
+                                height: "300px",
+                                backgroundColor: "#333",
+                                padding: "50px",
+                                fontSize: "5rem",
+                                fontWeight: 700,
+                                color: "white",
+                                textAlign: "center",
+                            }}
+                        >
+                            SLIDER
+                        </div>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={10}>
-                    <div
-                        style={{
-                            height: "300px",
-                            backgroundColor: "#333",
-                            padding: "50px",
-                            fontSize: "5rem",
-                            fontWeight: 700,
-                            color: "white",
-                            textAlign: "center",
-                        }}
-                    >
-                        SLIDER
-                    </div>
-                </Grid>
-            </Grid>
 
-            {allCategoryObjectsList.map((category) => {
-                const products = filterProductListByCategory(
-                    allProductsList,
-                    category.id
-                )
-                return (
-                    <ProductList
-                        products={products.slice(0, 2)}
-                        // products={products}
-                        category={category.id}
-                        key={`key-${category.id}`}
-                    />
-                )
-            })}
-        </Container>
+                {allCategoryObjectsList.map((category) => {
+                    const products = filterProductListByCategory(
+                        allProductsList,
+                        category.id
+                    )
+                    return (
+                        <ProductList
+                            products={products.slice(0, 2)}
+                            // products={products}
+                            category={category.id}
+                            key={`key-${category.id}`}
+                        />
+                    )
+                })}
+            </Container>
+        </div>
     )
 }
 
