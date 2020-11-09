@@ -94,14 +94,14 @@ const Projects = ({ title, subtitle, projects }) => {
     const lessThanSm = useMediaQuery(theme.breakpoints.down("sm"))
     const adaptiveSpacing = lessThanXs ? 3 : lessThanSm ? 4 : 4
 
-    // Do not try to move it to separate component - animation variants do not work
+    // Do not try to move it to separate component - different animation variants for different screen widths do not work
     const AnimatedDiv = (props) => {
         const { delay } = props
         const { inView } = useContext(CardIntersectionContext)
 
         const variants = lessThanSm
             ? {
-                  hidden: { y: "-50px", opacity: 0 },
+                  hidden: { y: "50px", opacity: 0 },
                   show: {
                       y: 0,
                       opacity: 1,
@@ -137,7 +137,7 @@ const Projects = ({ title, subtitle, projects }) => {
 
         return (
             <motion.div
-                whileHover={onCardHover}
+                // whileHover={onCardHover}
                 whileTap={onCardTap}
                 initial="hidden"
                 animate={inView ? "show" : "hidden"}
