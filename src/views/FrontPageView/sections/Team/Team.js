@@ -93,7 +93,7 @@ const Team = (props) => {
         const variants = sm
             ? {
                   hidden: {
-                      y: "-30px",
+                      y: "30px",
                       opacity: 0,
                   },
                   show: {
