@@ -120,35 +120,23 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     error: {
-        color: "lime",
+        color: "maroon",
     },
 }))
-
-const getIntlStringById = (id) => {
-    return injectIntl(({ intl }) => {
-        // return intl.locale
-        return intl.formatMessage({ id: id })
-    })()
-}
 
 const schema = yup.object().shape({
     // firstName: yup.string().required(),
     // age: yup.number().positive().integer().required(),
+
+    name: yup.string().required("contactFormErrorFieldIsRequired"),
     email: yup
         .string()
-        // .required(getIntlStringById("contactFormErrorEnterEmailAddressPlease"))
         .required("contactFormErrorEnterEmailAddressPlease")
-        .email(
-            "contactFormErrorWeNeedYourEmailAddressToContactYou"
-            // getIntlStringById(
-            //     "contactFormErrorWeNeedYourEmailAddressToContactYou"
-            // )
-        ),
-    name: yup
+        .email("contactFormErrorNotValidEmailAddress"),
+    subject: yup.string().required("contactFormErrorEnterSubjectPlease"),
+    message: yup
         .string()
-        // .required(getIntlStringById("contactFormErrorFieldIsRequired"))
-        .required("contactFormErrorFieldIsRequired")
-        // .min(8, getIntlStringById("contactFormErrorMessageMustBeAtLeast8")),
+        .required("contactFormErrorEnterMessagePlease")
         .min(8, "contactFormErrorMessageMustBeAtLeast8"),
 })
 
@@ -163,7 +151,14 @@ const ContactsPageView = ({
     phoneNumberLabel,
     phone,
 }) => {
-    const { register, errors, handleSubmit, clearErrors, control } = useForm({
+    const {
+        register,
+        errors,
+        handleSubmit,
+        clearErrors,
+        reset,
+        control,
+    } = useForm({
         // validateCriteriaMode: "firstErrorDetected",
         validateCriteriaMode: "all",
         // mode: "onChange",
@@ -177,10 +172,12 @@ const ContactsPageView = ({
         resolver: yupResolver(schema),
     })
 
-    const onSubmit = (data) => {
+    const onSubmit = (data, e) => {
         // event.preventDefault()
         console.log(data)
+        e.target.reset()
     }
+
     //https://github.com/react-hook-form/react-hook-form/issues/283
     const clearInputError = useCallback(
         (event) => {
@@ -230,7 +227,7 @@ const ContactsPageView = ({
                                         // required
                                         fullWidth
                                         name="name"
-                                        label="Your Name"
+                                        label="Name"
                                         type="text"
                                         id="name"
                                         autoComplete="off"
@@ -257,7 +254,7 @@ const ContactsPageView = ({
                                         // required
                                         fullWidth
                                         name="email"
-                                        label="Your EMail"
+                                        label={emailLabel}
                                         type="email"
                                         id="email"
                                         autoComplete="off"
@@ -282,10 +279,10 @@ const ContactsPageView = ({
                                         margin="normal"
                                         // required
                                         fullWidth
-                                        name="email"
-                                        label="Your EMail"
-                                        type="email"
-                                        id="email"
+                                        name="subject"
+                                        label="Subject"
+                                        type="text"
+                                        id="subject"
                                         autoComplete="off"
                                         className={classes.textField}
                                         // error={!!errors.phone}
@@ -294,9 +291,9 @@ const ContactsPageView = ({
                                     />
                                     {
                                         <div className={classes.error}>
-                                            {errors.email &&
+                                            {errors.subject &&
                                                 intl.formatMessage({
-                                                    id: errors.email.message,
+                                                    id: errors.subject.message,
                                                 })}
                                         </div>
                                     }
@@ -311,10 +308,10 @@ const ContactsPageView = ({
                                         rowsMax={12}
                                         // required
                                         fullWidth
-                                        name="email"
-                                        label="Your EMail"
-                                        type="email"
-                                        id="email"
+                                        name="message"
+                                        label="Message"
+                                        type="text"
+                                        id="message"
                                         autoComplete="off"
                                         className={classes.textField}
                                         // error={!!errors.phone}
@@ -323,9 +320,9 @@ const ContactsPageView = ({
                                     />
                                     {
                                         <div className={classes.error}>
-                                            {errors.email &&
+                                            {errors.message &&
                                                 intl.formatMessage({
-                                                    id: errors.email.message,
+                                                    id: errors.message.message,
                                                 })}
                                         </div>
                                     }
@@ -334,10 +331,23 @@ const ContactsPageView = ({
                             <Button
                                 variant="contained"
                                 type="submit"
-                                disabled={!!errors.name || !!errors.email}
+                                disabled={
+                                    !!errors.name ||
+                                    !!errors.email ||
+                                    !!errors.subject ||
+                                    !!errors.message
+                                }
                                 className={classes.submit}
                             >
                                 Send
+                            </Button>
+                            <Button
+                                variant="contained"
+                                className={classes.submit}
+                                type="reset"
+                                onClick={() => reset()}
+                            >
+                                Reset
                             </Button>
                         </form>
                     </Grid>
