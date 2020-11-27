@@ -24,7 +24,10 @@
     "latestposts": "Последние публикации",
     "allcategories": "Все категории",
     "contactFormErrorFieldIsRequired": "Это поле является обязательным!",
-    "contactFormErrorEnterEmailAddressPlease": "Введите, пожалуйста, адрес электронной почты.",
-    "contactFormErrorWeNeedYourEmailAddressToContactYou": "Действующий адрес электронной почты просто необходим для обратной связи!",
+    "contactFormErrorEnterNamePlease": "Пожалуйста, введите Ваше имя",
+    "contactFormErrorEnterEmailAddressPlease": "Пожалуйста, введите адрес электронной почты",
+    "contactFormErrorNotValidEmailAddress": "Пожалуйста, введите действительный адрес электронной почты",
+    "contactFormErrorEnterSubjectPlease": "Пожалуйста, введите тему сообщения",
+    "contactFormErrorEnterMessagePlease": "Пожалуйста, введите сообщение",
     "contactFormErrorMessageMustBeAtLeast8": "Должно быть минимум 8 символов!"
 }

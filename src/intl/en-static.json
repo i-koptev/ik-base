@@ -24,7 +24,10 @@
     "latestposts": "Latest Posts",
     "allcategories": "All Categories",
     "contactFormErrorFieldIsRequired": "This Field is Required!",
-    "contactFormErrorEnterEmailAddressPlease": "Enter Your Email address, please!",
-    "contactFormErrorWeNeedYourEmailAddressToContactYou": "I need a valid Email address to contact You!",
+    "contactFormErrorEnterNamePlease": "Please enter your name",
+    "contactFormErrorEnterEmailAddressPlease": "Please enter your email",
+    "contactFormErrorNotValidEmailAddress": "Please enter valid email address",
+    "contactFormErrorEnterSubjectPlease": "Please enter the subject of a message",
+    "contactFormErrorEnterMessagePlease": "Please enter the message",
     "contactFormErrorMessageMustBeAtLeast8": "Message must be at least 8 symbols!"
 }
