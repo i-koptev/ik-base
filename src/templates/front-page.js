@@ -96,37 +96,53 @@ const FrontPage = (props) => {
     const viewSectionTeamData = {
         title: "Our Projects",
         team: [
-            { firstName: "Ivans", secondName: "Ivanovs", role: "Developer" },
+            {
+                firstName: "Ivans",
+                secondName: "Ivanovs",
+                role: "Developer",
+                photo: heroImage,
+            },
             {
                 firstName: "Sidors",
                 secondName: "Sidorovs",
                 role: "Developer2",
+                photo: heroImage,
             },
             {
                 firstName: "Pjotrs",
                 secondName: "Petrovs",
                 role: "Developer2",
+                photo: heroImage,
             },
             {
                 firstName: "Grigorijs",
                 secondName: "Grigorjevs",
                 role: "Developer3",
+                photo: heroImage,
             },
-            { firstName: "Ivans", secondName: "Ivanovs", role: "Developer" },
+            {
+                firstName: "Ivans",
+                secondName: "Ivanovs",
+                role: "Developer",
+                photo: heroImage,
+            },
             {
                 firstName: "Sidors",
                 secondName: "Sidorovs",
                 role: "Developer2",
+                photo: heroImage,
             },
             {
                 firstName: "Pjotrs",
                 secondName: "Petrovs",
                 role: "Developer2",
+                photo: heroImage,
             },
             {
                 firstName: "Grigorijs",
                 secondName: "Grigorjevs",
                 role: "Developer3",
+                photo: heroImage,
             },
         ],
     }
