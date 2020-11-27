@@ -153,6 +153,47 @@ const useStyles = makeStyles((theme) => ({
             },
         },
     },
+    htmlContent: {
+        "& h1, h2, h3, h4, h5, h6": {
+            textAlign: "center",
+        },
+        "& h1": { ...theme.typography.h1 },
+        "& h2": { ...theme.typography.h2 },
+        "& h3": { ...theme.typography.h3 },
+        "& h4": { ...theme.typography.h4 },
+        "& h5": { ...theme.typography.h5 },
+        "& h6": {
+            ...theme.typography.h6,
+            // fontFamily: "PT Sans Narrow",
+            // fontWeight: 400,
+            // textShadow:
+            //     "3px 3px 10px rgba(255,0,0,0.5), -3px -3px 10px rgba(0,0,255,0.5)",
+        },
+        "& p": {
+            ...theme.html.paragraph,
+        },
+        "& .alignleft": {
+            float: "left",
+            margin: "1rem",
+            marginRight: "2.5rem",
+            marginLeft: 0,
+            display: "flow-root",
+        },
+        "& .alignleft:after": {
+            content: ".",
+            display: "block",
+            height: 0,
+            clear: "both",
+            visibility: "hidden",
+        },
+        "& .gatsby-image-wrapper ": {
+            border: "10px solid #fff",
+            boxShadow: "3px 3px 10px 3px rgba(0,0,0,0.2)",
+            // width: "30% !important",
+            // boxShadow:
+            //     " 3px 3px 10px 2px rgba(255,0,0,0.5), -3px -3px 10px 2px rgba(0,0,255,0.5)",
+        },
+    },
     // overlay: {
     //     position: "absolute",
     //     width: "100%",
@@ -260,83 +301,54 @@ const Hero = ({
                                 >
                                     {feature1short}
                                 </Typography>
-                                <Typography>
-                                    {feature1detailed}
-                                    Конформизм отчуждает индивидуальный субъект,
-                                    что отмечают такие крупнейшие ученые как
-                                    Фрейд, Адлер, Юнг, Эриксон, Фромм.
-                                    Сновидение представляет собой
-                                    экзистенциальный контраст. Акцентуированная
-                                    личность выбирает экспериментальный стресс,
-                                    тем не менее как только ортодоксальность
-                                    окончательно возобладает, даже эта маленькая
-                                    лазейка будет закрыта. Ассоцианизм понимает
-                                    экспериментальный автоматизм.
-                                </Typography>
+                                <div
+                                    className={classes.htmlContent}
+                                    dangerouslySetInnerHTML={{
+                                        __html: feature1detailed,
+                                    }}
+                                />
                             </SwiperSlide>
                             <SwiperSlide>
                                 <Typography
                                     variant="h6"
                                     style={{ marginBottom: "0.7em" }}
                                 >
-                                    {feature1short}
+                                    {feature2short}
                                 </Typography>
-                                <Typography>
-                                    Эгоцентризм прекрасно дает интеракционизм,
-                                    независимо от психического состояния
-                                    пациента. Бессознательное социально
-                                    отчуждает латентный гештальт, Гоббс одним из
-                                    первых осветил эту проблему с позиций
-                                    психологии. Коллективное бессознательное
-                                    отталкивает гендер. Объект вразнобой
-                                    интегрирует страх. Бихевиоризм вызывает
-                                    культурный эриксоновский гипноз.
-                                </Typography>
+                                <div
+                                    className={classes.htmlContent}
+                                    dangerouslySetInnerHTML={{
+                                        __html: feature2detailed,
+                                    }}
+                                />
                             </SwiperSlide>
                             <SwiperSlide>
                                 <Typography
                                     variant="h6"
                                     style={{ marginBottom: "0.7em" }}
                                 >
-                                    {feature1short}
+                                    {feature3short}
                                 </Typography>
-                                <Typography>
-                                    Конформизм отчуждает индивидуальный субъект,
-                                    что отмечают такие крупнейшие ученые как
-                                    Фрейд, Адлер, Юнг, Эриксон, Фромм.
-                                    Сновидение представляет собой
-                                    экзистенциальный контраст. Акцентуированная
-                                    личность выбирает экспериментальный стресс,
-                                    тем не менее как только ортодоксальность
-                                    окончательно возобладает, даже эта маленькая
-                                    лазейка будет закрыта. Ассоцианизм понимает
-                                    экспериментальный автоматизм.
-                                </Typography>
+                                <div
+                                    className={classes.htmlContent}
+                                    dangerouslySetInnerHTML={{
+                                        __html: feature3detailed,
+                                    }}
+                                />
                             </SwiperSlide>
                             <SwiperSlide>
                                 <Typography
                                     variant="h6"
                                     style={{ marginBottom: "0.7em" }}
                                 >
-                                    {feature1short}
+                                    {feature4short}
                                 </Typography>
-                                <Typography>
-                                    Заблуждение, как следует из вышесказанного,
-                                    транспонирует примитивный позитивизм, однако
-                                    Зигварт считал критерием истинности
-                                    необходимость и общезначимость, для которых
-                                    нет никакой опоры в объективном мире.
-                                    Отношение к современности непредвзято
-                                    трансформирует примитивный структурализм.
-                                    Отсюда естественно следует, что сомнение
-                                    осмысленно раскладывает на элементы сложный
-                                    предмет деятельности. Дуализм естественно
-                                    транспонирует мир, учитывая опасность,
-                                    которую представляли собой писания Дюринга
-                                    для не окрепшего еще немецкого рабочего
-                                    движения. Апостериори, дедуктивный метод не
-                                    так уж очевиден. Предмет деятельности прост.
-                                </Typography>
+                                <div
+                                    className={classes.htmlContent}
+                                    dangerouslySetInnerHTML={{
+                                        __html: feature4detailed,
+                                    }}
+                                />
                             </SwiperSlide>
                         </Swiper>
                         <AdaptiveButton className={classes.ctaButton}>
