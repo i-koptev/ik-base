@@ -6,12 +6,18 @@ import { IntersectionObserver } from "../../../../components/Animated/Intersecti
 import { IntersectionContext } from "../../../../components/Animated/IntersectionObserver"
 import { motion } from "framer-motion"
 
+import SvgCompatibleImage from "../../../../components/SvgCompatibleImage"
+import SvgCompatibleBackgroundImage from "../../../../components/SvgCompatibleBackgroundImage"
+
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { makeStyles, useTheme } from "@material-ui/styles"
 import { CardActionArea, Grid } from "@material-ui/core"
 import CardActions from "@material-ui/core/CardActions"
 import Container from "@material-ui/core/Container"
 import Typography from "@material-ui/core/Typography"
+import FacebookIcon from "@material-ui/icons/Facebook"
+import TwitterIcon from "@material-ui/icons/Twitter"
+import InstagramIcon from "@material-ui/icons/Instagram"
 
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
@@ -50,22 +56,32 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     cardMedia: {
-        height: 300,
+        minHeight: 250,
         [theme.breakpoints.up("md")]: {
             flex: "0 0 33.33%",
+            // flex: "0 0 50%",
+            // width: 200,
         },
     },
     cardContentWrapper: {
-        minHeight: "10rem",
-        paddingTop: "1.5rem",
-        paddingBottom: "2rem",
+        minHeight: 200,
+        padding: "1rem",
+        paddingTop: "1rem",
+        paddingBottom: "0.5rem",
         // [theme.breakpoints.up("md")]: {
         //     alignSelf: "flex-start",
         // },
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
         [theme.breakpoints.up("md")]: {
-            flex: "0 0 66.66%",
-            padding: "10px 60px 0 20px",
-            alignSelf: "flex-start",
+            flex: "0 0  66.66%",
+            minHeight: 250,
+            paddingTop: "0.7rem",
+            paddingBottom: "0.7rem",
+            // flex: "0 0  50%",
+            // padding: "10px 60px 0 20px",
+            // alignSelf: "flex-start",
         },
     },
 
@@ -181,13 +197,20 @@ const Team = (props) => {
                                         <CardActionArea
                                             className={classes.cardActionArea}
                                         >
-                                            <CardMedia
+                                            {/* <CardMedia
                                                 className={classes.cardMedia}
-                                                component="img"
+                                                component={SvgCompatibleImage}
                                                 alt="Contemplative Reptile"
-                                                image="https://picsum.photos/id/3/300/200"
+                                                // image="https://picsum.photos/id/3/200/200"
+                                                image={member.photo}
                                                 title="Contemplative Reptile"
+                                            /> */}
+
+                                            <SvgCompatibleBackgroundImage
+                                                image={member.photo}
+                                                className={classes.cardMedia}
                                             />
+
                                             <div
                                                 className={
                                                     classes.cardContentWrapper
@@ -225,6 +248,39 @@ const Team = (props) => {
                                                         except Antarctica.
                                                     </Typography>
                                                 </CardContent>
+                                                <div
+                                                    style={{
+                                                        padding: "16px",
+                                                        // alignSelf: "flex-end",
+                                                    }}
+                                                >
+                                                    <a href="http://ss.com">
+                                                        <FacebookIcon
+                                                            fontSize="small"
+                                                            style={{
+                                                                color:
+                                                                    "#3b5998",
+                                                                marginLeft:
+                                                                    "1rem",
+                                                                marginRight:
+                                                                    "1rem",
+                                                            }}
+                                                        />
+                                                    </a>
+                                                    <TwitterIcon
+                                                        fontSize="small"
+                                                        style={{
+                                                            color: "#00aced",
+                                                            marginRight: "1rem",
+                                                        }}
+                                                    />
+                                                    <InstagramIcon
+                                                        style={{
+                                                            color: "#fb3958",
+                                                        }}
+                                                        fontSize="small"
+                                                    />
+                                                </div>
                                             </div>
                                         </CardActionArea>
                                     </Card>
