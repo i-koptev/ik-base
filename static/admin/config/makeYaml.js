@@ -19,12 +19,12 @@ const englishToasts = require("./english-toasts")
 
 // defining collections
 
-const pages = { name: "pages", label: "Страницы сайта / Pages ", files: [] }
 const siteSettings = {
     name: "settings",
     label: "Настройки сайта / Site settings",
     files: [],
 }
+const pages = { name: "pages", label: "Страницы сайта / Pages ", files: [] }
 
 siteSettings.files.push(globalSettings)
 siteSettings.files.push(topbarMenuSettings)
